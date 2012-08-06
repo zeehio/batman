@@ -81,6 +81,8 @@
 library(batman)
 ## Run batman
 bm<-batman()
+100
+1
 ## then call batmanrerun
 bm<-batmanrerun(bm)
 #######################################################################

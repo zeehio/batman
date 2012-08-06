@@ -3,12 +3,13 @@ figRelCon = FALSE, figMetaFit = FALSE)
 {   
 ## rerun batman() with fixed ppm position for all multiplets
 ## directories for input parameters and data files
-	dir1 <- paste(BM$outputDir,"/batmanOptions.txt",sep="")
+	dir1<-paste(BM$outputDir,"/batmanOptions.txt",sep="")
 	dir2<-paste(BM$outputDir,"/NMRdata.txt",sep="")
 	dir3<-paste(BM$outputDir,"/metabolitesList.txt",sep="")
 	dir4<-paste(BM$outputDir,"/multi_data.dat",sep="")
 	dir6<-paste(BM$outputDir,"/chemShiftPerSpec.dat",sep="")
-	
+	dir7<-paste(BM$inputDir,"/PureSpectraTemplate/",sep = "")
+
 	warnDef<-options("warn")$warn
 	warnRead<-options(warn = -1)
 	
@@ -23,7 +24,7 @@ figRelCon = FALSE, figMetaFit = FALSE)
 	
 	dir5<-paste(BM$outputDir,"/",sep="")
 ## file dirs for input parameters and data.
-	filedir<-c(dir1,dir2,dir3,dir4,dir5,dir6)
+	filedir<-c(dir1,dir2,dir3,dir4,dir5,dir6,dir7)
 	
 ## read in parameters from batmanOption.txt 
 	con  <- file(dir1, open = "r")
@@ -31,27 +32,8 @@ figRelCon = FALSE, figMetaFit = FALSE)
 	fL<-substr(oneLine,1,1)
 	nL<-which(is.na(match(fL,"%")))
 	myVector <- strsplit(oneLine[nL[2]], ":")
-	ranges <- strsplit(myVector[[1]][2],",")
 	sno <- NULL
-	for (rgs in 1:length(ranges[[1]]))
-	{
-		ranges2 <- strsplit(ranges[[1]][rgs], "-")
-		ranges3 <-as.numeric(ranges2[[1]])
-		if (length(ranges3)>1)
-		{
-			if (ranges3[1]>ranges3[2])
-			{
-				tmp1 <- ranges3[1]
-				ranges3[1] <- ranges3[2]
-				ranges3[2] <- tmp1
-			}
-		} else {
-			ranges3[2] <- ranges3[1]
-		}
-		sno <- c(sno, ranges3[1]:ranges3[2])
-	}
-	
-	##sno <- as.numeric(myVector[[1]][2])
+	sno <-getSpectraRange(myVector)
 	myVector <- strsplit(oneLine[nL[6]], ":")
 	chemshif <- as.numeric(myVector[[1]][2])
 	myVector <- strsplit(oneLine[nL[9]], ":")
@@ -124,7 +106,7 @@ figRelCon = FALSE, figMetaFit = FALSE)
 	
 	cat("Reading in saved data in folder\n")
 ## read in results into R
-	BMR<-readBatmanOutput(BM$outputDir) 
+	BMR<-readBatmanOutput(BM$outputDir, BM$inputDir) 
 	cat(BMR$outputDir)
 ## plotting results
 	if (figBatmanFit)

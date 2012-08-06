@@ -168,7 +168,7 @@ void read_multiplet_data(int lineno, char filename[], opt* opts,
 							strcat(fdirR,name);
 							strcat(fdirR,".txt");
 							ifstream inA3_str(fdirR);
-							cout<<"route "<< fdirR<<endl;
+							//cout<<"route "<< fdirR<<endl;
 							//cout<<"file is "<< inA3_str<< endl;
 							
 							//if (!inA3_str)
@@ -179,7 +179,15 @@ void read_multiplet_data(int lineno, char filename[], opt* opts,
 							{
 								inA3_str>>vec_el;
 								inA3_str.ignore(1);
+								if(vec_el<max(c3[it][1],c3[it][0]) && vec_el>min(c3[it][1],c3[it][0]))
+								{
+									//cout<<"vec_el ppm"<<vec_el<<endl;
+									inA3_str.peek();
+									inA3_str>>vec_el;
+									inA3_str.ignore(1);
+									//cout<<"vec_el"<<vec_el<<endl;
 								raster.push_back(vec_el);
+								}
 								//cout<<"vec_el"<<vec_el<<endl;
 								// need to peek to modify state flag
 								inA3_str.peek();

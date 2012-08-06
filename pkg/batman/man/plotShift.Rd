@@ -29,6 +29,8 @@
 library(batman)
 ## Run BATMAN
 bm<-batman()
+100
+1
 ## Plot ppm shift for each multiplet.
 plotShift(bm)
 }

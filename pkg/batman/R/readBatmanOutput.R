@@ -1,4 +1,4 @@
-readBatmanOutput<-function(dirOP) 
+readBatmanOutput<-function(dirOP, dirIP) 
 {
   warnDef<-options("warn")$warn
   warnRead<-options(warn = -1)
@@ -631,7 +631,7 @@ readBatmanOutput<-function(dirOP)
            metaTempHR=LH, metaFitSam = sfitsam, metaIndFitSam = metaindfitsam, thetaSam=the, delta = delmean, deltaSam = del,
            sFitRerun=rrr, sFitRerunHR=rrrH, betaRerun = betrr, betaSamRerun = betasamrr, betaCIRerun=vArr,
            metaTempRerun = Lrr, metaTempRerunHR = LrrH, metaFitSamRerun=sfitsamrr, metaIndFitSamRerun=metaindfitsamrr,
-           thetaSamRerun=therr,outputDir = dirOP) 
+           thetaSamRerun=therr,outputDir = dirOP, inputDir = dirIP) 
   warnRead<-options(warn = warnDef)
   return (BM)
 }    

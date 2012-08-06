@@ -33,6 +33,8 @@
 library(batman)
 ## Run BATMAN 
 bm<-batman()
+100
+1
 ## then plot results
 plotBatmanFit(bm)
 }

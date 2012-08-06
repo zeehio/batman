@@ -14,7 +14,7 @@
 library(batman)
 ## Read in all burker NMR spectra files, replace "your\data\path\here" with the
 ## directory of the data files you want to read.
-brukerdata<-readBruker("your\data\path\here")
+## brukerdata<-readBruker("your\data\path\here")
 }
 \keyword{datasets}
 

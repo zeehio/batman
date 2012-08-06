@@ -32,6 +32,8 @@
 library(batman)
 ## Run BATMAN and then plot relative concentration
 bm<-batman()
+100
+1
 ## Plot relative concentrations
 plotRelCon(bm)
 }
