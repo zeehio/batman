@@ -13,7 +13,7 @@ Lower limit for spectrum data point: -0.5
 Normalisation factor: 200000
 Down sampling: 10
 %% 1: yes, 0: no
-Use specified chemical shift for spectra (chemShiftperSpectra.csv) file: 1
+Use specified chemical shift for spectra (chemShiftperSpectra.csv) file: 0
 Save metabolites fit same as the original spectrum resolution (1/0): 1
 Set seed for random number generation: 25 
 Stop burn in at iteration: 4000

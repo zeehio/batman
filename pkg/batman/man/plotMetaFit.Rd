@@ -30,6 +30,8 @@
 library(batman)
 ## Run BATMAN fit, then plot metabolite fit
 bm<-batman()
+100
+1
 ## Plot metabolites Fit.
 plotMetaFit(bm)
 }
