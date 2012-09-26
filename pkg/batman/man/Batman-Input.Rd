@@ -212,12 +212,16 @@
   
   
   \code{couple_code}: Coupling code. If "-1" is inputted here, a user specified multiplet can be created. 
-	An example can be found in file "multi_data_user.csv".
+	An example can be found in file "multi_data_user.csv". If "-2" is inputted here, a multiplet with range
+  specified in ppm in the field "J_constant" is used. Examples can be found in file "multi_data_user.csv".
  
   
-  
-  \code{J_constant}: J constant. If "-1" is inputted for "couple_code", the values/F are the offset
- 	of peaks from the mutiplet position (F is the magnet frequency).
+  \code{J_constant}: J constant. If "-1" is inputted in the previous field "couple_code", J_constantva/f are the offset
+ 	of peaks from the mutiplet position (f is the magnet frequency). Note that the spectra are shown in reverse ppm axis, so 
+   a positive offset means peak at higher ppm value, and a negative offset is peak at lower ppm value. If "-2" is inputted 
+   in the previous field "couple_code", the field here requires a two values input seperated by comma, which specifies the ppm
+   range of the multiplet in the pure spectrum. Note in this case, the field "Metabolite" name will also be the .txt file name
+   containing the pure spectrum (refer to \code{\link{createPureSpectraTemplate}}).
   
   
   \code{no_of_protons}: Number of protons in each multiplet. If "-1" is inputted for "couple_code", one or more 
