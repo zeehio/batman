@@ -1,0 +1,8 @@
+Options and user input files are in (../inst)/extdata
+
+modify multi_data.csv to change prior for each multiplets
+modify multi_data_user.csv to add multiplets
+modify batmanOption.txt to change all the other information
+modify MetabolitesList.csv to add or remove (with % in front) metabolite
+
+
