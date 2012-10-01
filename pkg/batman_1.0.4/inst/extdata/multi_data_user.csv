@@ -1,5 +1,0 @@
-Metabolite,pos_in_ppm,couple_code,J_constant,no_of_protons,overwrite_pos,overwrite_var,overwrite_truncation,Include_multiplet
-Trehalose,5.18,1,3.8,13,n,n,n,0
-Trehalose,3.64,"1,1","9.93,3.84 ",14,n,n,n,0
-Trehalose,3.44,2,9.47,14,n,n,n,0
-FakeMetab,1.34,-1,"4,-4,10","0.5,0.5,1",n,n,n,1
