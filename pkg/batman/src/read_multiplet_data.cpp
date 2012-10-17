@@ -44,7 +44,7 @@ int read_multiplet_data(int lineno, char filename[], opt* opts,
 		if (nl != nl2)
 		{
 			printf("Different number of multiplets, exiting ...\n");
-			cin.get();
+			system("PAUSE");
 			exit(1);
 			//return -999;
 		}
@@ -211,7 +211,7 @@ int read_multiplet_data(int lineno, char filename[], opt* opts,
 							ms.raster_setup(abs(c3[it][1]-c3[it][0]), &raster);
 						} else {
 							printf("Wrong ppm ranges for raster (-2) in J_constant, exiting ...\n");
-							cin.get();
+							system("PAUSE");
 							exit(1);
 						}
 						templa.add_multiplet(ms);

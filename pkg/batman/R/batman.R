@@ -44,7 +44,8 @@ batman<-function(BrukerDataDir, txtFile, rData, createDir = TRUE, runBATMANDir =
   
   ## read in batman optitons
   con  <- file(dir1, open = "r")
-  oneLine <- readLines(con, n = 49, warn = FALSE)
+  nlines <-dim(read.table(dir1,sep="\n",comment.char = ""))[1]
+  oneLine <- readLines(con, n = nlines, warn = FALSE)
   fL<-substr(oneLine,1,1)
   nL<-which(is.na(match(fL,"%")))
   myVector <- strsplit(oneLine[nL[2]], ":")
@@ -111,7 +112,7 @@ batman<-function(BrukerDataDir, txtFile, rData, createDir = TRUE, runBATMANDir =
     print(mL[checkmetaList[setdiff(1:25, matchmL)],1])
     stop("Possible error in file 'metabolitesList.csv'.\n")
   }
-    
+  
   
   mL<-mL[,1,drop=FALSE]
   
@@ -122,13 +123,13 @@ batman<-function(BrukerDataDir, txtFile, rData, createDir = TRUE, runBATMANDir =
     sa<-readBruker(BrukerDataDir)  
     write.table(sa,file=dir2,row.names=FALSE,col.names=TRUE,quote=FALSE,sep = "\t")
   } else if (!missing(txtFile)) {
-    sa<-read.table(txtFile, header=TRUE,sep="\t")
+    sa<-read.table(txtFile, header=TRUE,sep="\t",comment.char = "")
     write.table(sa,file=dir2,row.names=FALSE,col.names=TRUE,quote=FALSE,sep = "\t")
   } else if (!missing(rData)) {
     sa<-rData
     write.table(sa,file=dir2,row.names=FALSE,col.names=TRUE,quote=FALSE,sep = "\t")
   } else {
-    sa<-read.table(dir2, header=TRUE,sep="\t")
+    sa<-read.table(dir2, header=TRUE,sep="\t",comment.char = "")
   }
   
   if ((ncol(sa)-1)<length(sno))
@@ -212,6 +213,8 @@ batman<-function(BrukerDataDir, txtFile, rData, createDir = TRUE, runBATMANDir =
                 out<-.Call("batman",filedir,as.integer(bn),as.integer(ito),as.integer(rr),as.integer(nospec-1),pBar,PACKAGE = "batman")
                 close( pBar )
               }})[3]}   
+  if (out[2] == 1)
+    return(cat("No metabolites with resonances in the region for analysis, exiting ...\n"))
   cat ("time ")
   print(stime)
   cat (" second.\n")

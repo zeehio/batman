@@ -104,6 +104,9 @@ figRelCon = FALSE, figMetaFit = FALSE)
 		if (wr>1) {stopCluster(cl)}
 	}
 	
+	if (out[2] == 1)
+    return(cat("No metabolites with resonances in the region for analysis, exiting ...\n"))
+	
 	cat("Reading in saved data in folder\n")
 ## read in results into R
 	BMR<-readBatmanOutput(BM$outputDir, BM$inputDir) 

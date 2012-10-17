@@ -50,7 +50,7 @@ createChemShiftPerSpec <-function(tempOption = 1, dirIP)
   close(con)
   sNo <- length(sno)
 
-	sa<-read.table(dir2, header=TRUE,sep="\t")
+	sa<-read.table(dir2, header=TRUE,sep="\t",comment.char = "")
     if ((ncol(sa)-1)<sNo)
       return(cat("No. of spectra included smaller than input spectra.\n"))
     if (!is.null(colnames(sa))) {
