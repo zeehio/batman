@@ -13,7 +13,7 @@ matrix *c5, matrix *c6, matrix *c7, matrixI *c8, char filename[])
     if( !fp)
     {
         printf("Can't open file %s, exiting ...\n", filename);
-        cin.get();
+        system("PAUSE");
         exit(1);
 		//return -999;
     }

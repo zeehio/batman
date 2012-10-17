@@ -10,7 +10,7 @@
         if( !fp)
         {
             printf("Can't open file %s, exiting ...\n", filename);
-            cin.get();
+            system("PAUSE");
             exit(1);
         }
         while(1)
@@ -81,7 +81,7 @@
             if (start1<0 || lend1<0 || start2<0 || lend2<0)
             {
                 printf("Problem with ppm ranges in %s, exiting ...\n", filename);
-                cin.get();
+                system("PAUSE");
                 exit(1);
             }
 

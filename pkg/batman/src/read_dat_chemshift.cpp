@@ -12,7 +12,7 @@
         if( !fp)
         {
             printf("Can't open file %s, exiting ...\n", filename);
-            cin.get();
+            system("PAUSE");
 			exit(1);
             //return -999;
         }
