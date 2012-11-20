@@ -36,9 +36,9 @@
    \itemize{
      \item{Put each set of ppm range in a pair of parentheses in the same line, 
       separate start and end ppm values with a comma, separate each set of 
-      ppm range with space. Note that, small number of spectra variables
-      may cause error in analysis, do not give very narrow ppm ranges and also check "Down sampling:" 
-      factor below which used together may also left small number of spectra variables. }}
+      ppm range with space. Note that, very small number of spectra variables
+      may cause error in wavelet analysis, do not give very narrow ppm ranges and also check the "Down sampling:" 
+      factor below, which used together, may also left very small number of spectra variables. }}
   
   
   \code{Spectra range to be included: 1-3, 5}
