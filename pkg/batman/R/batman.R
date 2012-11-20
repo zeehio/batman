@@ -25,6 +25,8 @@ batman<-function(BrukerDataDir, txtFile, rData, createDir = TRUE, runBATMANDir =
   dir6<-paste(dirA[2],"/chemShiftPerSpec.dat",sep="")
   dir7<-paste(dirA[4],"/",sep = "")
   
+  checkBatmanOptions(dir1)
+	
   dirctime<-paste(dirA[3],"/",ctime,sep="")
   if(!file.exists(dirctime)) {
     dir.create(dirctime)
@@ -43,8 +45,8 @@ batman<-function(BrukerDataDir, txtFile, rData, createDir = TRUE, runBATMANDir =
   dirRU<-paste(dirA[2],"/multi_data_user.csv",sep="")
   
   ## read in batman optitons
-  con  <- file(dir1, open = "r")
   nlines <-dim(read.table(dir1,sep="\n",comment.char = ""))[1]
+  con  <- file(dir1, open = "r")
   oneLine <- readLines(con, n = nlines, warn = FALSE)
   fL<-substr(oneLine,1,1)
   nL<-which(is.na(match(fL,"%")))
