@@ -11,14 +11,22 @@
         metabolitesList.csv,
         multi_data.csv, 
         multi_data_user.csv,
-        NMRdata.txt.}
+        NMRdata.txt.
+        }
 \arguments{
  \item{batmanOptions.txt}{Option file to be used by \code{batman}. A copy of this 
  file in the output directory is used for \code{batmanrerun}.
  The parameters in \code{batmanOptions.txt} file are explained here with example
- input values. The parameters have to be listed in the particular order given here.
+ input values. The parameters have to be listed in the particular order given here, 
+ and do not leave empty lines in between except beginning with the comment character "\%".
+ Please note that for version 1.0.9 and later, one more input line,
  
+ "Use specified chemical shift for spectra (chemShiftperSpectra.csv) file (1/0): 0",
  
+ is added at the end of this file.
+ For earlier version users updated to this version, running \code{batman} will 
+ add the above input line at the end of the file if missing.
+
 
  
  
@@ -28,7 +36,9 @@
    \itemize{
      \item{Put each set of ppm range in a pair of parentheses in the same line, 
       separate start and end ppm values with a comma, separate each set of 
-      ppm range with space.}}
+      ppm range with space. Note that, small number of spectra variables
+      may cause error in analysis, do not give very narrow ppm ranges and also check "Down sampling:" 
+      factor below which used together may also left small number of spectra variables. }}
   
   
   \code{Spectra range to be included: 1-3, 5}
