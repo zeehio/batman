@@ -626,6 +626,8 @@ readBatmanOutput<-function(dirOP, dirIP)
     row.names(vArr2)<-c("Metabolite", "Percentage",row.names(bet))
     write.table(vArr2,file=paste(dirOP,"/RelConCreIntRerun.txt",sep=""),sep = "\t",row.names = TRUE,col.names = FALSE,quote=FALSE)
   }   
+	if (missing(dirIP))
+	dirIP <- NULL
   ## batman fitting results
   BM<-list(specTitle = specTitle, specRange = sno, sFit=r,sFitHR=rH, beta=bet, betaSam=betasam, betaCI=vA, metaTemp=L,
            metaTempHR=LH, metaFitSam = sfitsam, metaIndFitSam = metaindfitsam, thetaSam=the, delta = delmean, deltaSam = del,
