@@ -108,8 +108,8 @@
         }
         if (Tems.size()==0)
         {
-            //Rprintf("\nNo metabolites with resonances in the region for analysis, exiting ...\n");
-			SEXP myint;
+        Rprintf("\nNo metabolites with resonances in the region for analysis, exiting ...\n");
+			/*SEXP myint;
 			int *p_myint;
 			int len = 2;
 			int tp = 0;
@@ -119,10 +119,10 @@
 			p_myint[0] = tp;
 			p_myint[1] = 1;
 			UNPROTECT(1);
-			return myint;
+			return myint;*/
 			
-            //system("PAUSE");
-            //exit(1);
+            system("PAUSE");
+            exit(1);
         }
         char fdirML[3000]={'\0'};
         strcpy(fdirML,Pfilenames[4]);
@@ -325,7 +325,7 @@
         PROTECT(myint = NEW_INTEGER(len));
         p_myint = INTEGER_POINTER(myint);
         p_myint[0] = tp;
-		p_myint[1] = 0;
+		    p_myint[1] = 0;
         UNPROTECT(1);
         return myint;
     }

@@ -37,3 +37,7 @@ The following items were fixed and/or added:
 
 batman 1.0.9.07 (released 11-2012)
 	1	Added checkBatmanOptions.R to automatically add one line (for chemShiftperSpectra) at the end of batmanOptions.txt file if missing.
+
+batman 1.0.9.08 (released 12-2012)
+	1	Modify second input line in batmanOptions.txt from number of spectra to spectra range.
+	2	Fixed bug with check "No metabolites with resonances in the region for analysis, exiting..."

@@ -12,8 +12,14 @@ checkBatmanOptions<-function(dir = dir1)
   
   cend <- which(cid > cidn[rid])
   
+  if (firsts[2] != "Spectr" )
+  {
+    myVector <- strsplit(co[cidn[2],1], ":")
+    co[cidn[2],1]<- c(paste('Spectra range to be included: ', myVector[[1]][2], sep = ""))
+  }
   if (length(cidn) > rid)
   {
+    
     if (firsts[rid+1] != 'Use sp')
     {
       if (length(cend) == 0)

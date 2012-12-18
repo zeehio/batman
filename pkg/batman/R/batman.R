@@ -26,7 +26,7 @@ batman<-function(BrukerDataDir, txtFile, rData, createDir = TRUE, runBATMANDir =
   dir7<-paste(dirA[4],"/",sep = "")
   
   checkBatmanOptions(dir1)
-	
+  
   dirctime<-paste(dirA[3],"/",ctime,sep="")
   if(!file.exists(dirctime)) {
     dir.create(dirctime)
@@ -195,6 +195,7 @@ batman<-function(BrukerDataDir, txtFile, rData, createDir = TRUE, runBATMANDir =
   } else {
     cat ("Percentage completed...\n")
   }
+
   ## calling c++ for MCMC
   if (wr>1) {              
     stime <- system.time ({
@@ -202,21 +203,23 @@ batman<-function(BrukerDataDir, txtFile, rData, createDir = TRUE, runBATMANDir =
         pBar <- txtProgressBar(min =0, max = ito, style = 3)
         out<-.Call("batman",filedir,as.integer(bn),as.integer(ito),as.integer(rr),as.integer(nospec-1), pBar, PACKAGE = "batman")
         close( pBar )
-      }})[3]} else if (wr == 1 && fixeff == 1) { 
-        stime <- system.time ({
-          multispec<- for (nospec in 1:1) {
-            pBar <- txtProgressBar(min =0, max = ito, style = 3)
-            out<-.Call("batman",filedir,as.integer(bn),as.integer(ito),as.integer(rr),as.integer(length(sno)-1),pBar,PACKAGE = "batman")
-            close( pBar )
-          }})[3]} else { 
-            stime <- system.time ({
-              multispec<- for (nospec in sno) {
-                pBar <- txtProgressBar(min =0, max = ito, style = 3)
-                out<-.Call("batman",filedir,as.integer(bn),as.integer(ito),as.integer(rr),as.integer(nospec-1),pBar,PACKAGE = "batman")
-                close( pBar )
-              }})[3]}   
-  if (out[2] == 1)
-    return(cat("No metabolites with resonances in the region for analysis, exiting ...\n"))
+      }})[3]} 
+  else if (wr == 1 && fixeff == 1) { 
+    stime <- system.time ({
+      multispec<- for (nospec in 1:1) {
+        pBar <- txtProgressBar(min =0, max = ito, style = 3)
+        out<-.Call("batman",filedir,as.integer(bn),as.integer(ito),as.integer(rr),as.integer(length(sno)-1),pBar,PACKAGE = "batman")
+        close( pBar )
+      }})[3]} 
+  else { 
+    stime <- system.time ({
+      multispec<- for (nospec in sno) {
+        pBar <- txtProgressBar(min =0, max = ito, style = 3)
+        out<-.Call("batman",filedir,as.integer(bn),as.integer(ito),as.integer(rr),as.integer(nospec-1),pBar,PACKAGE = "batman")
+        close( pBar )
+      }})[3]
+  }
+
   cat ("time ")
   print(stime)
   cat (" second.\n")
