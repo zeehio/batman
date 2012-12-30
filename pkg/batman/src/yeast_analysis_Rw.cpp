@@ -120,7 +120,7 @@
 			p_myint[1] = 1;
 			UNPROTECT(1);
 			return myint;*/
-			
+
             system("PAUSE");
             exit(1);
         }
