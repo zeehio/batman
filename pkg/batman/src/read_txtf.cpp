@@ -3,7 +3,7 @@
 
 void read_txtf(matrix *data, char filename[])
 {
-	char buffer[1000];
+	char buffer[4000];
     char *p; // p is the pointer point to the first character of buffer
 
 	int j=0;// i and j are row and column indeces of c, which are start from 0 to 2503 and 99, respectively
@@ -19,7 +19,7 @@ void read_txtf(matrix *data, char filename[])
     }
 
 
-    char *tp0 = fgets(buffer, 1000,fp);
+    char *tp0 = fgets(buffer, 4000,fp);
     p = buffer;
     while (*p!='\n')
     {
@@ -27,12 +27,13 @@ void read_txtf(matrix *data, char filename[])
      if (*p == '\t')
      col++;
     }
+
     (*data).resize(col+1);
     while( 1 )
     {
-    char buffer[1000] = {'\0'};
+    char buffer[4000] = {'\0'};
          char buffer1[100] = {'\0'};
-         char * tp0 = fgets(buffer, 1000, fp);
+         char * tp0 = fgets(buffer, 4000, fp);
       p = buffer; // the pointer 'p' point to the address of the first character of buffer
       if(feof(fp))
       break;

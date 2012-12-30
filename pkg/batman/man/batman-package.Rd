@@ -21,8 +21,8 @@ Parallel processing is available if processing several spectra.
 \tabular{ll}{
 Package: \tab batman\cr
 Type: \tab Package\cr
-Version: \tab 1.0.9.08\cr
-Date: \tab 2012-11-20\cr
+Version: \tab 1.0.9.09\cr
+Date: \tab 2012-12-29\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }}
@@ -31,8 +31,9 @@ LazyLoad: \tab yes\cr
  Maria De Iorio <m.deiorio@ucl.ac.uk>, Timothy Ebbels <t.ebbels@ic.ac.uk>
 }
 \references{
-Astle W et al. (2011) A Bayesian Model of NMR Spectra for the Deconvolution and 
-Quantification of Metabolites in Complex Biological Mixtures. 
+Astle W et al. (2012) A Bayesian Model of NMR Spectra for the Deconvolution and 
+Quantification of Metabolites in Complex Biological Mixtures. Journal of the American Statistical Association,
+Vol. 107, Iss. 500, 2012
 http://arxiv.org/PS_cache/arxiv/pdf/1105/1105.2204v1.pdf
 
 
