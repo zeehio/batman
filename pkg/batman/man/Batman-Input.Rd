@@ -226,7 +226,7 @@
   specified in ppm in the field "J_constant" is used. Examples can be found in file "multi_data_user.csv".
  
   
-  \code{J_constant}: J constant. If "-1" is inputted in the previous field "couple_code", J_constantva/f are the offset
+  \code{J_constant}: J constant. If "-1" is inputted in the previous field "couple_code", J_constant/f are the offset
  	of peaks from the mutiplet position (f is the magnet frequency). Note that the spectra are shown in reverse ppm axis, so 
    a positive offset means peak at higher ppm value, and a negative offset is peak at lower ppm value. If "-2" is inputted 
    in the previous field "couple_code", the field here requires a two values input seperated by comma, which specifies the ppm
