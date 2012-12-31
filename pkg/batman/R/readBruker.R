@@ -70,6 +70,7 @@ readBruker<-function(BrukerDataDir)
         {
           sinter <- approx(ppm, s, xout = tmpppm)
           s <- sinter$y
+          s[is.na(s)]<-0
           ppm <- tmpppm
         }
       }
