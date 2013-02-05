@@ -110,19 +110,7 @@
         if (Tems.size()==0)
         {
         Rprintf("\nNo metabolites with resonances in the region for analysis, exiting ...\n");
-			/*SEXP myint;
-			int *p_myint;
-			int len = 2;
-			int tp = 0;
-			// Allocating storage space:
-			PROTECT(myint = NEW_INTEGER(len));
-			p_myint = INTEGER_POINTER(myint);
-			p_myint[0] = tp;
-			p_myint[1] = 1;
-			UNPROTECT(1);
-			return myint;*/
-
-            system("PAUSE");
+			system("PAUSE");
             exit(1);
         }
         char fdirML[3000]={'\0'};
