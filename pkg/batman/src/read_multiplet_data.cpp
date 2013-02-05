@@ -143,6 +143,13 @@ int read_multiplet_data(int lineno, char filename[], opt* opts,
 				{
 					if((c2[it][0]+1 <0.0000001) && (c2[it][0]+1 > -0.0000001))
 					{
+						if (c3[it].size()!=c4[it].size())
+						{
+							cout<<"\nNo. of protons do not match no. of J constant for metabolite "<<names[it]<<", exiting ...\n";
+							//printf("\nNo. of protons do not match no of J constant for metabolite %s, exiting ...\n", names[it]);
+							//system("PAUSE");
+							exit(1);
+						}
 						double prot=0;
 						
 						for(unsigned int locit=0;locit<c4[it].size();locit++)

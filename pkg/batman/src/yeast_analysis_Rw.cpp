@@ -94,7 +94,8 @@
 
         time_t seconds5,seconds6;
         seconds5 = time (NULL);
-        int lineno = bn + 1;//input from R
+
+		int lineno = bn + 1;//input from R
         read_multiplet_data(lineno, Pfilenames[3], &options, &listn, &TemsU, &x, Pfilenames[5], s, Pfilenames[6]);
         vector<int> metaUsed;
         vector<metab_template> Tems;
