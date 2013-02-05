@@ -146,7 +146,6 @@ int read_multiplet_data(int lineno, char filename[], opt* opts,
 						if (c3[it].size()!=c4[it].size())
 						{
 							cout<<"\nNo. of protons do not match no. of J constant for metabolite "<<names[it]<<", exiting ...\n";
-							//printf("\nNo. of protons do not match no of J constant for metabolite %s, exiting ...\n", names[it]);
 							//system("PAUSE");
 							exit(1);
 						}
