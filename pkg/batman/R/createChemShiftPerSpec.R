@@ -1,8 +1,8 @@
-createChemShiftPerSpec <-function(tempOption = 1, dirIP)
+createChemShiftPerSpec <-function(templateOption = 1, dirIP)
 {
   if(missing(dirIP))
   {
-    return("Please provide input to dirIP.\n")
+    return("Please provide input to 'dirIP'.\n")
   }
   dirA <- dirIP
   
@@ -13,14 +13,14 @@ createChemShiftPerSpec <-function(tempOption = 1, dirIP)
   dirR<-paste(dirA,"/multi_data.csv",sep="")
   dirRU<-paste(dirA,"/multi_data_user.csv",sep="")
   
-    if (tempOption == 1)
+    if (templateOption == 1)
     {
       cat("Copying multiplet list from multi_data.csv to chemShiftPerSpec.csv...\n")
       b<-read.csv(dirR,header=T,stringsAsFactors=FALSE,colClasses="character")
-    } else if (tempOption == 2)  {
+    } else if (templateOption == 2)  {
       cat("Copying multiplet list from multi_data_user.csv to chemShiftPerSpec.csv...\n")
       b<-read.csv(dirRU,header=T,stringsAsFactors=FALSE,colClasses="character")
-    } else if (tempOption == 3)  {
+    } else if (templateOption == 3)  {
       cat("Copying multiplet list from multi_data.csv and multi_data_user.csv to chemShiftPerSpec.csv...\n")
       b1<-read.csv(dirR,header=T,stringsAsFactors=FALSE,colClasses="character")
       b2<-read.csv(dirRU,header=T,stringsAsFactors=FALSE,colClasses="character")

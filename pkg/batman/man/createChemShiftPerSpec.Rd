@@ -7,10 +7,10 @@
  From the third column forward is the chemical shift value for each spectrum in the same order as they read in by BATMAN, if 'n' is present in the field,
  the default chemical shift value (or overwrite_pos value if given) will be used. }
 \usage{
- createChemShiftPerSpec(tempOption, dirIP)}
+ createChemShiftPerSpec(templateOption, dirIP)}
 \arguments{
-\item{tempOption}{Choose template file(s). \code{tempOption = 1} for multi_data.csv, \code{tempOption = 2} for multi_data_user.csv, and
- \code{tempOption = 3} for both files.}
+\item{templateOption}{Choose template file(s). \code{templateOption = 1} for multi_data.csv, \code{templateOption = 2} for multi_data_user.csv, and
+ \code{templateOption = 3} for both files.}
 \item{dirIP}{The input directory of BATMAN. This is the path ending with '/BatmanInput' if runBATMAN directory is created.}
 }
 \seealso{
@@ -21,6 +21,6 @@ library(batman)
 ## createfolder "runBATMAN" in current working directory
 batmanDir = newDir(runBATMANDir = getwd(), overwriteFile = TRUE) 
 ## create chemShiftPerSpec.csv
-createChemShiftPerSpec(tempOption = 1, dirIP = batmanDir[2]) 
+createChemShiftPerSpec(templateOption = 1, dirIP = batmanDir[2]) 
 }
 \keyword{aplot}

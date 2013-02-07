@@ -152,7 +152,7 @@ batman<-function(BrukerDataDir, txtFile, rData, createDir = TRUE, runBATMANDir =
     dirCS<-paste(dirA[2],"/chemShiftPerSpec.csv",sep="")
     if (!file.exists(dirCS))
     {
-      createChemShiftPerSpec(tempOption = opt, dirA[2])
+      createChemShiftPerSpec(templateOption = opt, dirA[2])
       stop("No chemShiftPerSpec.csv file found in BatmanInput folder.
 				 Creating one now, please modify the values.\n")
 		} else {
