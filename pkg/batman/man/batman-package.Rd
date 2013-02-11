@@ -40,7 +40,6 @@ http://arxiv.org/PS_cache/arxiv/pdf/1105/1105.2204v1.pdf
 Hao J et al. (2012) BATMAN-an R package for the automated quantification of 
 metabolites from NMR spectra using a Bayesian Model. BIOINFORMATICS, 2012:28(15):2088-2090.
 
-
 http://arxiv.org/ftp/arxiv/papers/1112/1112.5794.pdf
 }
 \keyword{ package }
