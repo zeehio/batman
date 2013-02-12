@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "spec_template.h"
 
 void spec_template::sample_theta_conditional_prop(matrix *Lprop, vector<double> *beta_prop,

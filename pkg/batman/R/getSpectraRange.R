@@ -1,5 +1,6 @@
 getSpectraRange <- function(myVector)
 {
+## written by Dr. Jie Hao
   ranges <- strsplit(myVector[[1]][2],",")
   sno <- NULL
   for (rgs in 1:length(ranges[[1]]))

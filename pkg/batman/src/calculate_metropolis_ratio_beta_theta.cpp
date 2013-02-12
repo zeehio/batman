@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "chain_template.h"
 
 double chain_template::calculate_metropolis_ratio_beta_theta(vector<double> *betaprop, matrix *thetaprop)

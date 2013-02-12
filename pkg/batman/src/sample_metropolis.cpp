@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "chain_template.h"
 
 void chain_template::sample_metropolis(bool print, int dm, double re_fwhh)

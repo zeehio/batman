@@ -1,5 +1,6 @@
 getinput<-function(lowlim=0,highlim=1)
 {
+  ## written by Dr. Jie Hao
   ## get input from user, for internal use
   repeat {
     inp<- scan(n=1, quiet = TRUE)

@@ -1,6 +1,7 @@
 plotShift<-function(BM, metaName, plotHist = FALSE, breaks, perMult = FALSE, saveFig = TRUE, 
                     saveFigDir = BM$outputDir, prefixFig, overwriteFig = FALSE)
 { 
+  ## written by Dr. Jie Hao
   ## plot multiplet shift posteriors in boxplot or histogram
   if (missing(BM))
     return(cat("Please input batman data list.\n"))

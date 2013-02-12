@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "myheader.h"
 double sample_truncated_normal_below(double mu, double sigma, double bot_lim, 
 rngType * rng)

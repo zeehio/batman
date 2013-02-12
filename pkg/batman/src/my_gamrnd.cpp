@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "myheader.h"
 
 double my_gamrnd( double shape, double scale,  rngType *rng) 

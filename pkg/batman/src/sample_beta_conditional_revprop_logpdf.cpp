@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "chain_template.h"
 
 double chain_template::sample_beta_conditional_revprop_logpdf(int t)

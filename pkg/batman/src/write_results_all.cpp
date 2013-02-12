@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "myheader.h"
 #include "chain_template.h"
 void write_results_all(int s, int sit, int rr, chain_template * chain, matrix * data, 

@@ -1,4 +1,5 @@
-    #include "myheader.h"
+// written by Dr. Jie Hao, Dr William Astle
+	#include "myheader.h"
     #include "parclass.h"
     #include "multiplet_site.h"
     #include "metab_template.h"
@@ -10,7 +11,7 @@
             char chemshift[], int s, char inputdir[]);
     void write_results_all(int s, int sit, int rr, chain_template * chain, matrix * data,
             char opfile[], int ito, int burnin, vector<double> *x, int saveHR, matrix * dataH);
-    /* This M-file provides an example to demonstrate MCMC-based Bayesian wavelet estimation.
+	/* This file provides an example to demonstrate MCMC-based Bayesian wavelet estimation.
     Load the data and set values for parameters related to the data.
     choose periodic boundary conditions - i.e. we do the wavelet
     decomposition on a circle

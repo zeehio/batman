@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "myheader.h"
 
 int read_datf(vector<string> * name, matrix *c1, matrix *c2, matrix *c3, matrix *c4,

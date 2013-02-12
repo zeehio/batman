@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "spec_template.h"
 
 double spec_template::gibbs_sample_lambda_scale_free()

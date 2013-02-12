@@ -2,7 +2,8 @@
 
 double spec_template::calculate_metropolis_ratio_eta_local(matrix * Lprop)
 {
-    double logratio = 0;
+    // written by Dr. Jie Hao, Dr William Astle
+	double logratio = 0;
 
     vector<double> vec(dataWy.size(),0);
     vector<double> vecprop(vec);

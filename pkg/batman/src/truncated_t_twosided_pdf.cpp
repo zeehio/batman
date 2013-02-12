@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "myheader.h"
 double truncated_t_twosided_pdf(double x, double mu, double scale, double df, double bot_lim, double top_lim)
 {

@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #ifndef MYHEADER
 #define MYHEADER
 #define WAVELETS 1

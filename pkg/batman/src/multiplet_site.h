@@ -1,4 +1,5 @@
-    #ifndef MULTIPLET_SITE_H
+// written by Dr. Jie Hao, Dr William Astle
+#ifndef MULTIPLET_SITE_H
     #define MULTIPLET_SITE_H
 
     #include "myheader.h"

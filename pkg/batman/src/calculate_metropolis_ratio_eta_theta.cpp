@@ -2,7 +2,8 @@
 
 double spec_template::calculate_metropolis_ratio_eta_theta(matrix *Lprop, vector<double> *thetaprop)
 {
-    //prior
+    // written by Dr. Jie Hao, Dr William Astle
+	//prior
     vector<double> pdd((*thetaprop).size(),0);
     vector<double> pdd2(theta_draw.size(),0);
     vector<double> mvpd(L[0].size(),0);

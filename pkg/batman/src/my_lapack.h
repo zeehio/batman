@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #ifndef MY_LAPACK    
 #define MY_LAPACK 
 
