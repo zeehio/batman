@@ -1,5 +1,6 @@
 readBruker<-function(BrukerDataDir)
 {
+  ## written by Dr. Jie Hao
   warnDef<-options("warn")$warn
   warnRead<-options(warn = -1)
   datapath<-BrukerDataDir

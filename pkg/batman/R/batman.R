@@ -2,6 +2,7 @@ batman<-function(BrukerDataDir, txtFile, rData, createDir = TRUE, runBATMANDir =
                  overwriteDir = FALSE, figBatmanFit = TRUE, listMeta = FALSE, 
                  figRelCon = FALSE, figMetaFit = FALSE)
 {
+  ## written by Dr. Jie Hao
   warnDef<-options("warn")$warn
   warnRead<-options(warn = -1)
   ## main function

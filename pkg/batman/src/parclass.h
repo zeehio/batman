@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #ifndef PARCLASS_H
 #define PARCLASS_H
 

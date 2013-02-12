@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "spec_template.h"
 
 void spec_template::gibbs_sample_tau_scale_free(vector<double> *tau_sample)

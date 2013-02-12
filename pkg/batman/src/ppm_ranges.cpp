@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "myheader.h"
 
 void ppm_ranges(int dppm, vector<double> * x, vector<double>* start, vector<double>* end, matrixI * range)

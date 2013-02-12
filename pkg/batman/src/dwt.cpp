@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "dwt.h"
 #include "myheader.h"
 
@@ -5,6 +6,7 @@
 // could make more abstraction by templating element type
 void conv_dec(const db_vit &v1start_vit, const db_vit &v1end_vit, int sign, const db_vit &v2start_vit, const db_vit &v2end_vit, int dec, db_vit &out_vit)
 {  
+	
     signed int it1, it2;
     signed int size1=v1end_vit-v1start_vit;
     signed int size2=v2end_vit-v2start_vit;

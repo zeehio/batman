@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #ifndef NS_PARS_H
 #define NS_PARS_H
 

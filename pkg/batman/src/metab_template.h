@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #ifndef METAB_TEMPLATE_H
 #define METAB_TEMPLATE_H
 

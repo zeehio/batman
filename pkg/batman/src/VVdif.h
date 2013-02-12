@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #ifndef VVDIFF_H 
 #define VVDIFF_H
 

@@ -1,6 +1,7 @@
 plotMetaFit<-function(BM, from, to, metaName, saveFig = TRUE,saveFigDir = BM$outputDir, 
                       prefixFig, rerun = FALSE, overwriteFig = FALSE)
 {
+  ## written by Dr. Jie Hao
   ## plot metabolites fit posteriors with 95% credible Interval
   if (missing(BM))
     return(cat("Please input batman data list.\n"))

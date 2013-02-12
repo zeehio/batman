@@ -2,8 +2,9 @@
 
 void datamod(matrix * Data, opt *options,int step, int dppm, matrix * data, int s)
 {
-                double div = (*options).div;
-                double lowbound = (*options).lowerlimit;
+    // written by Dr. Jie Hao, Dr William Astle            
+	double div = (*options).div;
+	double lowbound = (*options).lowerlimit;
                 //int step = (*options).downsample;
 
     double buf, buf2;

@@ -1,5 +1,6 @@
 checkBatmanOptions<-function(dir = dir1)
 {
+## written by Dr. Jie Hao
   content <-read.table(dir,sep="\n",comment.char = "")
   
   iscomment <- substr(content[,1],1,1)

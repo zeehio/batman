@@ -198,7 +198,9 @@
    \code{Use specified chemical shift for spectra (chemShiftperSpectra.csv) file (1/0): 0}
   
 \itemize{
-     \item{Input "1" to use file "chemShiftperSpectra.csv" to specify chemical shift per multiplet and per spectrum. Input "0" will not use that file.}}
+     \item{Input "1" to use file "chemShiftperSpectra.csv" to specify chemical shift per multiplet and per spectrum. 
+   Input "0" will not use that file. User can use the MATLAB tool "SplineFitBATMAN" provided to get more accurate 
+   chemical shift per spectra for each multiplet. This tool will save  chemical shift information into "chemShiftperSpectra.csv".}}
   }
 
  

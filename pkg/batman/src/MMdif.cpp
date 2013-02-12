@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include <vector>
 using namespace std;
 #include "VVdif.h"

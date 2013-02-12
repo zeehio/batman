@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "myheader.h"
 
 double truncated_normal_twosided_logpdf(double x, double mu, double sigma, double bot_lim, double top_lim)

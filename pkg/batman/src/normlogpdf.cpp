@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include <cmath>
 double normlogpdf(double x, double mu, double sigma)
 {

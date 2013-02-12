@@ -1,4 +1,5 @@
-    #include "myheader.h"
+// written by Dr. Jie Hao, Dr William Astle
+#include "myheader.h"
 
     void read_txt_batmanoptions(opt *data, char filename[])
     {

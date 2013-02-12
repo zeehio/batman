@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "myheader.h"
 double MInf=-numeric_limits<double>::infinity();
 

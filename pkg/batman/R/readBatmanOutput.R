@@ -1,5 +1,6 @@
 readBatmanOutput<-function(dirOP, dirIP) 
 {
+  ## written by Dr. Jie Hao
   warnDef<-options("warn")$warn
   warnRead<-options(warn = -1)
   ## reads in batman output data files 

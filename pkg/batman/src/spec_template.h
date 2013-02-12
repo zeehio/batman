@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #ifndef SPEC_TEMPLATE_H
 #define SPEC_TEMPLATE_H
 

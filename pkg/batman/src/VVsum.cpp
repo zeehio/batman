@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include <vector>
 using namespace std;
 void VVsum (vector<double> * M, vector<double> * V, vector<double> * P)

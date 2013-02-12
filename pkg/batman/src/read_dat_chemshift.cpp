@@ -1,4 +1,5 @@
-    #include "myheader.h"
+// written by Dr. Jie Hao, Dr William Astle
+#include "myheader.h"
 
     int read_dat_chemshift(vector<string> * name, matrix *c1,matrix *c2, char filename[], int s)
     {

@@ -1,6 +1,7 @@
 batmanrerun<- function(BM, figBatmanFit = TRUE, listMeta = FALSE, 
 figRelCon = FALSE, figMetaFit = FALSE)
 {   
+## written by Dr. Jie Hao
 ## rerun batman() with fixed ppm position for all multiplets
 ## directories for input parameters and data files
 	dir1<-paste(BM$outputDir,"/batmanOptions.txt",sep="")

@@ -1,5 +1,6 @@
 createChemShiftPerSpec <-function(templateOption = 1, dirIP)
 {
+## written by Dr. Jie Hao
   if(missing(dirIP))
   {
     return("Please provide input to 'dirIP'.\n")

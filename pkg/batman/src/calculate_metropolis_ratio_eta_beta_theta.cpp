@@ -1,8 +1,9 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "chain_template.h"
 
 double chain_template::calculate_metropolis_ratio_eta_beta_theta(int s, matrix *Lprop, vector<double> *betaprop, matrix * thetaprop)
 {
-    //prior
+	//prior
     double logratio = 0;
     vector<double> vvdf((*betaprop).size(),0);
     

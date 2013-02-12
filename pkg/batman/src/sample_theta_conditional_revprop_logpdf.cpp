@@ -1,3 +1,4 @@
+// written by Dr. Jie Hao, Dr William Astle
 #include "spec_template.h"
 
 double spec_template::sample_theta_conditional_revprop_logpdf()

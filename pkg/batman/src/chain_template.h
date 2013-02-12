@@ -10,7 +10,7 @@
 #include "parclass.h"
 #include "spec_template.h"
 
-
+// written by Dr. Jie Hao, Dr William Astle
 
 class chain_template 
 {

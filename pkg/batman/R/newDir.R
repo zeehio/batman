@@ -1,5 +1,6 @@
 newDir<-function(runBATMANDir = getwd(), overwriteFile = FALSE)
 {
+  ## written by Dr. Jie Hao
   ## create a new directory with installed data files
   dirRoot<-paste(runBATMANDir,"/runBATMAN",sep="")
   if(!file.exists(dirRoot)) {
