@@ -97,7 +97,14 @@ batman<-function(BrukerDataDir, txtFile, rData, createDir = TRUE, runBATMANDir =
   {
     check<-b[,i]=='n'
     b[check,i]=-50
-  }    
+  }  
+	
+  for (i in 1:dim(b)[1])
+  {
+	if (length(grep(" ", substring(b[i,1],1,1))) != 0 )
+	b[i,1] <- substring(b[i,1],2)
+  }
+	
   D<-order(b[,1])
   bor<-b[D,]
   write.table(bor,file=dir4,sep = "\t",row.names = FALSE,col.names = FALSE,quote=FALSE)
