@@ -193,7 +193,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   ## more than 1 spectra
   if (NoSpectra>1)
   {
-    for (i in sno[2:length(sno)])   
+    for (i in sno[2:NoSpectra])   
     { 
       fdir <- paste(dirOP, "/specFit_", i,"_rr_0.txt", sep="")
       if (file.exists(fdir))
@@ -326,12 +326,16 @@ readBatmanOutput<-function(dirOP, dirIP)
   {
     if (ncol(bet) == ncol(specTitle))
       names(bet)<- t(specTitle[2,])
+    else
+      names(bet)<- t(specTitle[2,1:dim(bet)[2]])
   }
   ## column name for delta
   if (!is.null(delmean))
   {
     if (ncol(delmean) == ncol(specTitle))
       names(delmean)<- t(specTitle[2,])
+    else
+      names(delmean)<- t(specTitle[2,1:dim(delmean)[2]])
   }
   ## reads in batmanrerun() output
   rrr<-NULL
@@ -453,7 +457,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   ## more spectra
   if (NoSpectra>1)
   {
-    for (i in sno[2:length(sno)])   
+    for (i in sno[2:NoSpectra])   
     { 
       fdir <- paste(dirOP, "/specFit_", i,"_rr_",rr,".txt", sep="")
       if (file.exists(fdir))
@@ -555,6 +559,8 @@ readBatmanOutput<-function(dirOP, dirIP)
   {
     if (ncol(betrr) == ncol(specTitle))
       names(betrr)<- t(specTitle[2,])
+    else 
+      names(betrr)<- t(specTitle[2,1:dim(betrr)[2]])
     row.names(betrr)<-row.names(bet)
     
   }
@@ -564,7 +570,9 @@ readBatmanOutput<-function(dirOP, dirIP)
     Metabolite<-row.names(bet2)
     row.names(bet2)<-NULL
     bet3<-cbind(Metabolite,bet2)
-    write.table(bet3,file=paste(dirOP,"/RelCon.txt",sep=""),sep = "\t",row.names = FALSE,col.names = TRUE,quote=FALSE)
+    dirOPRC <- paste(dirOP,"/RelCon.txt",sep="")
+    if (!file.exists(dirOPRC))
+      write.table(bet3,file = dirOPRC, sep = "\t",row.names = FALSE,col.names = TRUE,quote=FALSE)
   }
   if (!is.null(betrr))
   {
@@ -572,7 +580,9 @@ readBatmanOutput<-function(dirOP, dirIP)
     Metabolite<-row.names(betrr2)
     row.names(betrr2)<-NULL
     betrr3<-cbind(Metabolite,betrr2)
-    write.table(betrr3,file=paste(dirOP,"/RelConRerun.txt",sep=""),sep = "\t",row.names = FALSE,col.names = TRUE,quote=FALSE)
+    dirOPRCr<- paste(dirOP,"/RelConRerun.txt",sep="")
+    if (!file.exists(dirOPRCr))
+      write.table(betrr3,file = dirOPRCr,sep = "\t",row.names = FALSE,col.names = TRUE,quote=FALSE)
   }
   if (!is.null(delmean))
   {
@@ -580,66 +590,94 @@ readBatmanOutput<-function(dirOP, dirIP)
     Multiplet<-row.names(delmean2)
     row.names(delmean2)<-NULL
     delmean3<-cbind(Multiplet,delmean2)
-    write.table(delmean3,file=paste(dirOP,"/MultipletsPpmShifts.txt",sep=""),sep = "\t",row.names = FALSE,col.names = TRUE,quote=FALSE)
+    dirOPMP<- paste(dirOP,"/MultipletsPpmShifts.txt",sep="")
+    if (!file.exists(dirOPMP))
+      write.table(delmean3,file = dirOPMP, sep = "\t",row.names = FALSE,col.names = TRUE,quote=FALSE)
   }
   ns<-5
   betvA <-NULL  
   betvArr <-NULL 
   vA<-NULL
   vArr<-NULL
-  if (!is.null(betasam))
+  dirOPRCCI<- paste(dirOP,"/RelConCreInt.txt",sep="")
+  if (!file.exists(dirOPRCCI))
   {
-    f<-nrow(betasam)
-    fc<-ncol(betasam)
-    #sno<-length(r)/ns
-    ind<-fc/length(sno)
-    for (i in 1:length(sno)) 
+    if (!is.null(betasam))
     {
-      vAll<-NULL
-      for (j in 1:f)
+      f<-nrow(betasam)
+      fc<-ncol(betasam)
+      #sno<-length(r)/ns
+      #ind<-fc/length(sno)
+      ind<-fc/dim(bet)[2]
+      for (i in 1:dim(bet)[2]) 
       {
-        v<-quantile(betasam[j,((i-1)*ind+1):(i*ind)],p = c(2.5,97.5)/100)  
-        vAll<-rbind(vAll,v)
-      }
-      if (i == 1)
-        vA<-vAll
-      else
-        vA<-cbind(vA,vAll)
-    }   
-    vA2<-vA
-    percentage<-names(vA2)
-    Metabolite<-rep(t(specTitle[2,]),each=2)
-    vA2<-rbind(Metabolite,percentage,vA2)
-    row.names(vA2)<-c("Metabolite", "Percentage",row.names(bet))
-    write.table(vA2,file=paste(dirOP,"/RelConCreInt.txt",sep=""),sep = "\t",row.names = TRUE,col.names = FALSE,quote=FALSE)
+        vAll<-NULL
+        for (j in 1:f)
+        {
+          v<-quantile(betasam[j,((i-1)*ind+1):(i*ind)],p = c(2.5,97.5)/100)  
+          vAll<-rbind(vAll,v)
+        }
+        if (i == 1)
+          vA<-vAll
+        else
+          vA<-cbind(vA,vAll)
+      }   
+      vA2<-vA
+      percentage<-names(vA2)
+      Metabolite<-rep(t(specTitle[2,]),each=2)
+      vA2<-rbind(Metabolite,percentage,vA2)
+      row.names(vA2)<-c("Metabolite", "Percentage",row.names(bet))
+      write.table(vA2,file = dirOPRCCI, sep = "\t",row.names = TRUE,col.names = FALSE,quote=FALSE)
+    }
   }
-  if (!is.null(betasamrr))
-  { 
-    f<-nrow(betasamrr)
-    fc<-ncol(betasamrr)
-    ind<-fc/length(sno)
-    for (i in 1:length(sno)) 
-    {
-      vAllrr<-NULL
-      for (j in 1:f)
+  else
+  {
+    vA<- read.table(file = dirOPRCCI, sep = "\t",header = TRUE)
+    vA2 <- vA[2:dim(vA)[1], 2:dim(vA)[2]]
+    row.names(vA2)<-vA[2:dim(vA)[1],1]
+    names(vA2)<-t(vA[1,2:dim(vA)[2]])
+    vA <- vA2
+  }
+  dirOPRCCIr<- paste(dirOP,"/RelConCreIntRerun.txt",sep="")
+  if (!file.exists(dirOPRCCIr))
+  {
+    if (!is.null(betasamrr))
+    { 
+      f<-nrow(betasamrr)
+      fc<-ncol(betasamrr)
+      #ind<-fc/length(sno)
+      ind<-fc/dim(betrr)[2]
+      for (i in 1:dim(betrr)[2]) 
       {
-        v<-quantile(betasamrr[j,((i-1)*ind+1):(i*ind)],p = c(2.5,97.5)/100)  
-        vAllrr<-rbind(vAllrr,v)
-      }
-      if (i == 1)
-        vArr<-vAllrr
-      else
-        vArr<-cbind(vArr,vAllrr)
-    }   
-    vArr2<-vArr
-    percentage<-names(vArr2)
-    Metabolite<-rep(t(specTitle[2,]),each=2)
-    vArr2<-rbind(Metabolite,percentage,vArr2)
-    row.names(vArr2)<-c("Metabolite", "Percentage",row.names(bet))
-    write.table(vArr2,file=paste(dirOP,"/RelConCreIntRerun.txt",sep=""),sep = "\t",row.names = TRUE,col.names = FALSE,quote=FALSE)
-  }   
-	if (missing(dirIP))
-	dirIP <- NULL
+        vAllrr<-NULL
+        for (j in 1:f)
+        {
+          v<-quantile(betasamrr[j,((i-1)*ind+1):(i*ind)],p = c(2.5,97.5)/100)  
+          vAllrr<-rbind(vAllrr,v)
+        }
+        if (i == 1)
+          vArr<-vAllrr
+        else
+          vArr<-cbind(vArr,vAllrr)
+      }   
+      vArr2<-vArr
+      percentage<-names(vArr2)
+      Metabolite<-rep(t(specTitle[2,]),each=2)
+      vArr2<-rbind(Metabolite,percentage,vArr2)
+      row.names(vArr2)<-c("Metabolite", "Percentage",row.names(bet))
+      write.table(vArr2, file = dirOPRCCIr, sep = "\t", row.names = TRUE, col.names = FALSE, quote=FALSE)
+    }  
+  }
+  else
+  {
+    vArr<- read.table(file = dirOPRCCIr, sep = "\t",header = TRUE)
+    vArr2 <- vArr[2:dim(vArr)[1], 2:dim(vArr)[2]]
+    row.names(vArr2)<-vArr[2:dim(vArr)[1],1]
+    names(vArr2)<-t(vArr[1,2:dim(vArr)[2]])
+    vArr <- vArr2
+  }
+  if (missing(dirIP))
+    dirIP <- NULL
   ## batman fitting results
   BM<-list(specTitle = specTitle, specRange = sno, sFit=r,sFitHR=rH, beta=bet, betaSam=betasam, betaCI=vA, metaTemp=L,
            metaTempHR=LH, metaFitSam = sfitsam, metaIndFitSam = metaindfitsam, thetaSam=the, delta = delmean, deltaSam = del,
