@@ -4,8 +4,19 @@ readBatmanOutput<-function(dirOP, dirIP)
   warnDef<-options("warn")$warn
   warnRead<-options(warn = -1)
   ## reads in batman output data files 
-  con  <- file(paste(dirOP,"/batmanOptions.txt",sep=""), open = "r")
-  oneLine <- readLines(con, n = 30, warn = FALSE)
+  dirBO <- paste(dirOP,"/batmanOptions.txt",sep="")
+  dirsT <- paste(dirOP,"/spectraTitle.txt",sep="")
+  dirOPList <- paste(dirOP,"/metabolitesListUsed.txt",sep="")
+  if (!file.exists(dirBO))
+    return(cat(paste("\nFile ", dirBO, " is missing in input folder ", dirOP, ".\n.")))
+  if (!file.exists(dirsT))
+    return(cat(paste("\nFile ", dirsT, " is missing in input folder ", dirOP, ".\n.")))
+  if (!file.exists(dirOPList))
+    return(cat(paste("\nFile ", dirOPList, " is missing in input folder ", dirOP, ".\n.")))
+  
+  con  <- file(dirBO, open = "r")
+  nlines <-dim(read.table(dirBO,sep="\n",comment.char = ""))[1]
+  oneLine <- readLines(con, n = nlines, warn = FALSE)
   fL<-substr(oneLine,1,1)
   nL<-which(is.na(match(fL,"%")))
   myVector <- strsplit(oneLine[nL[2]], ":")
@@ -13,8 +24,8 @@ readBatmanOutput<-function(dirOP, dirIP)
   close(con)
   NoSpectra <- length(sno)
   
-  specTitle<-read.table(paste(dirOP,"/spectraTitle.txt",sep=""), header=FALSE,sep="\t")
-  dirOPList <- paste(dirOP,"/metabolitesListUsed.txt",sep="")
+  specTitle<-read.table(dirsT, header=FALSE,sep="\t")
+  
   if (file.info(dirOPList)$size == 0 )
     return(cat(paste("\nFile", dirOPList, " is empty. Not fitting anything in ppm range.\n." )))
   mL<-read.csv(dirOPList, header=F,colClasses="character")
