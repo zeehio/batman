@@ -289,4 +289,3 @@ function relocatep_Callback(hObject, eventdata, handles)
 [hObject, handles] = deletePlot(hObject, handles);
 [hObject, handles] = replotspinepoints(hObject, handles);
 guidata(hObject, handles);
-
