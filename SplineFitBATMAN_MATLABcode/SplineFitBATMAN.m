@@ -42,7 +42,8 @@ handles.h2 = [];
 handles.hspline = [];
 handles.hselect = [];
 handles.a = [];
-% axes(handles.logo);
+axes(handles.logo);
+imshow('batmanlogo.png')
 % Update handles structure
 guidata(hObject, handles);
 
@@ -289,8 +290,3 @@ function relocatep_Callback(hObject, eventdata, handles)
 [hObject, handles] = replotspinepoints(hObject, handles);
 guidata(hObject, handles);
 
-
-% --- Executes during object creation, after setting all properties.
-function logo_CreateFcn(hObject, eventdata, handles)
-axes(hObject)
-imshow('batmanlogo.png')
