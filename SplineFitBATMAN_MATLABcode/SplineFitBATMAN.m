@@ -247,7 +247,7 @@ offset = str2num(get(handles.offset,'String'));
 for i = 1:length(dorder)%size(handles.multi,2)
     lab{1,i} =handles.multi{1,dorder(i)+2};
 end
-if (~isempty(handles.plotFigure))
+if (~isempty(handles.plotFigure) && ~isempty(find(findobj('type','figure') == 1)))
     set(0,'CurrentFigure', handles.plotFigure);
     handles.a = axis;
 end
