@@ -19,6 +19,10 @@ xys = spline(t,xy,ts);
 handles.hspline = plot(xys(1,:),xys(2,:),'b-');
 Xn = handles.nmrdata(handles.dorder,:);
 offset = str2num(get(handles.offset,'String'));
+if offset == 0
+    warndlg('Please input offset > 0.');
+    return;
+end
 ppmerror = str2num(get(handles.ppmRange, 'String'));
 
 

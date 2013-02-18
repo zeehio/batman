@@ -243,6 +243,10 @@ ind = find(ppm<= sortlimit(2) & ppm>=sortlimit(1));
 dorder = fliplr(dorder);
 handles.dorder = dorder;
 offset = str2num(get(handles.offset,'String'));
+if offset == 0
+    warndlg('Please input offset > 0.');
+    return;
+end
 [n m]=size(data);
 % ph = (1:m)/10;
 for i = 1:length(dorder)%size(handles.multi,2)
