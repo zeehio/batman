@@ -1,7 +1,7 @@
 batmanrerun<- function(BM, figBatmanFit = TRUE, listMeta = FALSE, 
 figRelCon = FALSE, figMetaFit = FALSE)
 {   
-## written by Dr. Jie Hao
+## written by Dr. Jie Hao, Imperial College London
 ## rerun batman() with fixed ppm position for all multiplets
 ## directories for input parameters and data files
 	dir1<-paste(BM$outputDir,"/batmanOptions.txt",sep="")
@@ -28,8 +28,9 @@ figRelCon = FALSE, figMetaFit = FALSE)
 	filedir<-c(dir1,dir2,dir3,dir4,dir5,dir6,dir7)
 	
 ## read in parameters from batmanOption.txt 
+	nlines <-dim(read.table(dir1,sep="\n",comment.char = ""))[1]
 	con  <- file(dir1, open = "r")
-	oneLine <- readLines(con, n = 49, warn = FALSE)
+	oneLine <- readLines(con, n = nlines, warn = FALSE)
 	fL<-substr(oneLine,1,1)
 	nL<-which(is.na(match(fL,"%")))
 	myVector <- strsplit(oneLine[nL[2]], ":")

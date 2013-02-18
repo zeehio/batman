@@ -1,6 +1,6 @@
 menuA<-function (choices, stInd, showLine) 
 {
-  ## written by Dr. Jie Hao
+  ## written by Dr. Jie Hao, Imperial College London
   ## menue function, for internal use
   nc <- length(choices)
   cat(showLine)

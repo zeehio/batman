@@ -96,7 +96,10 @@
 \itemize{
      \item{Integer, this is the number of burn in iterations. The number of iterations 
       after burn in will be asked when running \code{batman}. The posterior samples
-      will be saved in the frequency specified by the next parameter.}}
+      will be saved in the frequency specified by the next parameter. If changing 
+      the range of spectrum causing fitting results inconsistent, this indicates that the burn in 
+      stage hasn't found the best chemical shift. User may need to increase burn in iterations or reduce 
+      prior truncation on ppm shift for each multiple (adjust parameter "rdelta" below). }}
   
   
   \code{Save results in every ? iterations: 5}
@@ -193,7 +196,8 @@
 \itemize{
      \item{Prior of the truncation on ppm shift for all multiplets, individual prior 
   for each multiplet can be changed in the "multi_data.csv" file. Increase this 
-  parameter to allow multiplets to shift more.}}
+  parameter to allow multiplets to shift more. Please note, increasing this value may need more burn in
+  iterations to find the best chemical shift for multiplets.}}
   
    \code{Use specified chemical shift for spectra (chemShiftperSpectra.csv) file (1/0): 0}
   

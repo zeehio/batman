@@ -1,6 +1,6 @@
 createPureSpectraTemplate <- function(dirPureSpec, metaNames, dirIP)
 {
-## written by Dr. Jie Hao
+## written by Dr. Jie Hao, Imperial College London
   if (length(dirPureSpec) != length(metaNames))
   {
     stop("Length of PureSpectra and metaNames does not match.\n")

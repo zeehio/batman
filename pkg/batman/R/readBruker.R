@@ -1,6 +1,6 @@
 readBruker<-function(BrukerDataDir)
 {
-  ## written by Dr. Jie Hao
+  ## written by Dr. Jie Hao, Imperial College London
   warnDef<-options("warn")$warn
   warnRead<-options(warn = -1)
   datapath<-BrukerDataDir
