@@ -1,6 +1,6 @@
 SplineFitBATMAN 
-12/02/2013  
-version 0.2 
+18/02/2013  
+version 0.3 
 Authors: Dr Jie Hao and Dr. Timothy M D Ebbels
 
 

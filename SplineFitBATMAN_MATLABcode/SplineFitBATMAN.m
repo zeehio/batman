@@ -1,5 +1,6 @@
 function varargout = SplineFitBATMAN(varargin)
 % written 120213 Dr. Jie Hao, Imperial College London
+% modified 180213 JHao
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -255,12 +256,18 @@ handles.plotFigure = figure(1);
 clf
 stackplot(data(dorder,:),ppm,lab,offset*ones(m,1),0);
 set(gca,'XDir','reverse');
+zoom reset;
+
 if (~(isempty(handles.a)))
     if (handles.a(1) ~= 0)
-        xlim(handles.a(1:2));
+        [n,m]=size(data);
+        offy=[0:n-1].*offset;
+        [r,c] = size(data);
+        off = repmat(offy',1,c);
+        D = data + off;
         index = find(ppm<=handles.a(2) & ppm>=handles.a(1));
-        ylimits=[-0.05 n*offset+max(data(dorder(end),index))];
-        ylim(ylimits);
+        ylimits=[-0.05 max(max(D(:,index)))+0.05];
+        axis([handles.a(1) handles.a(2)  ylimits(1) ylimits(2)])
     end
 end
 
