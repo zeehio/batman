@@ -1,6 +1,6 @@
 createChemShiftPerSpec <-function(templateOption = 1, dirIP)
 {
-## written by Dr. Jie Hao
+## written by Dr. Jie Hao, Imperial College London
   if(missing(dirIP))
   {
     return("Please provide input to 'dirIP'.\n")

@@ -1,7 +1,7 @@
 plotBatmanFitHR<-function(BM, xfrom, xto, yfrom, yto, metaName, saveFig = TRUE, 
                           saveFigDir = BM$outputDir, prefixFig, rerun = FALSE)
 {     
-  ## written by Dr. Jie Hao
+  ## written by Dr. Jie Hao, Imperial College London
   ## plot batman metabolite fitting results in its original resolution 
   if (missing(BM))
     return(cat("Please input batman data list.\n"))

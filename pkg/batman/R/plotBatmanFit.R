@@ -2,7 +2,7 @@ plotBatmanFit<-function(BM, xfrom, xto, yfrom, yto, listMeta = FALSE, metaName, 
                         saveFigDir = BM$outputDir, prefixFig, rerun = FALSE, placeLegend, 
                         plotColour, overwriteFig = FALSE)
 {
-  ## written by Dr. Jie Hao
+  ## written by Dr. Jie Hao, Imperial College London
   ## plot batman metabolites fittings of NMR spectra (with down sampling)
   if (missing(BM))
     return(cat("Please input batman data list.\n"))
