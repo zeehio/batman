@@ -10,21 +10,25 @@
  folder to change the settings for running \code{batman}. The \code{batman} 
  output files are saved in "BatmanOutput" subfolders.}
 \usage{
- batman(BrukerDataDir, txtFile, rData, createDir = TRUE, 
+ batman(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TRUE, 
         runBATMANDir = getwd(), overwriteDir = FALSE, 
         figBatmanFit = TRUE, listMeta = FALSE, 
         figRelCon = FALSE, figMetaFit = FALSE)}
 \arguments{
 \item{BrukerDataDir}{The directory of the folder containing 1D Bruker spectral data files. 
  If not specified, spectral data will be read in from one of the following inputs prioritized 
- in the order: \code{txtFile}, \code{rData} and NMRdata.txt in "BatmanInput" folder.}
+ in the order: \code{BrukerDataZipDir}, \code{txtFile}, \code{rData} and NMRdata.txt in "BatmanInput" folder.}
+ \item{BrukerDataZipDir}{The directory of the folder containing zipped 1D Bruker spectral data files. 
+ If not specified, spectral data will be read in 
+ from one of the following inputs prioritized in the order: \code{BrukerDataDir}, \code{txtFile}, 
+ \code{rData} and NMRdata.txt in "BatmanInput" folder.}
 \item{txtFile}{The .txt file containing spectral data in the format of first column ppm, and 
  the second column the real part of spectrum. If not specified, spectral data will be read in 
- from one of the following inputs prioritized in the order: \code{BrukerDataDir}, 
+ from one of the following inputs prioritized in the order: \code{BrukerDataDir}, \code{BrukerDataZipDir}, 
  \code{rData} and NMRdata.txt in "BatmanInput" folder.}
 \item{rData}{The R data file containing spectral data in the format of first column ppm, 
  and the second column the real part of spectrum. If not specified, spectral data will be read in 
- from one of the following inputs prioritized in the order: \code{BrukerDataDir}, 
+ from one of the following inputs prioritized in the order: \code{BrukerDataDir}, \code{BrukerDataZipDir},
  \code{txtFile} and NMRdata.txt in "BatmanInput" folder.}
 \item{createDir}{If set TRUE, a new BATMAN work directory will be created specified by \code{runBATMANDir}. 
  If set FALSE, batman input will be obtained from the "extdata" folder in batman package installation directory, 

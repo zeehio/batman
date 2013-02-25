@@ -47,3 +47,5 @@ batman 1.1.0 (released 2-2013)
 	1	Added check with matching number of input for multi_data*.csv template "-1" option, output error messages in terminal, may not visible in R gui. 
 	2	Sorted multi_data.csv file according to multiplet name.
 	3 	Added MATLAB tool "SplineFitBATMAN" to assist when fitting multiplets with chemical shift per spectrum.  
+batman 1.1.01 (released 25-2-2013)
+	1	Added function readBrukerZipped. 

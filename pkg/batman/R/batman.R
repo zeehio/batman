@@ -1,4 +1,4 @@
-batman<-function(BrukerDataDir, txtFile, rData, createDir = TRUE, runBATMANDir = getwd(), 
+batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TRUE, runBATMANDir = getwd(), 
                  overwriteDir = FALSE, figBatmanFit = TRUE, listMeta = FALSE, 
                  figRelCon = FALSE, figMetaFit = FALSE)
 {
@@ -132,7 +132,10 @@ batman<-function(BrukerDataDir, txtFile, rData, createDir = TRUE, runBATMANDir =
   {
     sa<-readBruker(BrukerDataDir)  
     write.table(sa,file=dir2,row.names=FALSE,col.names=TRUE,quote=FALSE,sep = "\t")
-  } else if (!missing(txtFile)) {
+  } else if (!(missing(BrukerDataZipDir)))  {
+    sa<-readBrukerZipped(BrukerDataZipDir)
+    write.table(sa,file=dir2,row.names=FALSE,col.names=TRUE,quote=FALSE,sep = "\t")
+  }  else if (!missing(txtFile)) {
     sa<-read.table(txtFile, header=TRUE,sep="\t",comment.char = "")
     write.table(sa,file=dir2,row.names=FALSE,col.names=TRUE,quote=FALSE,sep = "\t")
   } else if (!missing(rData)) {
