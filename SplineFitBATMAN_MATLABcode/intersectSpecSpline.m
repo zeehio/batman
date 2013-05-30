@@ -3,8 +3,7 @@ function ppmx = intersectSpecSpline(Xn, offset, x, y, ppm, minflag, ppmerror)
 
 [n,m]=size(Xn);
 offy=[0:n-1].*offset;
-[r,c] = size(Xn);
-off = repmat(offy',1,c);
+ off = repmat(offy',1,m);
 D = Xn + off;
 [y iy]=sort(y);
 x=x(iy);

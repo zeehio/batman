@@ -44,7 +44,10 @@ handles.hspline = [];
 handles.hselect = [];
 handles.a = [];
 axes(handles.logo);
-imshow('batmanlogo.png')
+readimage = imread('batmanlogo.png');
+image(readimage);
+set(gca,'xtick',[],'ytick',[]);
+% imshow('batmanlogo.png')
 % Update handles structure
 guidata(hObject, handles);
 
