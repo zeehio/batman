@@ -49,3 +49,5 @@ batman 1.1.0 (released 2-2013)
 	3 	Added MATLAB tool "SplineFitBATMAN" to assist when fitting multiplets with chemical shift per spectrum.  
 batman 1.1.01 (released 25-2-2013)
 	1	Added function readBrukerZipped. 
+batman 1.1.02 (released 30-5-2013)
+	1	Fixed bug with reading results when "Same concentration for all spectra (fixed effect)" set to 1 in batmanOptions.txt

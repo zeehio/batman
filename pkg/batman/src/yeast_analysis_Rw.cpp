@@ -138,9 +138,19 @@
         for (unsigned int t2 = 0; t2<reconL0.size(); t2++)
             idwt((chain).spectra[0].L[t2], (chain).spectra[0].pars.levsize, (chain).spectra[0].pars.h_vec, reconL0[t2]);
 
-        char sbuf [33] = {'\0'};
-        string str = boost::lexical_cast <string>(s+1);
-        strcpy(sbuf, str.c_str());
+		char sbuf [33] = {'\0'};
+		if (options.fix == 1)
+		{
+			
+			string str = boost::lexical_cast <string>(1);
+			strcpy(sbuf, str.c_str());
+		}
+		else 
+		{
+			string str = boost::lexical_cast <string>(s+1);
+			strcpy(sbuf, str.c_str());
+		}
+		
 
         char fdirL[3000]={'\0'};
         strcpy(fdirL,Pfilenames[4]);
