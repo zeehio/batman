@@ -1,4 +1,9 @@
 SplineFitBATMAN 
+30/05/2013  
+version 0.4 
+    1. working with no Image Processing Toolbox.
+    2. assign first and last spectra points by default.
+SplineFitBATMAN 
 18/02/2013  
 version 0.3 
 Authors: Dr Jie Hao and Dr. Timothy M D Ebbels
