@@ -1,6 +1,7 @@
 function varargout = SplineFitBATMAN(varargin)
 % written 120213 Dr. Jie Hao, Imperial College London
 % modified 180213 JHao
+% modified 300513 JHao to work with no Image Processing Toolbox
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
