@@ -21,8 +21,8 @@ Parallel processing is available if processing several spectra.
 \tabular{ll}{
 Package: \tab batman\cr
 Type: \tab Package\cr
-Version: \tab 1.1.0.01\cr
-Date: \tab 2013-02-25\cr
+Version: \tab 1.1.0.02\cr
+Date: \tab 2013-05-30\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }}
