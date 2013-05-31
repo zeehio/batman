@@ -31,10 +31,11 @@
 \examples{
 library(batman)
 ## Run BATMAN fit, then plot metabolite fit
+if(interactive()) 
+{
 bm<-batman()
-100
-1
 ## Plot metabolites Fit.
 plotMetaFit(bm)
+}
 }
 \keyword{aplot}

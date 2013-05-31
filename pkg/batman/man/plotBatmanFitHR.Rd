@@ -34,12 +34,13 @@
 \examples{
 library(batman)
 ## Run BATMAN fit
+if(interactive()) 
+{
 bm<-batman()
-100
-1
 ## Plot batman Fit in its original resolution if the option parameter  
 ## is set to 1 for "Save metabolites fit same as the original spectrum  
 ## resolution (1/0)" in "batmanOptions.txt", .
 plotBatmanFitHR(bm)
+}
 }
 \keyword{aplot}

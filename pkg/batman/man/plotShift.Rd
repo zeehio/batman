@@ -30,10 +30,11 @@
 \examples{
 library(batman)
 ## Run BATMAN
+if(interactive()) 
+{
 bm<-batman()
-100
-1
 ## Plot ppm shift for each multiplet.
 plotShift(bm)
+}
 }
 \keyword{aplot}

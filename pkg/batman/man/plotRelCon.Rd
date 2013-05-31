@@ -32,10 +32,11 @@
 \examples{
 library(batman)
 ## Run BATMAN and then plot relative concentration
+if(interactive()) 
+{
 bm<-batman()
-100
-1
 ## Plot relative concentrations
 plotRelCon(bm)
+}
 }
 \keyword{aplot}

@@ -80,11 +80,12 @@
 \examples{
 library(batman)
 ## Run batman
+if(interactive()) 
+{
 bm<-batman()
-100
-1
 ## then call batmanrerun
 bm<-batmanrerun(bm)
+}
 #######################################################################
 ## The following is an example of what will be displayed in R 
 ## and what value the user could input:

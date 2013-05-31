@@ -16,10 +16,11 @@
 \examples{
 library(batman)
 ## Run BATMAN 
+if(interactive()) 
+{
 bm<-batman()
-100
-1
 ## Read in output files in saved directory.
 bmread<-readBatmanOutput(bm$outputDir,bm$inputDir)
+}
 }
 \keyword{datasets}
