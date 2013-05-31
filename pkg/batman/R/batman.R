@@ -71,9 +71,9 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   
   ito<-itoPBI+itoBI
   ## choose template file
-  choices<-c("Include the default template of multiplets in multi_data.csv file only.",
-             "Include the user input template of multiplets in multi_data_user.csv file only.",
-             "Include both the above files.")
+  choices<-paste("1: Include the default template of multiplets in multi_data.csv file only.\n",
+             "2: Include the user input template of multiplets in multi_data_user.csv file only.\n",
+             "3: Include both the above files.\n", sep = '')
   showLine <-"\nEnter a number of choice from the menu below:\n"
   opt <- menuA(choices, 1, showLine)
   
