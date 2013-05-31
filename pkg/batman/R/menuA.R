@@ -4,19 +4,15 @@ menuA<-function (choices, stInd, showLine)
   ## menue function, for internal use
   nc <- length(choices)
   cat(showLine)
-  if (stInd == 1) {
-    op <- paste(format(seq_len(nc)), ": ", choices, sep = "")
-    st <-stInd
-    ed<-nc+stInd-1
-  } else if (stInd == 0) {
-    op <- paste(format(seq_len(nc)-1), ": ", choices, sep = "")
-    st <-stInd
-    ed<-nc+stInd-1
+  cat(as.character(choices))
+  
+  ind <- 0
+  while(ind < 1 || ind > 3){
+    ind <- readline("\nSelection: ")
+    ind <- ifelse(grepl("\\D",ind),-1,as.integer(ind))
+    #if(is.na(ind)){break}  # breaks when hit enter
   }
-  cat("  ", op, "", sep = "\n")
-  repeat {
-    ind <- .Internal(menu(as.character(choices)))
-    if (ind >= st && ind <= ed) 
-      return(ind)
-  }
+  1.2
+  return(ind)
+
 }
