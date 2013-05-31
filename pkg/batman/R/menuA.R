@@ -7,12 +7,11 @@ menuA<-function (choices, stInd, showLine)
   cat(as.character(choices))
   
   ind <- 0
-  while(ind < 1 || ind > 3){
+  while (ind < 1 || ind > 3){
     ind <- readline("\nSelection: ")
-    ind <- ifelse(grepl("\\D",ind),-1,as.integer(ind))
+    #ind <- ifelse(grepl("\\D",ind),-1,as.integer(ind))
     #if(is.na(ind)){break}  # breaks when hit enter
   }
-  1.2
   return(ind)
 
 }
