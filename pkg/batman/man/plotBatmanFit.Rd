@@ -36,10 +36,11 @@
 \examples{
 library(batman)
 ## Run BATMAN 
+if(interactive()) 
+{
 bm<-batman()
-100
-1
 ## then plot results
 plotBatmanFit(bm)
+}
 }
 \keyword{aplot}

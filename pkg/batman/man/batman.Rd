@@ -118,9 +118,7 @@
 \examples{
 library(batman)
 ## Run BATMAN
-bm<-batman()
-100
-1
+if(interactive()) bm<-batman()
 ## This will create the folder "runBATMAN" in current working directory, 
 ## within the folder "runBATMAN", a subfolder "BatmanInput" contains all the
 ## input files batman uses. Users can modify "metabolitesList.csv", 
