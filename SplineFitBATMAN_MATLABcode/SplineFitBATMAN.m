@@ -1,7 +1,6 @@
 function varargout = SplineFitBATMAN(varargin)
 % written 120213 Dr. Jie Hao, Imperial College London
-% version 0.3: modified 180213 JHao
-% version 0.4: modified 300513 JHao to work with no Image Processing Toolbox
+% modified 180213 JHao
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -217,12 +216,16 @@ end
 
 
 function Sortplotstack_Callback(hObject, eventdata, handles)
+if (isempty(handles.multi))
 a = read_mixed_csv(get(handles.chemshiftDir,'String'),',');
 for n = 2:size(a,1)
     b{1,n} =[a{n,1} ' ' a{n,2}];
 end
 set(handles.multList,'String',b);
 handles.multi = a;
+else
+    a = handles.multi;
+end
 
 ppmSortFrom = str2num(get(handles.ppmSortFrom,'String'));
 ppmSortTo = str2num(get(handles.ppmSortTo,'String'));
