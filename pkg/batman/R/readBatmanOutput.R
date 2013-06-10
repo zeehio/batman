@@ -12,7 +12,7 @@ readBatmanOutput<-function(dirOP, dirIP,readMetaIndFitSam = TRUE,
     return(cat(paste("\nFile ", dirBO, " is missing in input folder ", dirOP, ".\n.")))
   if (!file.exists(dirsT))
     return(cat(paste("\nFile ", dirsT, " is missing in input folder ", dirOP, ".\n.")))
-  if (!file.edxists(dirOPList))
+  if (!file.exists(dirOPList))
     return(cat(paste("\nFile ", dirOPList, " is missing in input folder ", dirOP, ".\n.")))
   
   con  <- file(dirBO, open = "r")
