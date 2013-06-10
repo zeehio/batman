@@ -1,4 +1,5 @@
-readBatmanOutput<-function(dirOP, dirIP) 
+readBatmanOutput<-function(dirOP, dirIP,readMetaIndFitSam = TRUE,
+                           readMetaTempHR = TRUE, readMetaTemp = TRUE)
 {
   ## written by Dr. Jie Hao, Imperial College London
   warnDef<-options("warn")$warn
@@ -11,7 +12,7 @@ readBatmanOutput<-function(dirOP, dirIP)
     return(cat(paste("\nFile ", dirBO, " is missing in input folder ", dirOP, ".\n.")))
   if (!file.exists(dirsT))
     return(cat(paste("\nFile ", dirsT, " is missing in input folder ", dirOP, ".\n.")))
-  if (!file.exists(dirOPList))
+  if (!file.edxists(dirOPList))
     return(cat(paste("\nFile ", dirOPList, " is missing in input folder ", dirOP, ".\n.")))
   
   con  <- file(dirBO, open = "r")
@@ -24,7 +25,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   close(con)
   NoSpectra <- length(sno)
   
-  specTitle<-read.table(dirsT, header=FALSE,sep="\t")
+  specTitle<-read.table(dirsT, header=FALSE,sep="\t",comment.char ="")
   
   if (file.info(dirOPList)$size == 0 )
     return(cat(paste("\nFile", dirOPList, " is empty. Not fitting anything in ppm range.\n." )))
@@ -51,7 +52,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      r<-read.table(fdir,sep = "\t",header=T)
+      r<-read.table(fdir,sep = "\t",header=T,comment.char = "")
     } 
   }
   fdir <- paste(dirOP, "/NMRdata_mod_",jsno,".txt", sep="")
@@ -59,7 +60,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      Ndata<-read.table(fdir, header = FALSE, sep = "\t")
+      Ndata<-read.table(fdir, header = FALSE, sep = "\t",comment.char = "")
     }   
   } 
   fdir <- paste(dirOP, "/specFitHR_",jsno,"_rr_0.txt", sep="")
@@ -67,40 +68,46 @@ readBatmanOutput<-function(dirOP, dirIP)
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      rH<-read.table(fdir,sep = "\t",header=F)
+      rH<-read.table(fdir,sep = "\t",header=F,comment.char = "")
       rH<-cbind(Ndata,rH)
     }
   }
+  if (readMetaTempHR)
+  {
   fdir <- paste(dirOP, "/metaTempHR_",jsno,"_rr_0.txt", sep="")
   if (file.exists(fdir))
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      LH<-read.table(fdir,sep = "\t", header=F)
+      LH<-read.table(fdir,sep = "\t", header=F,comment.char = "")
       if (length(mL) == ncol(LH))
         names(LH)<-mL
       if (nrow(mL) == ncol(LH))
         names(LH)<-t(mL)
     }
   }
+  }
+  if (readMetaTemp)
+  {
   fdir <- paste(dirOP, "/metaTemp_",jsno,"_rr_0.txt", sep="")
   if (file.exists(fdir))
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      L<-read.table(fdir,sep = "\t", header=F)
+      L<-read.table(fdir,sep = "\t", header=F,comment.char = "")
       if (length(mL) == ncol(L))
         names(L)<-mL
       if (nrow(mL) == ncol(L))
         names(L)<-t(mL)
     }
   }
+  }
   fdir <- paste(dirOP, "/beta_",jsno,"_rr_0.txt", sep="")
   if (file.exists(fdir))
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      bet<-read.table(fdir,header=F)
+      bet<-read.table(fdir,header=F,comment.char = "")
       if (length(mL) == nrow(bet))
         row.names(bet)<-mL
       if ( nrow(mL) == nrow(bet) )
@@ -114,7 +121,7 @@ readBatmanOutput<-function(dirOP, dirIP)
     {
       if (!(file.info(fdir)$size == 0))
       {
-        the<-read.table(fdir,sep = "\t",header=F) 
+        the<-read.table(fdir,sep = "\t",header=F,comment.char = "") 
       }
     }
   }
@@ -123,7 +130,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      sfitsam<-read.table(fdir,sep = "\t",header=F)
+      sfitsam<-read.table(fdir,sep = "\t",header=F,comment.char = "")
     }  
   } 
   fdir <- paste(dirOP, "/lambda_sam_",jsno,"_rr_0.txt", sep="")
@@ -131,7 +138,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      lam<-read.table(fdir,header=F)
+      lam<-read.table(fdir,header=F,comment.char = "")
     }    
   }   
   fdir <- paste(dirOP, "/beta_sam_",jsno,"_rr_0.txt", sep="")
@@ -139,7 +146,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      betasam<-read.table(fdir,sep = "\t",header=F)
+      betasam<-read.table(fdir,sep = "\t",header=F,comment.char = "")
       if (length(mL) == nrow(betasam))
         row.names(betasam)<-mL
       if (nrow(mL) == nrow(betasam))
@@ -172,6 +179,8 @@ readBatmanOutput<-function(dirOP, dirIP)
         row.names(delmean)<-names(del)
     }
   }
+  if (readMetaIndFitSam)
+  {
   ## read in individual metabolite fit posteriors
   brow<-nrow(betasam)
   bcol<-ncol(betasam)
@@ -180,7 +189,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   { 
     if (!file.info(fdir)$size == 0)
     {
-      metafitsamInd<-read.table(fdir,sep="\t",header=F)  
+      metafitsamInd<-read.table(fdir,sep="\t",header=F,comment.char = "")  
       for (j in 1:bcol)
       {
         if (j == 1)
@@ -189,6 +198,7 @@ readBatmanOutput<-function(dirOP, dirIP)
           metaindfitsam<-cbind(metaindfitsam, t(t(metafitsamInd[,((j-1)*brow+1):(j*brow)])*betasam[,j]))
       }                  
     }
+  }
   }
   ## more than 1 spectra
   if (NoSpectra>1)
@@ -200,7 +210,7 @@ readBatmanOutput<-function(dirOP, dirIP)
       {
         if (!file.info(fdir)$size == 0)
         {
-          r<-cbind(r, read.table(fdir,sep = "\t",header=T))
+          r<-cbind(r, read.table(fdir,sep = "\t",header=T,comment.char = ""))
         }
       }    
       fdir <- paste(dirOP, "/NMRdata_mod_",i,".txt", sep="")
@@ -208,7 +218,7 @@ readBatmanOutput<-function(dirOP, dirIP)
       {
         if (!file.info(fdir)$size == 0)
         {
-          Ndata<-read.table(fdir, header = FALSE, sep = "\t")
+          Ndata<-read.table(fdir, header = FALSE, sep = "\t",comment.char = "")
         }
       }
       fdir <- paste(dirOP, "/specFitHR_", i,"_rr_0.txt", sep="")
@@ -216,36 +226,41 @@ readBatmanOutput<-function(dirOP, dirIP)
       { 
         if (!file.info(fdir)$size == 0)
         {               
-          rH<-cbind(rH, Ndata, read.table(fdir,sep = "\t",header=F))
+          rH<-cbind(rH, Ndata, read.table(fdir,sep = "\t",header=F,comment.char = ""))
         }
       }
+      if (readMetaTempHR)
+      {
       fdir <- paste(dirOP,  "/metaTempHR_",i, "_rr_0.txt", sep="")
       if (file.exists(fdir))
       {
         if (!file.info(fdir)$size == 0)
         {
-          LtH<-read.table(fdir,sep = "\t",header=F)
+          LtH<-read.table(fdir,sep = "\t",header=F,comment.char = "")
           if (length(mL) == ncol(LtH))
             names(LtH)<-mL 
           if (nrow(mL) == ncol(LtH))
             names(LtH)<-t(mL) 
           LH<-cbind(LH, LtH)
         }
-      }            
+      }
+      }
       fdir <- paste(dirOP,  "/beta_",i, "_rr_0.txt", sep="")
       if (file.exists(fdir))
       {
         if (!file.info(fdir)$size == 0)
         {
-          bet<-cbind(bet, read.table(fdir,header=F))
+          bet<-cbind(bet, read.table(fdir,header=F,comment.char = ""))
         }
       }
+      if (readMetaTemp)
+      {
       fdir <- paste(dirOP,  "/metaTemp_",i, "_rr_0.txt", sep="")
       if (file.exists(fdir))
       {
         if (!file.info(fdir)$size == 0)
         {
-          Lt<-read.table(fdir,sep = "\t",header=F)
+          Lt<-read.table(fdir,sep = "\t",header=F,comment.char = "")
           if (length(mL) == ncol(Lt))
             names(Lt)<-mL 
           if (nrow(mL) == ncol(Lt))
@@ -253,12 +268,13 @@ readBatmanOutput<-function(dirOP, dirIP)
           L<-cbind(L, Lt)
         }
       }
+      }
       fdir <- paste(dirOP, "/beta_sam_",i, "_rr_0.txt", sep="")
       if (file.exists(fdir))
       {
         if (!file.info(fdir)$size == 0) 
         {
-          betasamInd<-read.table(fdir,sep = "\t", header=F)
+          betasamInd<-read.table(fdir,sep = "\t", header=F,comment.char = "")
           betasam<-cbind(betasam, betasamInd)
         }
       }                
@@ -290,7 +306,7 @@ readBatmanOutput<-function(dirOP, dirIP)
       if (file.exists(fdir))
       {                if (!file.info(fdir)$size == 0) 
       {
-        the<-cbind(the, read.table(fdir, sep = "\t", header=F))
+        the<-cbind(the, read.table(fdir, sep = "\t", header=F,comment.char = ""))
       } 
       }
       fdir <- paste(dirOP,  "/metaFit_sam_",i, "_rr_0.txt", sep="")
@@ -298,7 +314,7 @@ readBatmanOutput<-function(dirOP, dirIP)
       {    
         if (!file.info(fdir)$size == 0) 
         {
-          sfitsam<-cbind(sfitsam, read.table(fdir, sep = "\t", header=F))
+          sfitsam<-cbind(sfitsam, read.table(fdir, sep = "\t", header=F,comment.char = ""))
         }
       }
       fdir <- paste(dirOP, "/lambda_sam_",i,"_rr_0.txt", sep="")
@@ -306,18 +322,21 @@ readBatmanOutput<-function(dirOP, dirIP)
       {    
         if (!file.info(fdir)$size == 0) 
         {
-          lam<-cbind(lam,read.table(fdir,header=F))
+          lam<-cbind(lam,read.table(fdir,header=F,comment.char = ""))
         }  
       }
+      if (readMetaIndFitSam)
+      {
       fdir <- paste(dirOP, "/metaIndFit_sam_",i,"_rr_0.txt", sep="") 
       if (file.exists(fdir))
       {
         if (!file.info(fdir)$size == 0)
         {
-          metafitsamInd<-read.table(fdir,sep="\t",header=F) 
+          metafitsamInd<-read.table(fdir,sep="\t",header=F,comment.char = "") 
           for (j in 1:bcol)
             metaindfitsam<-cbind(metaindfitsam, t(t(metafitsamInd[,((j-1)*brow+1):(j*brow)])*betasamInd[,j]))                
         } 
+      }
       }
     }
   }
@@ -354,7 +373,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      rrr<-read.table(fdir,sep = "\t",header=T)
+      rrr<-read.table(fdir,sep = "\t",header=T,comment.char = "")
     }
   }
   fdir <- paste(dirOP, "/NMRdata_mod_1.txt", sep="")
@@ -362,7 +381,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      Ndata<-read.table(fdir, header = FALSE, sep = "\t")
+      Ndata<-read.table(fdir, header = FALSE, sep = "\t",comment.char = "")
     }
   }
   fdir <- paste(dirOP, "/specFitHR_",jsno,"_rr_",rr,".txt", sep="")
@@ -370,40 +389,46 @@ readBatmanOutput<-function(dirOP, dirIP)
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      rrrH<-read.table(fdir,sep = "\t",header=F)
+      rrrH<-read.table(fdir,sep = "\t",header=F,comment.char = "")
       rrrH<-cbind(Ndata,rrrH)
     }
   }
+  if (readMetaTempHR)
+  {
   fdir <- paste(dirOP, "/metaTempHR_",jsno,"_rr_",rr,".txt", sep="")
   if (file.exists(fdir))
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      LrrH<-read.table(fdir,sep = "\t",header=F)
+      LrrH<-read.table(fdir,sep = "\t",header=F,comment.char = "")
       if (length(mL) == ncol(LrrH))
         names(LrrH)<-mL
       if ( nrow(mL) == ncol(LrrH))
         names(LrrH)<-t(mL)
     }
   }
+  }
+  if (readMetaTemp)
+  {
   fdir <- paste(dirOP, "/metaTemp_",jsno,"_rr_",rr,".txt", sep="")
   if (file.exists(fdir))
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      Lrr<-read.table(fdir,sep = "\t",header=F)
+      Lrr<-read.table(fdir,sep = "\t",header=F,comment.char = "")
       if (length(mL) == ncol(Lrr))
         names(Lrr)<-mL
       if ( nrow(mL) == ncol(Lrr))
         names(Lrr)<-t(mL)
     }
   }
+  }
   fdir <- paste(dirOP, "/beta_",jsno,"_rr_",rr,".txt", sep="")
   if (file.exists(fdir)) 
   {                
     if (!file.info(fdir)$size == 0) 
     {
-      betrr<-read.table(fdir,header=F)
+      betrr<-read.table(fdir,header=F,comment.char = "")
       if (length(mL) == nrow(betrr))
         row.names(betrr)<-mL
       if (nrow(mL) == ncol(betrr))
@@ -415,7 +440,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   {
     if (!file.info(fdir)$size == 0) 
     {
-      betasamrr<-read.table(fdir,sep = "\t",header=F)
+      betasamrr<-read.table(fdir,sep = "\t",header=F,comment.char = "")
       if (length(mL) == nrow(betasamrr))
         row.names(betasamrr)<-mL
       if (nrow(mL) == nrow(betasamrr))
@@ -427,15 +452,17 @@ readBatmanOutput<-function(dirOP, dirIP)
   {
     if (!file.info(fdir)$size == 0) 
     {
-      therr<-read.table(fdir,sep = "\t",header=F)
+      therr<-read.table(fdir,sep = "\t",header=F,comment.char = "")
     }
   }
   fdir <- paste(dirOP, "/metaFit_sam_",jsno,"_rr_",rr,".txt", sep="")
   if (file.exists(fdir))
   {if (!file.info(fdir)$size == 0) 
   {
-    sfitsamrr<-read.table(fdir,sep = "\t",header=F)
+    sfitsamrr<-read.table(fdir,sep = "\t",header=F,comment.char = "")
   }}
+  if (readMetaIndFitSam)
+  {
   ## individual metabolite fit posteriors
   brow<-nrow(betasamrr)
   bcol<-ncol(betasamrr)
@@ -444,7 +471,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   { 
     if (!file.info(fdir)$size == 0)
     {
-      metafitsamrrInd<-read.table(fdir,sep="\t",header=F) 
+      metafitsamrrInd<-read.table(fdir,sep="\t",header=F,comment.char = "") 
       for (j in 1:bcol)
       {
         if (j == 1)
@@ -453,6 +480,7 @@ readBatmanOutput<-function(dirOP, dirIP)
           metaindfitsamrr<-cbind(metaindfitsamrr, t(t(metafitsamrrInd[,((j-1)*brow+1):(j*brow)])*betasamrr[,j]))
       }                       
     }
+  }
   }
   ## more spectra
   if (NoSpectra>1)
@@ -464,7 +492,7 @@ readBatmanOutput<-function(dirOP, dirIP)
       {
         if (!file.info(fdir)$size == 0) 
         {
-          rrr<-cbind(rrr, read.table(fdir,sep = "\t",header=T))
+          rrr<-cbind(rrr, read.table(fdir,sep = "\t",header=T,comment.char = ""))
         }
       }           
       fdir <- paste(dirOP, "/NMRdata_mod_",i,".txt", sep="")
@@ -472,7 +500,7 @@ readBatmanOutput<-function(dirOP, dirIP)
       {
         if (!file.info(fdir)$size == 0) 
         {
-          Ndata<-read.table(fdir, header = FALSE, sep = "\t")
+          Ndata<-read.table(fdir, header = FALSE, sep = "\t",comment.char = "")
         }
       }
       fdir <- paste(dirOP, "/specFitHR_", i,"_rr_",rr,".txt", sep="")
@@ -480,15 +508,17 @@ readBatmanOutput<-function(dirOP, dirIP)
       {
         if (!file.info(fdir)$size == 0) 
         {
-          rrrH<-cbind(rrrH, Ndata, read.table(fdir,sep = "\t",header=F))
+          rrrH<-cbind(rrrH, Ndata, read.table(fdir,sep = "\t",header=F,comment.char = ""))
         }
       }
+      if (readMetaTempHR)
+      {
       fdir <- paste(dirOP, "/metaTempHR_",i, "_rr_",rr,".txt", sep="")
       if (file.exists(fdir))
       {
         if (!file.info(fdir)$size == 0) 
         {
-          LrrtH<-read.table(fdir,sep = "\t",header=F)
+          LrrtH<-read.table(fdir,sep = "\t",header=F,comment.char = "")
           if (length(mL) == ncol(LrrtH))
             names(LrrtH)<-mL
           if ( nrow(mL) == ncol(LrrtH))
@@ -496,12 +526,15 @@ readBatmanOutput<-function(dirOP, dirIP)
           LrrH<-cbind(LrrH, LrrtH)
         }
       }
+      }
+      if (readMetaTemp)
+      {
       fdir <- paste(dirOP, "/metaTemp_",i, "_rr_",rr,".txt", sep="")
       if (file.exists(fdir))
       {
         if (!file.info(fdir)$size == 0) 
         {
-          Lrrt<-read.table(fdir,sep = "\t",header=F)
+          Lrrt<-read.table(fdir,sep = "\t",header=F,comment.char = "")
           if (length(mL) == ncol(Lrrt))
             names(Lrrt)<-mL
           if ( nrow(mL) == ncol(Lrrt))
@@ -509,12 +542,13 @@ readBatmanOutput<-function(dirOP, dirIP)
           Lrr<-cbind(Lrr, Lrrt)
         }   
       }
+      }
       fdir <- paste(dirOP, "/beta_",i, "_rr_",rr,".txt", sep="")
       if (file.exists(fdir)) 
       {
         if (!file.info(fdir)$size == 0) 
         {
-          betrr<-cbind(betrr, read.table(fdir,header=F))
+          betrr<-cbind(betrr, read.table(fdir,header=F,comment.char = ""))
         }
       }            
       fdir <- paste(dirOP, "/beta_sam_",i, "_rr_",rr,".txt", sep="")
@@ -522,7 +556,7 @@ readBatmanOutput<-function(dirOP, dirIP)
       {
         if (!file.info(fdir)$size == 0) 
         {
-          betasamrrInd<-read.table(fdir,sep = "\t",header=F)
+          betasamrrInd<-read.table(fdir,sep = "\t",header=F,comment.char = "")
           betasamrr<-cbind(betasamrr, betasamrrInd)  
         }
       }
@@ -531,7 +565,7 @@ readBatmanOutput<-function(dirOP, dirIP)
       {
         if (!file.info(fdir)$size == 0) 
         {
-          therr<-cbind(therr, read.table(fdir, sep = "\t", header=F))    
+          therr<-cbind(therr, read.table(fdir, sep = "\t", header=F,comment.char = ""))    
         }
       }
       fdir <- paste(dirOP,  "/metaFit_sam_",i, "_rr_",rr,".txt", sep="")
@@ -539,18 +573,21 @@ readBatmanOutput<-function(dirOP, dirIP)
       {
         if (!file.info(fdir)$size == 0) 
         {
-          sfitsamrr<-cbind(sfitsamrr, read.table(fdir, sep = "\t", header=F))    
+          sfitsamrr<-cbind(sfitsamrr, read.table(fdir, sep = "\t", header=F,comment.char = ""))    
         }   
       }       
+      if (readMetaIndFitSam)
+      {
       fdir <- paste(dirOP, "/metaIndFit_sam_",i, "_rr_",rr,".txt", sep="") 
       if (file.exists(fdir))
       {
         if (!file.info(fdir)$size == 0) 
         {
-          metafitsamrrInd<-read.table(fdir,sep="\t",header=F)   
+          metafitsamrrInd<-read.table(fdir,sep="\t",header=F,comment.char = "")   
           for (j in 1:bcol)
             metaindfitsamrr<-cbind(metaindfitsamrr, t(t(metafitsamrrInd[,((j-1)*brow+1):(j*brow)])*betasamrrInd[,j]))                    
         }
+      }
       }
     }    
   }
@@ -632,7 +669,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   }
   else
   {
-    vA<- read.table(file = dirOPRCCI, sep = "\t",header = TRUE)
+    vA<- read.table(file = dirOPRCCI, sep = "\t",header = TRUE,comment.char = "")
     vA2 <- vA[2:dim(vA)[1], 2:dim(vA)[2]]
     row.names(vA2)<-vA[2:dim(vA)[1],1]
     names(vA2)<-t(vA[1,2:dim(vA)[2]])
@@ -670,7 +707,7 @@ readBatmanOutput<-function(dirOP, dirIP)
   }
   else
   {
-    vArr<- read.table(file = dirOPRCCIr, sep = "\t",header = TRUE)
+    vArr<- read.table(file = dirOPRCCIr, sep = "\t",header = TRUE,comment.char = "")
     vArr2 <- vArr[2:dim(vArr)[1], 2:dim(vArr)[2]]
     row.names(vArr2)<-vArr[2:dim(vArr)[1],1]
     names(vArr2)<-t(vArr[1,2:dim(vArr)[2]])
