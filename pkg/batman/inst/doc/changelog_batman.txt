@@ -51,3 +51,5 @@ batman 1.1.01 (released 25-2-2013)
 	1	Added function readBrukerZipped. 
 batman 1.1.02 (released 30-5-2013)
 	1	Fixed bug with reading results when "Same concentration for all spectra (fixed effect)" set to 1 in batmanOptions.txt
+batman 1.1.03 (released 10-6-2013)
+	1	Fixed additional bug with reading in spectra titles with "#" 
