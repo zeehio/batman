@@ -77,9 +77,9 @@ plotShift<-function(BM, metaName, plotHist = FALSE, breaks, perMult = FALSE, sav
             if (n <=5)
               par(mfrow=c(n, 1),oma = c(0, 0, 3, 0))
             else if (n <= 16 )
-              par(mfrow=c(ceiling(n/4)),4, oma = c(0, 0, 3, 0))
+              par(mfrow=c(ceiling(n/4),4), oma = c(0, 0, 3, 0))
             else 
-              par(mfrow=c(ceiling(n/5)),5, oma = c(0, 0, 3, 0))
+              par(mfrow=c(ceiling(n/5),5), oma = c(0, 0, 3, 0))
             for (j in 1:n)
             {
               hist(BM$deltaSam[,mind[((i-1)*ind2+1)+j-1]],col="gray",
@@ -174,9 +174,9 @@ plotShift<-function(BM, metaName, plotHist = FALSE, breaks, perMult = FALSE, sav
             if (length(sno) <=5)
               par(mfrow=c(length(sno), 1),oma = c(0, 0, 3, 0))
             else if (length(sno) <= 16 )
-              par(mfrow=c(ceiling(length(sno)/4)),4, oma = c(0, 0, 3, 0))
+              par(mfrow=c(ceiling(length(sno)/4),4), oma = c(0, 0, 3, 0))
             else 
-              par(mfrow=c(ceiling(length(sno)/5)),5, oma = c(0, 0, 3, 0))
+              par(mfrow=c(ceiling(length(sno)/5),5), oma = c(0, 0, 3, 0))
             for (i in 1:length(sno))
             {
               isno <- sno[i]
@@ -206,9 +206,9 @@ plotShift<-function(BM, metaName, plotHist = FALSE, breaks, perMult = FALSE, sav
             if (length(sno) <=5)
               par(mfrow=c(length(sno), 1),oma = c(0, 0, 3, 0))
             else if (length(sno) <= 16 )
-              par(mfrow=c(ceiling(length(sno)/4)),4,oma = c(0, 0, 3, 0))
+              par(mfrow=c(ceiling(length(sno)/4),4),oma = c(0, 0, 3, 0))
             else 
-              par(mfrow=c(ceiling(length(sno)/5)),5,oma = c(0, 0, 3, 0))
+              par(mfrow=c(ceiling(length(sno)/5),5),oma = c(0, 0, 3, 0))
             for (i in 1:length(sno))
             {
               isno <- sno[i]
