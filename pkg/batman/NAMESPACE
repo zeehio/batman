@@ -1,6 +1,6 @@
 # Default NAMESPACE created by R
 # Remove the previous line if you edit this file
-useDynLib(batman)
+useDynLib(batman, .registration = TRUE)
 # Export all names
 exportPattern(".")
 
