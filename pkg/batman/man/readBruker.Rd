@@ -3,8 +3,8 @@
 \title{Read Raw Binary Bruker NMR Spectra}
 \description{
  Read in multiple raw binary Bruker NMR spectra (1D) from a specified 
- folder, and return a matrix with columns: \deqn{[ppm, spectrum 1, spectrum 2, ...].
- Interpolation may be performed if spectra have different ppm scales.}}
+ folder, and return a matrix with columns: \deqn{[ppm, spectrum 1, spectrum 2, ...].}
+ Interpolation may be performed if spectra have different ppm scales.}
 \usage{readBruker(BrukerDataDir)}
 \arguments{
 \item{BrukerDataDir}{The directory of the folder containing 1D Bruker spectral data files. 
