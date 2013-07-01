@@ -3,8 +3,8 @@
 \title{Read Raw Binary Bruker NMR Spectra in Zipped format}
 \description{
  Read in multiple raw binary Bruker NMR spectra (1D), with spectrum data in a zipped format, 
- from a specified folder, and return a matrix with columns: \deqn{[ppm, spectrum 1, spectrum 2, ...].
- Interpolation may be performed if spectra have different ppm scales.}}
+ from a specified folder, and return a matrix with columns: \deqn{[ppm, spectrum 1, spectrum 2, ...].}
+ Interpolation may be performed if spectra have different ppm scales.}
 \usage{readBrukerZipped(BrukerDataZipDir)}
 \arguments{
 \item{BrukerDataZipDir}{The directory of the folder containing zipped 1D Bruker spectral data files. 
