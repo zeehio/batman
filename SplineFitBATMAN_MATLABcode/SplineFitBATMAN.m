@@ -172,6 +172,7 @@ else
     return;
 end
 guidata(hObject, handles);
+write_mixed_csv(get(handles.chemshiftDir,'String'), handles.multi);
 
 function savewrite_Callback(hObject, eventdata, handles)
 m = handles.ppmx(1,:);
