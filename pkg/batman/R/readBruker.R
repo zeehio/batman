@@ -25,35 +25,40 @@ readBruker<-function(BrukerDataDir)
       myV <- strsplit(aLine, "=")    
       close(con)
       
+      ftsize <- 70000
       for (j in 1:length(myV))
       {
         if (match("##$OFFSET",myV[[j]][1],nomatch = 0))
-        {    offset <- as.numeric(myV[[j]][2]);
+        {    offset <- as.numeric(myV[[j]][2])
         }
         if (match("##$SW_p",myV[[j]][1],nomatch = 0))
-        {    sw <- as.numeric(myV[[j]][2]);
+        {    sw <- as.numeric(myV[[j]][2])
         }
         if (match("##$SF",myV[[j]][1],nomatch = 0))
         {
-          sf <- as.numeric(myV[[j]][2]);
+          sf <- as.numeric(myV[[j]][2])
         }
         if (match("##$SI",myV[[j]][1],nomatch = 0))
         {  
-          si <- as.numeric(myV[[j]][2]);
+          si <- as.numeric(myV[[j]][2])
         }
         if (match("##$BYTORDP",myV[[j]][1],nomatch = 0))
-        {    bytordp <- as.numeric(myV[[j]][2]);
+        {    bytordp <- as.numeric(myV[[j]][2])
         }
         if (match("##$NC_proc",myV[[j]][1],nomatch = 0))
         {
-          ncproc <- as.numeric(myV[[j]][2]);
+          ncproc <- as.numeric(myV[[j]][2])
+        }
+        if (match("##$FTSIZE",myV[[j]][1],nomatch = 0))
+        {
+          ftsize <- as.numeric(myV[[j]][2])
         }
       }
       
       if (bytordp==0){machine_format =  "little"}
       else {machine_format = "big"}
       
-      s<-readBin(rfile[i], what="int",70000, size = 4, signed = T, endian =machine_format)
+      s<-readBin(rfile[i], what="int",n = ftsize, size = 4, signed = T, endian =machine_format)
       s<- ((2^ncproc)* s)
       nspec <- length(s)
       
