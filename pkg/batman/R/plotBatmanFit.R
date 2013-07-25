@@ -169,7 +169,7 @@ plotBatmanFit<-function(BM, xfrom, xto, yfrom, yto, listMeta = FALSE, metaName, 
       i <- (ns*(j-1)+1)
       
       if (is.null(ytoIP))
-        yto <- max(max(BM$sFit[pind,i+1]),max(BM$sFit[pind,i+2]),max(BM$sFit[pind,i+3]),max(BM$sFit[pind,i+4]))
+        yto <- max(max(BM$sFit[pind,(i+1):(i+ns-1)]))
       
       if (yfrom > yto)
       {

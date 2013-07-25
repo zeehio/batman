@@ -167,7 +167,7 @@
   
   
 \itemize{
-     \item{For peak width, \eqn{\gamma}, in ppm of metabolite \eqn{m}, the model for 
+     \item{For peak width, \eqn{\gamma}, in Hz of metabolite \eqn{m}, the model for 
       \eqn{\gamma} is \eqn{\ln(\gamma)= \mu + \nu_m}
       where \eqn{\mu} is the spectrum wide average log-peakwidth and 
       \eqn{\nu_m} is a random effect on metabolite deviation from \eqn{\mu}.
@@ -227,7 +227,25 @@
   \code{pos_in_ppm}: The ppm position of the multiplets.
   
   
-  \code{couple_code}: Coupling code. If "-1" is inputted here, a user specified multiplet can be created. 
+  \code{couple_code}: Coupling code. 
+  0 = singlet, 
+  1 = doublet, 
+  2 = triplet,
+3 = quartet,
+4 = quintet,
+5 = sextet,
+6 = septet,
+1,1 = doublet of doublets, 
+1,2 = doublet of triplets,
+2,1 = triplet of doublets,
+2,2 = triplet of triplets,
+1,3 = doublet of quartets,
+3,1 = quartet of doublets, 
+1,1,1 = doublet of doublet of doublets,
+2,3 = triplet of quartets, 
+3,2 = quartet of triplets, 
+3,3 = quartet of quartets. 
+If "-1" is inputted here, a user specified multiplet can be created. 
 	An example can be found in file "multi_data_user.csv". If "-2" is inputted here, a multiplet with range
   specified in ppm in the field "J_constant" is used. Examples can be found in file "multi_data_user.csv".
  

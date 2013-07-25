@@ -22,7 +22,7 @@ Parallel processing is available if processing several spectra.
 Package: \tab batman\cr
 Type: \tab Package\cr
 Version: \tab 1.1.0.03\cr
-Date: \tab 2013-06-10\cr
+Date: \tab 2013-07-24\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }}
