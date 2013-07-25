@@ -1,53 +1,49 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Options file for BATMAN %%%%%%%%%%%%%%%%%%%%%%%%%
 %% There should be no empty line in the file, if line                               %%   
-%% is not used, please comment the start of the line with "%".                      %%
+%% is not used, please comment the start of the line with %.                      %%
 %% Please do not comment or remove any of the parameter input lines.                %% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Put each set of ppm range in a pair of parentheses in the same line, 
-%% separate start and end ppm values with a comma, 
-%% separate each set of ppm range with space
-Include ppm ranges for analysis: (1.2, 1.6)
-Spectra range to be included: 1
-Lower limit for spectrum data point: -0.5
-Scale factor: 200000
-Down sampling: 10
-%% 1: yes, 0: no
-Save metabolites fit same as the original spectrum resolution (1/0): 1
-Set seed for random number generation: 25 
-Stop burn in at iteration: 4000
-Save results in every ? iterations: 50
-Same concentration for all spectra (fixed effect) (1/0): 0
-Rerun iterations: 5000
-Start temperature: 1000
-Spectrometer frequency (MHz): 600
+%% General parameters:
+%% ppm ranges for analysis: Please put each ppm range in a pair of parentheses in the same line, 
+%% separate start and end ppm values with a comma, and 
+%% separate each set of ppm range with space, e.g. (3.3, 3.8) (4.2, 4.4)
+ppmRange - ppm ranges for analysis: (1.2, 1.6)
+specNo - Ranges of spectra number to be included (e.g. 1,3-4 etc.):  1
+negThresh - Truncation threshold for negative intensities: -0.5
+scaleFac - Intensity scale factor: 200000
+downSamp - Down sampling factor: 10
+hiresFlag - Save metabolite fit at resolution of original spectrum? (Yes - 1 / No - 0): 1
+randSeed  - Random number seed: 25  
+nItBurnin - Number of burn-in iterations: 4000
+thinning - Save MCMC state in every ? iterations: 50
+cfeFlag - Same concentration for all spectra (fixed effect)? (Yes - 1 / No - 0): 0
+nItRerun - Number of iterations for batmanrerun: 5000
+startTemp - Start temperature: 1000
+specFreq - Spectrometer frequency (MHz): 600
+%% 
+%% Uncatalogued (wavelet) component: 
+%% Hyper parameters for the global precision priors, lambda is inversely proportional to error variance. 
+%% lambda ~ Gamma(a,b/2) on wavelet coefficients:
+a - Gamma-distributed with shape a: 0.00001
+b - Gamma-distributed with scale b: 0.000000001
+%% 
+%% Catalogued metabolite component: gamma is the peak width (full width at half max) of metabolite m. 
+%% The model for gamma is ln(gamma)= mu + nu_m, where mu is the spectrum-wide average log-peak width  
+%% and nu_m is a random effect for each metabolite deviating from mu.  
+muMean - Mean of prior on global peak width (mu) in ln(Hz): 0 
+muVar - Variance of prior on global peak width (mu) in ln(Hz): 0.1
+muVar_prop - Variance of proposal distribution for mu in ln(Hz): 0.002
+%% The mean of each prior on nu_m is 0. 
+%% Set variance of prior on peak width offset (nu_m) to 0 to turn off the random effect on peak width:  
+nuMVar - Variance of prior on peak width offset (nu_m) in ln(Hz): 0.0025
+nuMVarProp - Variance of proposal distribution for nu_m in ln(Hz): 0.0001
 %%
-%% Hyper parameters for the global precision priors, 
-%% lambda is inversely proportional to error various. 
-%% (lambda ~ Gamma(a,b/2)) on wavelet coefficients:
-Gamma-distributed with shape a : 0.00001
-Gamma-distributed with scale b : 0.000000001
+%% Wavelet truncation: tau is a vector of truncation limits, which sets a lower bound on the wavelets
+tauMean - mean of the prior on tau: -0.01
+tauPrec - inverse of variance of prior on tau: 2
 %%
-%% Peak width of metabolite m (gamma), the model for gamma is
-%% log(gamma)= mu + nu_m. where mu is the spectrum wide average log-peakwidth  
-%% and nu_m is a random effect on metabolite deviated from mu. 
-Average peak FWHM in log(Hz) (mean of the prior on mu): 0 
-Various of Peak FWHM in log(Hz) (variance of the prior on mu): 0.1
-Proposal various of Peak FWHM in log(Hz) (proposal variance for the Metropolis-Hastings sampler for mu): 0.002
-%% set the following parameter to 0 to turn off the random effect on peak width, 
-%% mean of each prior on nu_m is 0, 
-Various of Peak FWHM offset (variance of each of the priors on the nu_m): 0.0025
-Proposal variance of Peak FWHM offset (proposal variance for the Metropolis-Hastings sampler for each nu_m): 0.0001
-%%
-%% tau is a vector of truncation limit, which bounds wavelet below
-mean of the prior on tau: -0.01
-%% steep is inversely proportional to the variance of the prior on tau
-steep: 2
-%%
-%% Prior of the truncation of position shift for all multiplets
-%% individual prior for each multiplet can be changed in the multi_data(_user).csv file
-rdelta: 0.030
-Use specified chemical shift for spectra (chemShiftperSpectra.csv) file (1/0) csFlag: 0
-
-
- 
+%% Global prior on peak shift (truncated Gaussian)
+%% Note: individual priors for each multiplet can be changed in the multi_data(_user).csv file
+rdelta - Truncation of the prior on peak shift (ppm): 0.03
+csFlag - Specify chemical shift for each multiplet in each spectrum? (chemShiftperSpectra.csv file) (Yes - 1 / No - 0): 0
