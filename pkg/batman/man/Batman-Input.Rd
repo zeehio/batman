@@ -30,7 +30,7 @@
 
  
  
-  \code{Include ppm ranges for analysis: (1.2, 1.6) (2.1, 2.8)}
+  \code{ppmRange - ppm ranges for analysis: (1.2, 1.6) (2.1, 2.8)}
   
   
    \itemize{
@@ -41,7 +41,7 @@
       factor below, which used together, may also left very small number of spectra variables. }}
   
   
-  \code{Spectra range to be included: 1-3, 5}
+  \code{specNo - Ranges of spectra number to be included (e.g. 1,3-4 etc.): 1-3, 5}
   
   
   \itemize{
@@ -51,7 +51,7 @@
       \code{batman} or \code{rerunbatman}.}}
   
   
-  \code{Lower limit for spectrum intensity: -0.5}
+  \code{negThresh - Truncation threshold for negative intensities: -0.5}
   
   
   \itemize{
@@ -59,14 +59,14 @@
       will be replaced by the lower limit.}}
   
   
-  \code{Normalisation factor: 20000}
+  \code{scaleFac - Intensity scale factor: 20000}
   
   
 \itemize{
      \item{The whole spectrum will be divided by the normalisation factor.}}
   
   
-  \code{Down sampling: 3}
+  \code{downSamp - Down sampling factor: 3}
   
   
 \itemize{
@@ -75,7 +75,9 @@
       with the index \eqn{1:3:end} will be used for analysis.}}
 
 
-  \code{Save metabolites fit same as the original spectrum resolution (1/0): 1}
+  \code{hiresFlag - Save metabolite fit at resolution of original spectrum?}
+  
+  \code{(Yes - 1 / No - 0): 1}
 
 
 \itemize{
@@ -84,13 +86,13 @@
       Input 1 for yes, and 0 for no.}}
 
 
-  \code{Set seed for random number generation: 25}
+  \code{randSeed  - Random number seed: 25}
 
 \itemize{
      \item{Random number generation seed, integer.}}
   
     
-  \code{Stop burn in at iteration: 4000}
+  \code{nItBurnin - Number of burn-in iterations: 4000}
 
 
 \itemize{
@@ -102,13 +104,15 @@
       prior truncation on ppm shift for each multiple (adjust parameter "rdelta" below). }}
   
   
-  \code{Save results in every ? iterations: 5}
+  \code{thinning - Save MCMC state in every ? iterations: 5}
   
   \itemize{
      \item{Integer, save posterior samples for every 5 iterations.}}
 
 
-  \code{Same concentration for all spectra (fixed effect) (1/0): 0}
+  \code{cfeFlag - Same concentration for all spectra (fixed effect)?}
+  
+   \code{(Yes - 1 / No - 0): 0}
   
   
 \itemize{
@@ -116,7 +120,7 @@
       technical replicates). Input 1 for yes, and 0 for no.}}
       
       
-  \code{Rerun iterations: 5000}
+  \code{nItRerun - Number of iterations for batmanrerun: 5000}
   
   
  \itemize{
@@ -125,7 +129,7 @@
       from running \code{batman}. There is no burnin for batman rerun.}}
       
 
-  \code{Start temperature: 1000}
+  \code{startTemp - Start temperature: 1000}
   
   
 \itemize{
@@ -133,17 +137,17 @@
       may need more burnin iterations to cool down.}}
       
           
-  \code{Spectrometer frequency (MHz): 600}
+  \code{specFreq - Spectrometer frequency (MHz): 600}
   
   
 \itemize{
      \item{Spectrometer used to collect the spectrum.}}
   
 
-  \code{a: 0.00001}
+  \code{a - Gamma-distributed with shape a: 0.00001}
       
       
-  \code{b: 0.000000001}
+  \code{b - Gamma-distributed with scale b: 0.000000001}
 
 
 \itemize{
@@ -151,19 +155,19 @@
       (\eqn{\lambda \sim Gamma(a,b/2)}) on wavelet coefficients.}}
        
         
-  \code{Mean of the prior on mu: 0}
+  \code{muMean - Mean of prior on global peak width (mu) in ln(Hz): 0}
   
   
-  \code{Variance of the prior on mu: 0.1}
+  \code{muVar - Variance of prior on global peak width (mu) in ln(Hz): 0.1}
   
   
-  \code{Proposal variance for the Metropolis-Hastings sampler for mu: 0.002}
+  \code{muVar_prop - Variance of proposal distribution for mu in ln(Hz): 0.002}
   
   
-  \code{Variance of each of the priors on the nu_m: 0.0025}
+  \code{nuMVar - Variance of prior on peak width offset (nu_m) in ln(Hz): 0.0025}
     
     
-  \code{Proposal variance for the Metropolis-Hastings sampler for each nu_m: 0.0001}
+  \code{nuMVarProp - Variance of proposal distribution for nu_m in ln(Hz): 0.0001}
   
   
 \itemize{
@@ -177,21 +181,21 @@
       for most of the case.
     }}
 
-  \code{mean of the prior on tau: -0.01}
+  \code{tauMean - mean of the prior on tau: -0.01}
   
 \itemize{
      \item{Hyper priors (\eqn{\tau}) on negative wavelet coefficient (truncated normal).
       A more negative value means the wavelet fit will have more negative component.}}
   
  
-  \code{steep: 2}
+  \code{tauPrec - inverse of variance of prior on tau: 2}
  
  
 \itemize{
      \item{This parameter is inversely proportional to the variance of the prior on \eqn{\tau}.}}
 
 
-  \code{rdelta: 0.030}
+  \code{rdelta - Truncation of the prior on peak shift (ppm): 0.030}
   
 \itemize{
      \item{Prior of the truncation on ppm shift for all multiplets, individual prior 
@@ -199,7 +203,9 @@
   parameter to allow multiplets to shift more. Please note, increasing this value may need more burn in
   iterations to find the best chemical shift for multiplets.}}
   
-   \code{Use specified chemical shift for spectra (chemShiftperSpectra.csv) file (1/0): 0}
+   \code{csFlag - Specify chemical shift for each multiplet in each spectrum?}
+   
+    \code{(chemShiftperSpectra.csv file) (Yes - 1 / No - 0): 0}
   
 \itemize{
      \item{Input "1" to use file "chemShiftperSpectra.csv" to specify chemical shift per multiplet and per spectrum. 
