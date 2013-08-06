@@ -23,7 +23,7 @@
 \item{saveFigDir}{Save figure in this directory. The default is current working directory.}
 \item{prefixFig}{Add prefix to each saved figure name. The default is no prefix.}
 \item{rerun}{Set to FALSE to plot \code{batman} result, and TRUE to plot \code{batmanrerun} result.}
-\item{overwriteFig}{Overwrithe saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}}.
+\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}}.
 }
 \seealso{
  \code{\link{batman}, \link{batmanrerun}}

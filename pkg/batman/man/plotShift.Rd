@@ -22,7 +22,7 @@
 \item{saveFig}{Save figure to pdf file if set TRUE. The default is TRUE.}
 \item{saveFigDir}{Save pdf file in this directory. The default is the output directory of BM.}
 \item{prefixFig}{Add prefix to each saved figure name. The default is no prefix.}
-\item{overwriteFig}{Overwrithe saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}}.
+\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}}.
 }
 \seealso{
 \code{\link{batman}, \link{batmanrerun}}

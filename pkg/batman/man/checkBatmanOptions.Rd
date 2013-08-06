@@ -1,7 +1,9 @@
 \name{checkBatmanOptions}
 \alias{checkBatmanOptions}
-\title{Check batmanOptions.txt file for version later than 1.0.4}
-\description{Check batmanOptions.txt file and add a new line input at the end of the file.}
+\title{Check previouse versions of batmanOptions.txt file and unify the parameter
+names to the current one.}
+\description{Check batmanOptions.txt file and may add a new input line at the 
+end of the file for old versions.}
 \usage{checkBatmanOptions(dir)}
 \arguments{
 \item{dir}{The directory of batmanOptions.txt file.}

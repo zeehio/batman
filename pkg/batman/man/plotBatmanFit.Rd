@@ -6,7 +6,7 @@
  the file name is in the format of "specFit_\eqn{i}to\eqn{j}_\eqn{metaName}.pdf", where \eqn{i} and \eqn{j} are 
  the range numbers of spectra in the figure and the metabolite name will be shown 
  in place of \eqn{metaName} if supplied. Maximum of 2 spectra will be shown in each figure. 
- The figure file will not be overwritten if it already exists. A prefix can be added to 
+ The figure file will not be overwritten if it already exists by default. A prefix can be added to 
  the file name for new saves.}
 \usage{
  plotBatmanFit(BM, xfrom, xto, yfrom, yto, listMeta = FALSE,
@@ -26,9 +26,9 @@
 \item{saveFigDir}{Save figure(s) in this directory. The default is output directory of BM.}
 \item{prefixFig}{Add prefix to each saved figure name. The default is no prefix.}
 \item{rerun}{Set to FALSE to plot \code{batman} result, and TRUE to plot \code{batmanrerun} result.}
-\item{placeLegend}{Where to place the legend in figure. For example, \code{placeLegend = "topright"}.}
+\item{placeLegend}{Where to place the legend in figure. The default is "topright".}
 \item{plotColour}{User can specify colours for each metabolite if \code{listMeta = TRUE}. If not, a set of randomly generated colours will be used.}
-\item{overwriteFig}{Overwrithe saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}}.
+\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}}.
 }
 \seealso{
 \code{\link{batman}, \link{batmanrerun}}

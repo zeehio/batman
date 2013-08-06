@@ -21,8 +21,8 @@ Parallel processing is available if processing several spectra.
 \tabular{ll}{
 Package: \tab batman\cr
 Type: \tab Package\cr
-Version: \tab 1.1.0.03\cr
-Date: \tab 2013-07-24\cr
+Version: \tab 1.2.0\cr
+Date: \tab 2013-08-06\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }}
@@ -31,16 +31,15 @@ LazyLoad: \tab yes\cr
  Maria De Iorio <m.deiorio@ucl.ac.uk>, Timothy Ebbels <t.ebbels@ic.ac.uk>
 }
 \references{
-Astle W et al. (2012) A Bayesian Model of NMR Spectra for the Deconvolution and 
-Quantification of Metabolites in Complex Biological Mixtures. Journal of the American Statistical Association,
-Vol. 107, Iss. 500, 2012
-http://arxiv.org/PS_cache/arxiv/pdf/1105/1105.2204v1.pdf
+Hao, J., et al., BATMAN--an R package for the automated quantification of metabolites from nuclear magnetic resonance spectra using a Bayesian model. Bioinformatics, 2012. 28(15): p. 2088-90.
+
+http://bioinformatics.oxfordjournals.org/content/28/15/2088
 
 
-Hao J et al. (2012) BATMAN-an R package for the automated quantification of 
-metabolites from NMR spectra using a Bayesian Model. BIOINFORMATICS, 2012:28(15):2088-2090.
 
-http://arxiv.org/ftp/arxiv/papers/1112/1112.5794.pdf
+Astle, W., et al., A Bayesian Model of NMR Spectra for the Deconvolution and Quantification of Metabolites in Complex Biological Mixtures. Journal of the American Statistical Association, 2012. 107(500): p. 1259-1271.
+
+http://www.tandfonline.com/doi/abs/10.1080/01621459.2012.695661#.UgEf-hbZa4k
 }
 \keyword{ package }
 
