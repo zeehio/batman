@@ -47,9 +47,18 @@ batman 1.1.0 (released 2-2013)
 	1	Added check with matching number of input for multi_data*.csv template "-1" option, output error messages in terminal, may not visible in R gui. 
 	2	Sorted multi_data.csv file according to multiplet name.
 	3 	Added MATLAB tool "SplineFitBATMAN" to assist when fitting multiplets with chemical shift per spectrum.  
-batman 1.1.01 (released 25-2-2013)
+batman 1.1.0.01 (released 25-2-2013)
 	1	Added function readBrukerZipped. 
-batman 1.1.02 (released 30-5-2013)
+batman 1.1.0.02 (released 30-5-2013)
 	1	Fixed bug with reading results when "Same concentration for all spectra (fixed effect)" set to 1 in batmanOptions.txt
-batman 1.1.03 (released 10-6-2013)
-	1	Fixed additional bug with reading in spectra titles with "#" 
+batman 1.1.0.03 (released 10-6-2013)
+	1	Fixed bug with reading in spectra titles with "#" 
+batman 1.1.0.04 (released 31-7-2013)
+	1	Fixed bug with reading in Bruker spectra of size 128K
+	2	Unify batman Option parameter names, and checkBatmanOptions to modify previous batman option file.
+
+batman 1.2.0 (released 6-8-2013)
+	1 	Added plotBatmanFitStack function.
+	2	Added plotDiagnosticScatter function.
+	3	Added plotChemShiftDist function.
+	3 	Modified readBatmanOutput function to have the option to read in part results for large dataset.

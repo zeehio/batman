@@ -1,5 +1,5 @@
 plotBatmanFit<-function(BM, xfrom, xto, yfrom, yto, listMeta = FALSE, metaName, saveFig = TRUE, 
-                        saveFigDir = BM$outputDir, prefixFig, rerun = FALSE, placeLegend, 
+                        saveFigDir = BM$outputDir, prefixFig, rerun = FALSE, placeLegend = "topright", 
                         plotColour, overwriteFig = FALSE)
 {
   ## written by Dr. Jie Hao, Imperial College London
@@ -10,8 +10,6 @@ plotBatmanFit<-function(BM, xfrom, xto, yfrom, yto, listMeta = FALSE, metaName, 
   warnDef<-options("warn")$warn
   warnRead<-options(warn = -1)
   
-  if (missing(placeLegend))
-    placeLegend <- "topright"
   ptype = "pdf"
   cex = 0.8
   cex1 = 0.5
