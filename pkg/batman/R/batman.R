@@ -170,8 +170,17 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
 		  # prepare chemshift for c++
 		  chemlist<-read.csv(dirCS,header=T,stringsAsFactors=FALSE,colClasses="character")
 		  if (dim(chemlist)[1] != dim(bor)[1])
+		  {
 		    stop(paste("Different number of multiplets in multiplet template file(s) and ", dirCS,
 		               "\nPlease modify chemShiftPerSpec.csv or call createChemShiftPerSpec() to create a new one.",sep = ""))
+		  }
+		    
+		  if ((dim(chemlist)[2]-2) != (dim(sa)[2]-1))
+		  {
+		    stop(paste("Different number of spectra in dataset and ", dirCS,
+		               "\nPlease modify chemShiftPerSpec.csv or call createChemShiftPerSpec() to create a new one.",sep = ""))
+		  }
+      
 		  for (i in 3:dim(chemlist)[2])
 		  {
 		    check<-chemlist[,i]=='n'
