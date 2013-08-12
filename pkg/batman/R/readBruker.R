@@ -10,13 +10,22 @@ readBruker<-function(BrukerDataDir)
   ppm <- NULL
   pfile <-list.files(path = datapath, pattern = "^procs$", all.files = FALSE,full.names = TRUE, recursive = TRUE, ignore.case = TRUE)
   rfile <-list.files(path = datapath, pattern = "^1r$", all.files = FALSE,full.names = TRUE, recursive = TRUE, ignore.case = TRUE)
+  
+  ps <- substr(pfile, 1, nchar(pfile)-5)
+  rs <- substr(rfile, 1, nchar(rfile)-2)
+  
+  if (length(setdiff(rs,ps)) == 0 & length(setdiff(ps,rs)) > 0)
+  {
+    pfile <- paste(rs,"procs",sep = "")
+  } 
+  
   L<-length(pfile)
   Lr<-length(rfile)
   sa <- NULL
   snam <- NULL
   if (L==0 || Lr==0 || L!=Lr)
-  {
-    return (cat("Bruker file does not exist in datapath, or other problems with bruker files...\n"))
+  {   
+      return (cat("Bruker file does not exist in datapath, or other problems with bruker files...\n"))
   } else {
     for (i in 1:L)
     {    
