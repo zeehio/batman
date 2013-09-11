@@ -1,8 +1,14 @@
 SplineFitBATMAN 
+11/09/2013  
+version 0.5
+   1. press "Return" instead of "Enter" when finish "Select and Run".
+
+SplineFitBATMAN 
 30/05/2013  
 version 0.4 
     1. working with no Image Processing Toolbox.
     2. assign first and last spectra points by default.
+
 SplineFitBATMAN 
 18/02/2013  
 version 0.3 
@@ -31,8 +37,9 @@ Choose a multiplet first, then zoom in to the range containing that multiplet fr
 "ppm range for spline intersection" sets the search range on the left and right side (+/-) of the intersection 
 between spline and each spectrum.
 
-Set all the other parameter in Step 2 before click "Select and Run".
-The chemical shift for the FIRST and LAST spectra in stack plot should be selected each time.
+Set all the other parameter in Step 2 before click "Select and Run". 
+Click on figure to select points for spline, and press "Return" when finish clicking.
+Note: The chemical shift for the FIRST and LAST spectra in stack plot should be selected each time.
 
 If not satisfied with results (shown in blue squares), change parameter and click 
 "Relocate chemical shift per spectrum" (do not need to re-select points), or 
