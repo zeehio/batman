@@ -43,6 +43,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
 <p> The <strong>project documentation page</strong> you can find <a href="https://r-forge.r-project.org/scm/viewvc.php/*checkout*/documentation/batman.pdf?root=batman"><strong>here</strong></a>. </p>
 <p> The <strong>project source code and files page</strong> you can find <a href="https://r-forge.r-project.org/scm/viewvc.php/?root=batman"><strong>here</strong></a>. </p>
+<p> The <strong>SplineFitBATMAN</strong> (MATLAB code) you can find <a href="https://r-forge.r-project.org/scm/viewvc.php/SplineFitBATMAN_MATLABcode/?root=batman"><strong>here</strong></a>. </p>
 
 <p>
 <H4>
