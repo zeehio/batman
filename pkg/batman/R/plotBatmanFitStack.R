@@ -80,8 +80,11 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
     sno<-BM$specRange[specNo]
   }
   
+  Wleg <- "Wavelet Fit"
+  
   if (mirroredWav)
   {
+    Wleg <- "Mirrored Wavelet Fit"
     if (!rerun)
     {
       for (j in 1:length(sno))
@@ -257,7 +260,7 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
               
               lines(BM$sFit[pind[bigones],i]-maxdif,ytmp[bigones],col=plotColour[i2],lwd = metaTmplwd, lty = metaTmplty)
             }
-            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum",
+            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum",
                                   row.names(BM$beta)), col=c(4,3,2,1,plotColour), ncol = 2, cex = cex1,
                    lty=c(1,1,1,1,rep(metaTmplty, nrow(BM$beta))),lwd = c(0.5,0.5,0.5,0.5,rep(metaTmplwd, nrow(BM$beta))))
           } else if (length(mind)!=0) {
@@ -271,11 +274,11 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
                 lines(BM$sFit[pind[middleones[[ig]]],i]-middif[ig],ytmp[middleones[[ig]]],col=plotColour[md], lwd = metaTmplwd, lty = metaTmplty)
               lines(BM$sFit[pind[bigones],i]-maxdif,ytmp[bigones],col=plotColour[md], lwd = metaTmplwd, lty = metaTmplty)
             }
-            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum",
+            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum",
                                   row.names(BM$beta)[mind]), col=c(4,3,2,1,plotColour), cex = cex,
                    lty=c(1,1,1,1,rep(metaTmplty, length(mind))),lwd = c(0.5,0.5,0.5,0.5,rep(metaTmplwd, length(mind))))
           } else {
-            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum"), col=c(4,3,2,1), 
+            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum"), col=c(4,3,2,1), 
                    lty=c(1,1,1,1),lwd = c(0.5,0.5,0.5,0.5), cex = cex)
           }
         } else {
@@ -296,7 +299,7 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
               lines(BM$sFit[pind[littleones],i],ytmp[littleones],col=plotColour[i2],lwd = metaTmplwd, lty = metaTmplty)
               lines(BM$sFit[pind[bigones],i]-(gapsize[1]),ytmp[bigones],col=plotColour[i2],lwd = metaTmplwd, lty = metaTmplty)
             }
-            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum",
+            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum",
                                   row.names(BM$beta)), col=c(4,3,2,1,plotColour), ncol = 2, cex = cex1,
                    lty=c(1,1,1,1,rep(metaTmplty, nrow(BM$beta))),lwd = c(0.5,0.5,0.5,0.5,rep(metaTmplwd, nrow(BM$beta))))
           } else if (length(mind)!=0) {
@@ -309,11 +312,11 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
               lines(BM$sFit[pind[bigones],i]-(gapsize[1]),ytmp[bigones],col=plotColour[md], lwd = metaTmplwd, lty = metaTmplty)
             }
             
-            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum",
+            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum",
                                   row.names(BM$beta)[mind]), col=c(4,3,2,1,plotColour), cex = cex,
                    lty=c(1,1,1,1,rep(metaTmplty, length(mind))),lwd = c(0.5,0.5,0.5,0.5,rep(metaTmplwd, length(mind))))
           } else {
-            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum"), col=c(4,3,2,1), 
+            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum"), col=c(4,3,2,1), 
                    lty=c(1,1,1,1),lwd = c(0.5,0.5,0.5,0.5), cex = cex)
           }
         }
@@ -339,7 +342,7 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
             lines(BM$sFit[pind,i],BM$beta[i2,j]*BM$metaTemp[pind,i2+(j-1)*nrow(BM$beta)] + offset*(j-1),
                   col=plotColour[i2], lwd = metaTmplwd, lty = metaTmplty )
           
-          legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum",
+          legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum",
                                 row.names(BM$beta)), col=c(4,3,2,1,plotColour), ncol = 2, cex = cex1,
                  lty=c(1,1,1,1,rep(metaTmplty, nrow(BM$beta))),lwd = c(0.5,0.5,0.5,0.5,rep(metaTmplwd, nrow(BM$beta))))
         } else if (length(mind)!=0) {
@@ -349,11 +352,11 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
             lines(BM$sFit[pind,i],BM$beta[mind[md],j]*BM$metaTemp[pind,mind[md]+(j-1)*nrow(BM$beta)] + offset*(j-1),
                   col=plotColour[md], lwd = metaTmplwd, lty = metaTmplty )
           }
-          legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum",
+          legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum",
                                 row.names(BM$beta)[mind]), col=c(4,3,2,1,plotColour), cex = cex,
                  lty=c(1,1,1,1,rep(metaTmplty, length(mind))),lwd = c(0.5,0.5,0.5,0.5,rep(metaTmplwd, length(mind))))
         } else {
-          legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum"), col=c(4,3,2,1), 
+          legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum"), col=c(4,3,2,1), 
                  lty=c(1,1,1,1),lwd = c(0.5,0.5,0.5,0.5), cex = cex)
         }
       }
@@ -451,7 +454,7 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
                 lines(BM$sFitRerun[pind[middleones[[ig]]],i]-middif[ig],ytmp[middleones[[ig]]],col=plotColour[i2],lwd = metaTmplwd, lty = metaTmplty)
               lines(BM$sFitRerun[pind[bigones],i]-maxdif,ytmp[bigones],col=plotColour[i2],lwd = metaTmplwd, lty = metaTmplty)
             }
-            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum",
+            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum",
                                   row.names(BM$betaRerun)), col=c(4,3,2,1,plotColour), ncol = 2, cex = cex1,
                    lty=c(1,1,1,1,rep(metaTmplty, nrow(BM$betaRerun))),lwd = c(0.5,0.5,0.5,0.5,rep(metaTmplwd, nrow(BM$betaRerun))))
           } else if (length(mind)!=0) {
@@ -465,11 +468,11 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
                 lines(BM$sFitRerun[pind[middleones[[ig]]],i]-middif[ig],ytmp[middleones[[ig]]],col=plotColour[md], lwd = metaTmplwd, lty = metaTmplty)
               lines(BM$sFitRerun[pind[bigones],i]-maxdif,ytmp[bigones],col=plotColour[md], lwd = metaTmplwd, lty = metaTmplty)
             }
-            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum",
+            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum",
                                   row.names(BM$betaRerun)[mind]), col=c(4,3,2,1,plotColour), cex = cex,
                    lty=c(1,1,1,1,rep(metaTmplty, length(mind))),lwd = c(0.5,0.5,0.5,0.5,rep(metaTmplwd, length(mind))))
           } else {
-            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum"), col=c(4,3,2,1), 
+            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum"), col=c(4,3,2,1), 
                    lty=c(1,1,1,1),lwd = c(0.5,0.5,0.5,0.5), cex = cex)
           }
         } else {
@@ -492,7 +495,7 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
               lines(BM$sFitRerun[pind[bigones],i]-(gapsize[1]),ytmp[bigones],col=plotColour[i2],
                     lwd = metaTmplwd, lty = metaTmplty)
             }
-            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum",
+            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum",
                                   row.names(BM$betaRerun)), col=c(4,3,2,1,plotColour), ncol = 2, cex = cex1,
                    lty=c(1,1,1,1,rep(metaTmplty, nrow(BM$betaRerun))),
                    lwd = c(0.5,0.5,0.5,0.5,rep(metaTmplwd, nrow(BM$betaRerun))))
@@ -506,11 +509,11 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
               lines(BM$sFitRerun[pind[bigones],i]-(gapsize[1]),ytmp[bigones],col=plotColour[md], 
                     lwd = metaTmplwd, lty = metaTmplty)
             }
-            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum",
+            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum",
                                   row.names(BM$betaRerun)[mind]), col=c(4,3,2,1,plotColour), cex = cex,
                    lty=c(1,1,1,1,rep(metaTmplty, length(mind))),lwd = c(0.5,0.5,0.5,0.5,rep(metaTmplwd, length(mind))))
           } else {
-            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum"), col=c(4,3,2,1), 
+            legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum"), col=c(4,3,2,1), 
                    lty=c(1,1,1,1),lwd = c(0.5,0.5,0.5,0.5), cex = cex)
           }
         }
@@ -535,7 +538,7 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
           for (i2 in 1:nrow(BM$betaRerun))
             lines(BM$sFitRerun[pind,i],BM$betaRerun[i2,j]*BM$metaTempRerun[pind,i2+(j-1)*nrow(BM$betaRerun)]+ offset*(j-1),
                   col=plotColour[i2], lwd = metaTmplwd, lty = metaTmplty )
-          legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum",
+          legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum",
                                 row.names(BM$betaRerun)), col=c(4,3,2,1,plotColour), ncol = 2, cex = cex1,
                  lty=c(1,1,1,1,rep(metaTmplty, nrow(BM$betaRerun))),
                  lwd = c(0.5,0.5,0.5, 0.5,rep(metaTmplwd, nrow(BM$betaRerun))))
@@ -546,11 +549,11 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
             lines(BM$sFitRerun[pind,i],BM$betaRerun[mind[md],j]*BM$metaTempRerun[pind,mind[md]+(j-1)*nrow(BM$betaRerun)]+ offset*(j-1),
                   col=plotColour[md], lwd = metaTmplwd, lty = metaTmplty )
           }
-          legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum",
+          legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum",
                                 row.names(BM$betaRerun)[mind]), col=c(4,3,2,1,plotColour), cex = cex,
                  lty=c(1,1,1,1,rep(metaTmplty, length(mind))),lwd = c(0.5,0.5,0.5,0.5,rep(metaTmplwd, length(mind))))
         } else {
-          legend(placeLegend, c("Original Spectrum", "Metabolites Fit", "Wavelet Fit", "Fit Sum"), col=c(4,3,2,1), 
+          legend(placeLegend, c("Original Spectrum", "Metabolites Fit", Wleg, "Fit Sum"), col=c(4,3,2,1), 
                  lty=c(1,1,1,1),lwd = c(0.5,0.5,0.5,0.5), cex = cex)
         }
       }
