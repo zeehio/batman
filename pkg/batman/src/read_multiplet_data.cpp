@@ -187,7 +187,7 @@ int read_multiplet_data(int lineno, char filename[], opt* opts,
 							strcat(fdirR,name);
 							strcat(fdirR,".txt");
 							ifstream inA3_str(fdirR);
-							cout<<"route "<< fdirR<<endl;
+							//cout<<"route "<< fdirR<<endl;
 							//cout<<"file is "<< inA3_str<< endl;
 							
 							//if (!inA3_str)
@@ -205,7 +205,7 @@ int read_multiplet_data(int lineno, char filename[], opt* opts,
 								inA3_str.peek();
 								if (tst2%2 != 0)
 								{
-									cout<<"tst2 " <<tst2<<endl;
+									//cout<<"tst2 " <<tst2<<endl;
 									if(vec_el<=max(c3[it][1],c3[it][0]) && vec_el>=min(c3[it][1],c3[it][0]))
 									{
 																			
