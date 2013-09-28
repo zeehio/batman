@@ -187,33 +187,53 @@ int read_multiplet_data(int lineno, char filename[], opt* opts,
 							strcat(fdirR,name);
 							strcat(fdirR,".txt");
 							ifstream inA3_str(fdirR);
-							//cout<<"route "<< fdirR<<endl;
+							cout<<"route "<< fdirR<<endl;
 							//cout<<"file is "<< inA3_str<< endl;
 							
 							//if (!inA3_str)
 							//cout<<"empty, no file "<< inA3_str<< endl;
-							
+							//int tst = 1;
+							int tst2 = 0;
 							
 							while(inA3_str.good())
 							{
+								tst2 = tst2 +1;
+								
 								inA3_str>>vec_el;
+								//cout<<"vec_el ppm "<<vec_el<<",tst2 " <<tst2<<endl;
 								inA3_str.ignore(1);
-								if(vec_el<max(c3[it][1],c3[it][0]) && vec_el>min(c3[it][1],c3[it][0]))
-								{
-									//cout<<"vec_el ppm"<<vec_el<<endl;
-									inA3_str.peek();
-									inA3_str>>vec_el;
-									inA3_str.ignore(1);
-									//cout<<"vec_el"<<vec_el<<endl;
-									raster.push_back(vec_el);
-								}
-								//cout<<"vec_el"<<vec_el<<endl;
-								// need to peek to modify state flag
 								inA3_str.peek();
+								if (tst2%2 != 0)
+								{
+									cout<<"tst2 " <<tst2<<endl;
+									if(vec_el<=max(c3[it][1],c3[it][0]) && vec_el>=min(c3[it][1],c3[it][0]))
+									{
+																			
+											inA3_str>>vec_el;
+										raster.push_back(vec_el);
+										tst2 = tst2 +1;
+									} 
+								}
+
 							}
+							/*cout<<"tst = " <<tst<<endl;
+							cout<<"raster1 = "<< raster[0]<<"rasterE = "<<raster[raster.size()-1]<<endl;
 							//cout << "c3 "<<c3[it].size()<<endl;
 							//for (int ii = 0; ii <raster.size(); ii++)
 							//cout<<"raster "<< raster[ii] << " ";
+							FILE *outM;
+							outM = fopen("raster.txt","w");
+							// wirte to file the metabolites in range for anaylsis
+							for (unsigned int cv = 0; cv <raster.size(); cv++)
+							{
+								fprintf(outM, "%f",raster[cv]);
+								if (cv <=(raster.size()-1))
+								{
+									fprintf(outM, "\n");
+								}
+							}
+							fclose(outM);*/
+							
 							
 							ms.raster_setup(abs(c3[it][1]-c3[it][0]), &raster);
 						} else {
