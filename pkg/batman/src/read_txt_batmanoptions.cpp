@@ -236,6 +236,16 @@
         strcpy(ac,s[lind].c_str());
         (*data).stop_burnin = atoi(ac);
         lind ++;
+		
+		    memset (ac,'\0',80);
+        strcpy(ac,s[lind].c_str());
+        (*data).post_burnin = atoi(ac);
+        lind ++;
+        
+        memset (ac,'\0',80);
+        strcpy(ac,s[lind].c_str());
+        (*data).tempF = atoi(ac);
+        lind ++;
 
         memset (ac,'\0',80);
         strcpy(ac,s[lind].c_str());

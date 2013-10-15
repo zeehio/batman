@@ -26,7 +26,13 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   dir6<-paste(dirA[2],"/chemShiftPerSpec.dat",sep="")
   dir7<-paste(dirA[4],"/",sep = "")
   
-  checkBatmanOptions(dir1)
+  pBI_IP <- checkBatmanOptions(dir1)
+  
+  if (pBI_IP)
+  {
+      stop("Seems you updated from an old version of batman, the post-burn-in parameter has been added to the batmanOptions.txt file, 
+          please modify its value at:\n", dir1)
+  }
   
   dirctime<-paste(dirA[3],"/",ctime,sep="")
   if(!file.exists(dirctime)) {
@@ -45,7 +51,7 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   dirR<-paste(dirA[2],"/multi_data.csv",sep="")
   dirRU<-paste(dirA[2],"/multi_data_user.csv",sep="")
   
-  ## read in batman optitons
+  ## read in batman options
   nlines <-dim(read.table(dir1,sep="\n",comment.char = ""))[1]
   con  <- file(dir1, open = "r")
   oneLine <- readLines(con, n = nlines, warn = FALSE)
@@ -54,28 +60,39 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   myVector <- strsplit(oneLine[nL[2]], ":")
   sno <- NULL
   sno <-getSpectraRange(myVector)
-  
-  myVector <- strsplit(oneLine[nL[24]], ":")
+  ## after adding post-burn-in ito in options +1 after 8
+  myVector <- strsplit(oneLine[nL[24+2]], ":") 
   chemshif <- as.numeric(myVector[[1]][2])
   myVector <- strsplit(oneLine[nL[8]], ":")
   itoBI <- as.numeric(myVector[[1]][2])
-  myVector <- strsplit(oneLine[nL[10]], ":")
+  myVector <- strsplit(oneLine[nL[10+2]], ":")
   fixeff <- as.numeric(myVector[[1]][2])
-  myVector <- strsplit(oneLine[nL[11]], ":")
+  myVector <- strsplit(oneLine[nL[11+2]], ":")
   itoRr <- as.numeric(myVector[[1]][2])
+  ## post-burn-in ito
+  myVector <- strsplit(oneLine[nL[9]], ":")
+  itoPBI <- as.numeric(myVector[[1]][2]) 
+  myVector <- strsplit(oneLine[nL[10]], ":")
+  opt <- as.numeric(myVector[[1]][2]) 
   close(con)
   
-  cat("batman...\n")
-  cat("Enter number of post-burn-in iterations (burn-in currently set to ",itoBI, " iterations):\n" )
-  itoPBI<- getinput(lowlim=1,highlim=-1)  
+  cat("\nRunning batman...\n")
+  #cat("Enter number of post-burn-in iterations (burn-in currently set to ",itoBI, " iterations):\n" )
+  #itoPBI<- getinput(lowlim=1,highlim=-1)  
+
+  
+  cat("Number of burn-in iterations: ", itoBI, "\nNumber of post-burn-in iterations: ",itoPBI, "\n" )
   
   ito<-itoPBI+itoBI
   ## choose template file
-  choices<-paste("1: Include the default template of multiplets in multi_data.csv file only.\n",
-             "2: Include the user input template of multiplets in multi_data_user.csv file only.\n",
-             "3: Include both the above files.\n", sep = '')
-  showLine <-"\nEnter a number of choice from the menu below:\n"
-  opt <- menuA(choices, 1, showLine)
+  #choices<-paste("1: Include the default template of multiplets in multi_data.csv file only.\n",
+  #           "2: Include the user input template of multiplets in multi_data_user.csv file only.\n",
+  #          "3: Include both the above files.\n", sep = '')
+  tempF <-c("1: The default template of multiplets in multi_data.csv file.\n",
+            "2: The user input template of multiplets in multi_data_user.csv file.\n",
+            "3: Both the default and user input template of multiplets files.\n")
+  cat("\nThe template file used is\n", tempF[opt], "\n")
+  #opt <- menuA(choices, 1, showLine)
   
   if (opt == 1)
   {
@@ -127,6 +144,7 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   mL<-mL[,1,drop=FALSE]
   
   write.table(mL,file=dir3, sep = "\t", row.names=FALSE,col.names=FALSE,quote=FALSE)
+  
   ## get spectra data
   if (!missing(BrukerDataDir))
   {
@@ -145,17 +163,6 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
     sa<-read.table(dir2, header=TRUE,sep="\t",comment.char = "")
   }
   
-  if ((ncol(sa)-1)<length(sno))
-    return(cat("No. of spectra included smaller than input spectra.\n"))
-  if (!is.null(colnames(sa))) {
-    saname<-colnames(sa)
-    saname<-saname[2:length(saname)]
-    stit<-rbind(1:length(saname),saname)
-  } else {
-    stit<-rbind(1:(ncol(sa)-1),1:(ncol(sa)-1))
-  }
-  ## spectra number
-  write.table(stit[,sno],file=paste(dirctime, "/spectraTitle.txt", sep=""),row.names=FALSE,col.names=FALSE,quote=FALSE,sep = "\t")
   
   ## new added, chemshift for each spectrum
   if (chemshif == 1)
@@ -192,7 +199,7 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
 		  cp<-file.copy(dir6,dir5)
 		}
   }
-  
+    
   ## choose whether to parallelize spectra
   if (length(sno)>1 && fixeff == 0)    
   {
@@ -204,6 +211,20 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   } else {
     wr<-1
   }
+  
+
+  
+  if ((ncol(sa)-1)<length(sno))
+    return(cat("No. of spectra included smaller than input spectra.\n"))
+  if (!is.null(colnames(sa))) {
+    saname<-colnames(sa)
+    saname<-saname[2:length(saname)]
+    stit<-rbind(1:length(saname),saname)
+  } else {
+    stit<-rbind(1:(ncol(sa)-1),1:(ncol(sa)-1))
+  }
+  ## spectra number
+  write.table(stit[,sno],file=paste(dirctime, "/spectraTitle.txt", sep=""),row.names=FALSE,col.names=FALSE,quote=FALSE,sep = "\t")
   
   cp<-file.copy(dir2,dir5)
   cp<-file.copy(dir4,dir5)

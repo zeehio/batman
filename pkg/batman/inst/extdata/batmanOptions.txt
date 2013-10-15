@@ -16,6 +16,12 @@ downSamp - Down sampling factor: 10
 hiresFlag - Save metabolite fit at resolution of original spectrum? (Yes - 1 / No - 0): 1
 randSeed  - Random number seed: 25  
 nItBurnin - Number of burn-in iterations: 4000
+nItPostBurnin - Number of post-burn-in iterations: 100
+multFile - Choose template of multiplets file from options below: 2
+%% 1, The default template of multiplets in multi_data.csv file,
+%% 2, The user input template of multiplets in multi_data_user.csv file,
+%% 3, Both the default and user input template of multiplets files.
+%%
 thinning - Save MCMC state in every ? iterations: 50
 cfeFlag - Same concentration for all spectra (fixed effect)? (Yes - 1 / No - 0): 0
 nItRerun - Number of iterations for batmanrerun: 5000

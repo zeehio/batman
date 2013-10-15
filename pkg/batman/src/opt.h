@@ -17,6 +17,8 @@ class opt
     int downsample;
     int ito;
     int stop_burnin;
+	int post_burnin;
+  int tempF;
     int savefreq;
     double spec_freq;
     double div;
@@ -51,6 +53,8 @@ public:
         downsample = 10;
         ito = 5000;
         stop_burnin = 7000;
+		post_burnin = 100;
+    tempF = 2;
         savefreq = 50;
         spec_freq = 600;
         a=0.00001;

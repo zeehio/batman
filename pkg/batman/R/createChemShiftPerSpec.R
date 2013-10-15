@@ -44,7 +44,7 @@ createChemShiftPerSpec <-function(templateOption = 1, dirIP)
   fL<-substr(oneLine,1,1)
   nL<-which(is.na(match(fL,"%")))
   myVector <- strsplit(oneLine[nL[2]], ":")
-	ranges <- strsplit(myVector[[1]][2],",")
+	#ranges <- strsplit(myVector[[1]][2],",")
 	sno <- NULL
 	sno <-getSpectraRange(myVector)
 ##  sNo <- as.numeric(myVector[[1]][2])
