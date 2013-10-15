@@ -96,14 +96,38 @@
 
 
 \itemize{
-     \item{Integer, this is the number of burn in iterations. The number of iterations 
-      after burn in will be asked when running \code{batman}. The posterior samples
-      will be saved in the frequency specified by the next parameter. If changing 
+     \item{Integer, this is the number of burn-in iterations. The number of iterations 
+      after burn in will be asked when running \code{batman}. If changing 
       the range of spectrum causing fitting results inconsistent, this indicates that the burn in 
       stage hasn't found the best chemical shift. User may need to increase burn in iterations or reduce 
-      prior truncation on ppm shift for each multiple (adjust parameter "rdelta" below). }}
+      prior truncation on ppm shift for each multiple (adjust parameter "rdelta" below or use "csFlag" function). }}
+            
   
-  
+  \code{nItPostBurnin - Number of post-burn-in iterations: 1000}
+
+
+\itemize{
+     \item{Integer, this is the number of post-burn-in iterations. The posterior samples
+      will be saved in the frequency specified by the next parameter. }}
+      
+      
+        \code{multFile - Choose template of multiplets file from options below: 2}
+
+
+\itemize{
+     \item{Integer, choose a template file from the following options:
+     
+     
+     1, The default template of multiplets in multi_data.csv file,
+     
+     
+     2, The user input template of multiplets in multi_data_user.csv file,
+     
+     
+     3, Both the default and user input template of multiplets files. }}
+      
+
+
   \code{thinning - Save MCMC state in every ? iterations: 5}
   
   \itemize{
@@ -264,9 +288,8 @@ If "-1" is inputted here, a user specified multiplet can be created.
    containing the pure spectrum (refer to \code{\link{createPureSpectraTemplate}}).
   
   
-  \code{no_of_protons}: Number of protons in each multiplet. If "-1" is inputted for "couple_code", one or more 
-	(corresponding to J_constant) values can be given here as peak weights. The sum of no_of_protons is 
-	the number of protons in this multiplet. 
+  \code{relative_intensity}: (previously called no_of_protons) In the ideal case, at full relaxation, it should correspond to the number of protons in each multiplet. If "-1" is inputted for "couple_code", one or more 
+	(corresponding to J_constant) values can be given here (separated by comma) as peak intensities. In this case, the sum of "relative_intensity" is the number of protons in this multiplet. 
   
   
   \code{overwrite_pos}: The default is "n" for not overwrite position, and in that case
