@@ -277,9 +277,14 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
     plotRelCon(BM, saveFigDir = dirctime)
   if (figMetaFit)
     plotMetaFit(BM, saveFigDir = dirctime)
-  
-  file.remove(dir3)
-  file.remove(dir4)
+  if (file.exists(dir3))
+  {
+    file.remove(dir3)
+  }
+  if (file.exists(dir4))
+  {
+    file.remove(dir4)
+  }
   if (chemshif == 1)
   {
     if (file.exists(dir6))

@@ -129,17 +129,12 @@ if(interactive()) bm<-batman()
 ## and what value the user could input: 
 ########################################################################
 ## batman...
-## Enter number of post-burn-in iterations (burn-in currently set to  
-## 400  iterations):
-## 1: 100   ## user input
-##
-## Enter a number of choice from the menu below:
-##  
-## 1: Include the default template of multiplets in multi_data.csv file only.
-## 2: Include the user input template of multiplets in multi_data_user.csv file only.
-## 3: Include both the above files.
-##
-## Selection: 1  ## user input
+## Number of burn-in iterations:  4000 
+## Number of post-burn-in iterations:  100 
+## 
+## The template file used is
+##  1: The default template of multiplets in multi_data.csv file.
+## 
 ## Loading multi_data.csv...
 ## Percentage completed...
 ##   |                                                                  |   0%
