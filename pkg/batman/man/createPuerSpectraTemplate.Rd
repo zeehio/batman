@@ -14,9 +14,7 @@ metabolite name as the file name.}
 library(batman)
 ## createfolder "runBATMAN" in current working directory
 batmanDir = newDir(runBATMANDir = getwd(), overwriteFile = TRUE) 
-## create chemShiftPerSpec.csv
-createPureSpectraTemplate(dirPureSpec = c(paste(batmanDir[2],"/testBrukerPureSpec/testPure1",sep = ""),
-paste(batmanDir[2],"/testBrukerPureSpec/testPure2",sep = "")), metaNames = c("testPure1", "testPure2"), 
-dirIP = batmanDir[2])
+## create pure spectra text file
+createPureSpectraTemplate(dirPureSpec = c(paste(batmanDir[2],"/testBrukerPureSpecForRasterTemplate/testPure1",sep = "")), metaNames = c("testPure1"), dirIP = batmanDir[2])
 }
 \keyword{aplot}
