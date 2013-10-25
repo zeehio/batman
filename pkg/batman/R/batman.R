@@ -35,7 +35,7 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   }
   
   dirctime<-paste(dirA[3],"/",ctime,sep="")
-  if(!file.exists(dirctime)) {
+  if (!file.exists(dirctime)) {
     dir.create(dirctime)
   }
   

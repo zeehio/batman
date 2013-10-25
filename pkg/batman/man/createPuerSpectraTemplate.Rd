@@ -15,6 +15,8 @@ library(batman)
 ## createfolder "runBATMAN" in current working directory
 batmanDir = newDir(runBATMANDir = getwd(), overwriteFile = TRUE) 
 ## create pure spectra text file
-createPureSpectraTemplate(dirPureSpec = c(paste(batmanDir[2],"/testBrukerPureSpecForRasterTemplate/testPure1",sep = "")), metaNames = c("testPure1"), dirIP = batmanDir[2])
+createPureSpectraTemplate(dirPureSpec = c(paste(batmanDir[2],
+"/testBrukerPureSpecForRasterTemplate/testPure1",sep = "")), 
+metaNames = c("testPure1"), dirIP = batmanDir[2])
 }
 \keyword{aplot}
