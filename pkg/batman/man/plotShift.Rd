@@ -9,7 +9,7 @@
 \usage{
  plotShift(BM, metaName, plotHist = FALSE, breaks, perMult = FALSE,
            saveFig = TRUE, saveFigDir = BM$outputDir, prefixFig, 
-           overwriteFig = FALSE))}
+           overwriteFig = FALSE)}
 \arguments{
 \item{BM}{\code{batman} output data frame.}
 \item{metaName}{Only multiplets belonging to the named Metabolite will be shown. 

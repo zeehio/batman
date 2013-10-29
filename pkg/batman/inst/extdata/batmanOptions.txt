@@ -8,8 +8,8 @@
 %% ppm ranges for analysis: Please put each ppm range in a pair of parentheses in the same line, 
 %% separate start and end ppm values with a comma, and 
 %% separate each set of ppm range with space, e.g. (-0.05,0.05) (1.44,1.52)   
-ppmRange - ppm ranges for analysis: (1.467,1.5) (2.1,2.183) (2.38,2.58) (2.63,2.69) (3.22,3.28) (3.515,3.56) (3.75,3.813) (3.878,3.926) (5.22,5.26) (6.495,6.535) (7.49,7.548) (8.235,8.28) (8.59,8.635) (8.93,8.96)  
-specNo - Ranges of spectra number to be included (e.g. 1,3-4 etc.):  1-6
+ppmRange - ppm ranges for analysis: (1.467,1.5) (2.1,2.183) (2.38,2.58) (2.63,2.69) (3.22,3.28) (3.515,3.56) (3.75,3.813) (3.878,3.926) (5.22,5.27) (6.49,6.535) (7.49,7.548) (8.235,8.28) (8.59,8.635) (8.93,8.96)   
+specNo - Ranges of spectra number to be included (e.g. 1,3-4 etc.):  1
 negThresh - Truncation threshold for negative intensities: -0.5
 scaleFac - Intensity scale factor: 800000
 downSamp - Down sampling factor: 3
