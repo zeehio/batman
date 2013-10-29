@@ -413,7 +413,7 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
         ytics <- pretty(ylim)
         yticlab <- ytics
         
-        if (y == 1)
+        if (j == 1)
         {
           plot(BM$sFitRerun[pind[littleones],i], BM$sFitRerun[pind[littleones],i+1], xlim = rev(xlim), 
                ylim = ylim, axes = FALSE, lwd = 0.5, col = 4, lty = 1, 

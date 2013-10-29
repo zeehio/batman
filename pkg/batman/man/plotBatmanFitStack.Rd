@@ -7,7 +7,7 @@
  The figure file will not be overwritten if it already exists by default. A prefix can be added to 
  the file name for new saves.}
 \usage{
-plotBatmanFitStact(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,  
+plotBatmanFitStack(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,  
                    xto, yfrom, yto, listMeta = FALSE, metaName,  
                    saveFig = TRUE, saveFigDir = BM$outputDir,  
                    prefixFig, rerun = FALSE, placeLegend = "topright", 
@@ -18,6 +18,7 @@ plotBatmanFitStact(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
 \item{BM}{\code{batman} output data frame.}
 \item{offset}{Offset value for the stack plot.}
 \item{mirroredWav}{Plot mirrored wavelet fit if set TRUE. The default is TRUE}
+\item{specNo}{Vector of spectra ID in the input order to specify which spectra to be plotted in stack plot.}
 \item{xfrom}{The start ppm value to plot. Default is set to the start ppm value of the whole processed range.}
 \item{xto}{The end ppm value to plot. Default is set to the end ppm value of the whole processed range.}
 \item{yfrom}{The start value of vertical axis to plot. Default is set to 0.}
