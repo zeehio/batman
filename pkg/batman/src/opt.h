@@ -18,6 +18,7 @@ class opt
     int ito;
     int stop_burnin;
 	int post_burnin;
+  int paraProc;
   int tempF;
     int savefreq;
     double spec_freq;
@@ -52,8 +53,9 @@ public:
         nospec.assign(1,1);
         downsample = 10;
         ito = 5000;
-        stop_burnin = 7000;
+        stop_burnin = 200;
 		post_burnin = 100;
+    paraProc = 1;
     tempF = 2;
         savefreq = 50;
         spec_freq = 600;

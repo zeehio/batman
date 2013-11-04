@@ -26,12 +26,20 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   dir6<-paste(dirA[2],"/chemShiftPerSpec.dat",sep="")
   dir7<-paste(dirA[4],"/",sep = "")
   
-  pBI_IP <- checkBatmanOptions(dir1)
+  BOchange <- checkBatmanOptions(dir1)
   
-  if (pBI_IP)
+  if (BOchange$pBI_IP)
   {
-      stop("Seems you updated from an old version of batman, the post-burn-in parameter has been added to the batmanOptions.txt file, 
-          please modify its value at:\n", dir1)
+      stop("\n
+      Seems you updated from an old version of batman, 
+      the parameters for post-burn-in, multiplet template 
+      option and parallel processes (for multiple spectra)
+      have been added to the batmanOptions.txt file,
+      please modify their values at:
+      ", dir1,
+      "\n
+      the old batmanOptions.txt file has been renamed as:
+      ", BOchange$dirTime)
   }
   
   dirctime<-paste(dirA[3],"/",ctime,sep="")
@@ -61,19 +69,23 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   sno <- NULL
   sno <-getSpectraRange(myVector)
   ## after adding post-burn-in ito in options +1 after 8
-  myVector <- strsplit(oneLine[nL[24+2]], ":") 
+  myVector <- strsplit(oneLine[nL[24+2+1]], ":") 
   chemshif <- as.numeric(myVector[[1]][2])
-  myVector <- strsplit(oneLine[nL[8]], ":")
+  myVector <- strsplit(oneLine[nL[8+1]], ":")
   itoBI <- as.numeric(myVector[[1]][2])
-  myVector <- strsplit(oneLine[nL[10+2]], ":")
+  myVector <- strsplit(oneLine[nL[10+2+1]], ":")
   fixeff <- as.numeric(myVector[[1]][2])
-  myVector <- strsplit(oneLine[nL[11+2]], ":")
+  myVector <- strsplit(oneLine[nL[11+2+1]], ":")
   itoRr <- as.numeric(myVector[[1]][2])
   ## post-burn-in ito
-  myVector <- strsplit(oneLine[nL[9]], ":")
+  myVector <- strsplit(oneLine[nL[9+1]], ":")
   itoPBI <- as.numeric(myVector[[1]][2]) 
-  myVector <- strsplit(oneLine[nL[10]], ":")
+  ## multi template
+  myVector <- strsplit(oneLine[nL[10+1]], ":")
   opt <- as.numeric(myVector[[1]][2]) 
+  ## parallel process
+  myVector <- strsplit(oneLine[nL[3]], ":") 
+  paraProc <- as.numeric(myVector[[1]][2])
   close(con)
   
   cat("\nRunning batman...\n")
@@ -199,15 +211,16 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
 		  cp<-file.copy(dir6,dir5)
 		}
   }
+  
+  
     
   ## choose whether to parallelize spectra
   if (length(sno)>1 && fixeff == 0)    
   {
-    cat("\nHow many parallel processes (multicores) do you want to run the multi-spectra analysis?")
-    cat("\n(Enter 1 for running them sequentially.)\n")
+    wr<- paraProc 
+    cat("\nNumber of parallel processes (multicores) used to run the multi-spectra analysis: ", wr, "\n")
     cat("\n Parallel processing of multi spectra currently cannot display the progress\n")
-    cat(" bar (or any words), if you input is > 1, please be patient for the results :)\n\n")
-    wr<- getinput(lowlim=1,highlim=-1)  
+    cat(" bar (or any words), please be patient for the results :)\n\n")    
   } else {
     wr<-1
   }

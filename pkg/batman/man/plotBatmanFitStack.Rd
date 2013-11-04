@@ -12,7 +12,7 @@ plotBatmanFitStack(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
                    saveFig = TRUE, saveFigDir = BM$outputDir,  
                    prefixFig, rerun = FALSE, placeLegend = "topright", 
                    plotColour, overwriteFig = FALSE, 
-                   metaLwd = 2, metaLty = 5)
+                   metaLwd = 2, metaLty = 5, orientation = "L")
 }
 \arguments{
 \item{BM}{\code{batman} output data frame.}
@@ -35,6 +35,7 @@ plotBatmanFitStack(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
 \item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}}
 \item{metaLwd}{The line widths for metabolite fit.}
 \item{metaLty}{The line types for metabolite fit.}
+\item{orientation}{The orientation of plot, either portrait or landscape, the defult is "L".}
 }
 \examples{
 library(batman)

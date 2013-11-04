@@ -14,8 +14,9 @@ newDir<-function(runBATMANDir = getwd(), overwriteFile = FALSE)
   if(!file.exists(dirPST)){
     dir.create(dirPST)
   }
+  extdir<-system.file("extdata",package="batman")
   
-  dirRastGln<-paste(dirPST,"/L-Glutamine.txt",sep="")
+  dirRastGln<-paste(extdir,"/PureSpectraTemplate/L-Glutamine.txt",sep="")
   cp<-file.copy(dirRastGln,dirPST,overwrite=overwriteFile)
   
   dirTPure<-paste(dirIP,"/testBrukerPureSpecForRasterTemplate",sep="")
@@ -32,7 +33,7 @@ newDir<-function(runBATMANDir = getwd(), overwriteFile = FALSE)
   if(!file.exists(dirOP)) {
     dir.create(dirOP)
   }
-  extdir<-system.file("extdata",package="batman")
+
 	
 	src.dir <- paste(extdir,"/testBrukerPureSpecForRasterTemplate/testPure1",sep="")
 	dest.dir <-dirTPure1

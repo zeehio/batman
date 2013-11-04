@@ -111,14 +111,12 @@ int read_multiplet_data(int lineno, char filename[], opt* opts,
 							if (c1[it][0]<ped+(15.0*(*opts).log_fwhh_prop_var)+c7[it][0]
 								&& c1[it][0]>pst-(15.0*(*opts).log_fwhh_prop_var)-c7[it][0])
 							{
-								//cout<<c1[it][0];
 								count = 1;
 							}
 						} else {
 							if (c1[it][0]<ped+(15.0*(*opts).log_fwhh_prop_var)+(*opts).rdelta
 								&& c1[it][0]>pst-(15.0*(*opts).log_fwhh_prop_var)-(*opts).rdelta)
 							{
-								//cout<<c1[it][0];
 								count = 1;
 							}
 						}
@@ -128,7 +126,6 @@ int read_multiplet_data(int lineno, char filename[], opt* opts,
 							if (c5[it][0]<ped+(15.0*(*opts).log_fwhh_prop_var)+c7[it][0]
 								&& c5[it][0]>pst-(15.0*(*opts).log_fwhh_prop_var)-c7[it][0])
 							{
-								//cout<<c1[it][0];
 								count = 1;
 							}
 						} else {
