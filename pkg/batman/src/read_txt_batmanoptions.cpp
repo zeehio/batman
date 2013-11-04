@@ -206,6 +206,10 @@
         }
         lind ++;
 
+        memset (ac,'\0',80);
+        strcpy(ac,s[lind].c_str());
+        (*data).paraProc = atoi(ac);
+        lind ++;
         // all the other values from options
         memset (ac,'\0',80);
         strcpy(ac,s[lind].c_str());

@@ -1,7 +1,7 @@
 plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom, xto, yfrom, yto, listMeta = FALSE, metaName, 
                              saveFig = TRUE, saveFigDir = BM$outputDir, prefixFig, rerun = FALSE, 
                              placeLegend = "topright", plotColour, overwriteFig = FALSE, 
-                             metaLwd = 2, metaLty = 5)
+                             metaLwd = 2, metaLty = 5, orientation = "L")
 {
   ## written by Dr. Jie Hao, Imperial College London
   ## Stack plot of batman metabolites fittings of NMR spectra (with down sampling) with offset
@@ -205,8 +205,13 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
     if (!missing(prefixFig))
       outpdf1 <- paste(saveFigDir, "/", prefixFig,"_specFit_stack_",metaName,".",ptype, sep="")
     else
-      outpdf1 <- paste(saveFigDir,"/specFit_stack_",metaName,".",ptype, sep="")             
-    x11(20,15)      
+      outpdf1 <- paste(saveFigDir,"/specFit_stack_",metaName,".",ptype, sep="")   
+    if (tolower(orientation) == "l")
+      x11(20,15)      
+    else if (tolower(orientation) == "p")
+      x11(5,5)
+    else
+      x11()
     
     for (j in 1:length(sno))
     {

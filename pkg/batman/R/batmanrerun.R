@@ -36,14 +36,17 @@ figRelCon = FALSE, figMetaFit = FALSE)
 	myVector <- strsplit(oneLine[nL[2]], ":")
 	sno <- NULL
 	sno <-getSpectraRange(myVector)
-	myVector <- strsplit(oneLine[nL[24+2]], ":")
+	myVector <- strsplit(oneLine[nL[24+1]], ":")
 	chemshif <- as.numeric(myVector[[1]][2])
-	myVector <- strsplit(oneLine[nL[8]], ":")
+	myVector <- strsplit(oneLine[nL[8+1]], ":")
 	itoBI <- as.numeric(myVector[[1]][2])
-	myVector <- strsplit(oneLine[nL[10+2]], ":")
+	myVector <- strsplit(oneLine[nL[10+2+1]], ":")
 	fixeff <- as.numeric(myVector[[1]][2])
-	myVector <- strsplit(oneLine[nL[11+2]], ":")
+	myVector <- strsplit(oneLine[nL[11+2+1]], ":")
 	itoRr <- as.numeric(myVector[[1]][2])
+	## parallel process
+	myVector <- strsplit(oneLine[nL[3]], ":") 
+	paraProc <- as.numeric(myVector[[1]][2])
 	close(con)
 	
 	if (chemshif == 1)
@@ -61,11 +64,10 @@ figRelCon = FALSE, figMetaFit = FALSE)
 ## choose whether to parallelize between spectra
 	if (length(sno)>1 && fixeff == 0)    
 	{
-		cat("\nHow many parallel processes (multicores) do you want to run the multi-spectra analysis?")
-		cat("\n(Enter 1 for running them sequentially.)\n")
-		cat("\n Parallel processing of multi spectra currently cannot display the progress\n")
-		cat(" bar (or any words), if you input is > 1, please be patient for the results :)\n\n")
-		wr<- getinput(lowlim=1,highlim=-1)  
+	  wr<- paraProc 
+	  cat("\nNumber of parallel processes (multicores) used to run the multi-spectra analysis: ", wr, "\n")
+	  cat("\n Parallel processing of multi spectra currently cannot display the progress\n")
+	  cat(" bar (or any words), please be patient for the results :)\n\n")    
 	} else {
 		wr<-1
 	}
