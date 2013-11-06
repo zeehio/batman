@@ -12,6 +12,10 @@ This is achieved through a database of spectral profiles for known metabolites a
 a Bayesian Markov Chain Monte Carlo algorithm. Users have the options to  
 specify the multiplet ppm position, position shift range, peak width range and so on.
 Parallel processing is available if processing several spectra.
+The installation and testing instructions can be found at:
+
+
+https://r-forge.r-project.org/scm/viewvc.php/documentation%20and%20test/?root=batman
 \tabular{ll}{\tab
 \if{html}{\figure{batmanlogo.png}}
 \if{latex}{\figure{batmanlogo.png}{options: width=1.5in}} \cr
