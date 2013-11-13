@@ -121,7 +121,11 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   } 
   ## prepare template file for c++
   bn<-nrow(b)
-  ind <-6:8
+  bc<-ncol(b)
+  if (bc == 9)
+    b <- b[,c(1:6,8:9)]
+  
+  ind <-6:7
   for (i in ind)
   {
     check<-b[,i]=='n'
