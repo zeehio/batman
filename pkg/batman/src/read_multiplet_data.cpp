@@ -14,7 +14,7 @@ int read_multiplet_data(int lineno, char filename[], opt* opts,
 	matrix c3(lineno);
 	matrix c4(lineno);
 	matrix c5(lineno);
-	matrix c6(lineno);
+	//matrix c6(lineno);
 	matrix c7(lineno);
 	matrixI c8(lineno);
 	// for ph
@@ -26,7 +26,7 @@ int read_multiplet_data(int lineno, char filename[], opt* opts,
 	int count = 0;
 	double pst, ped;
 	
-	int nl = read_datf(&names,&c1, &c2, &c3, &c4, &c5, &c6, &c7, &c8, filename);
+	int nl = read_datf(&names,&c1, &c2, &c3, &c4, &c5, &c7, &c8, filename);
 	
 	if (nl < 0)
 	{
@@ -157,7 +157,7 @@ int read_multiplet_data(int lineno, char filename[], opt* opts,
 						
 						//multiplet_site ms(prot, c1[it][0]);
 						multiplet_site ms(&c2[it], c1[it][0], &c3[it], prot,
-										  x, c5[it][0], c6[it][0], c7[it][0], opts);
+										  x, c5[it][0],-50, c7[it][0], opts);
 						
 						// vector<unsigned int> c2int(c2[it].size(),0);
 						//vecftoi(c2[it], c2int);
@@ -172,7 +172,7 @@ int read_multiplet_data(int lineno, char filename[], opt* opts,
 						double vec_el;
 						
 						multiplet_site ms(&c2[it], c1[it][0], &c3[it], c4[it][0],
-										  x, c5[it][0], c6[it][0], c7[it][0], opts);
+										  x, c5[it][0], -50, c7[it][0], opts);
 						
 						if (c3[it].size() == 2)
 						{
@@ -242,7 +242,7 @@ int read_multiplet_data(int lineno, char filename[], opt* opts,
 						
 					} else {
 						multiplet_site ms(&c2[it], c1[it][0], &c3[it], c4[it][0],
-										  x, c5[it][0], c6[it][0], c7[it][0], opts);
+										  x, c5[it][0], -50, c7[it][0], opts);
 						vector<unsigned int> c2int(c2[it].size(),0);
 						vecftoi(c2[it], c2int);
 						ms.setup_param(c2int, c3[it]);

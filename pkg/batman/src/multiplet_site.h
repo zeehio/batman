@@ -53,6 +53,7 @@
         double raster_width;
         vector<double> raster_curve;
         //vector<double> pos;
+        // 
 
 
     public:
