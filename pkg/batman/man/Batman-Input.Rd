@@ -242,12 +242,17 @@
  of the metabolite name to comment out any metabolite for batman analysis.}
 
 
+
  \item{multi_data.csv}{Multiplet template parameters file, obtained from the online 
  Human Metabolome Database (HMDB) version 2.5. The user can modify the parameters in 
  the template file and specify ppm positions, and normal distribution truncation of ppm
  shift parameters (a positive value applied as +/- on the distribution). 
  
- 
+  \tabular{ll}{\tab
+\if{html}{\figure{template.png}}
+\if{latex}{\figure{template.png}{options: width=6in}} \cr
+}
+
  The columns are:
   
   
