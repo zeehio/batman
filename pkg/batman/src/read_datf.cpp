@@ -2,7 +2,7 @@
 #include "myheader.h"
 
 int read_datf(vector<string> * name, matrix *c1, matrix *c2, matrix *c3, matrix *c4,
-matrix *c5, matrix *c6, matrix *c7, matrixI *c8, char filename[])
+matrix *c5, matrix *c7, matrixI *c8, char filename[])
 {
 	char *p; // p is the pointer point to the first character of buffer
 
@@ -27,7 +27,7 @@ matrix *c5, matrix *c6, matrix *c7, matrixI *c8, char filename[])
     char buffer3[100]={'\0'}; //
     char buffer4[100]={'\0'}; //
     char buffer5[100]={'\0'}; //
-    char buffer6[100]={'\0'}; //
+    //char buffer6[100]={'\0'}; //
     char buffer7[100]={'\0'}; //
     char buffer8[30]={'\0'}; //
     //vector<int> m(5,0);
@@ -67,11 +67,11 @@ matrix *c5, matrix *c6, matrix *c7, matrixI *c8, char filename[])
     				buffer5[j]='\0';
     				(*c5)[i].push_back(atof(buffer5));
     				break;
-    		    case 6:
+    		    /*case 6:
     				buffer6[j]='\0';
     				(*c6)[i].push_back(atof(buffer6));
-    				break;
-    			case 7:
+    				break;*/
+    			case 6:
     				buffer7[j]='\0';
     				(*c7)[i].push_back(atof(buffer7));
     				break;
@@ -104,15 +104,15 @@ matrix *c5, matrix *c6, matrix *c7, matrixI *c8, char filename[])
                     buffer5[j]='\0';
         			(*c5)[i].push_back(atof(buffer5));
         			break;
-        		case 6:
+        		/*case 6:
                     buffer6[j]='\0';
         			(*c6)[i].push_back(atof(buffer6));
-        			break;
-        		case 7:
+        			break;*/
+        		case 6:
                     buffer7[j]='\0';
         			(*c7)[i].push_back(atof(buffer7));
                 	break;
-                case 8:
+                case 7:
                     buffer8[j]='\0';
         			(*c8)[i].push_back(atoi(buffer8));
                 	break;
@@ -142,13 +142,13 @@ matrix *c5, matrix *c6, matrix *c7, matrixI *c8, char filename[])
         		case 5:
         			buffer5[j] = *p;
         			break;
-        		case 6:
+        		/*case 6:
         			buffer6[j] = *p;
-        			break;
-        		case 7:
+        			break;*/
+        		case 6:
         			buffer7[j] = *p;
         			break;
-        		case 8:
+        		case 7:
         			buffer8[j] = *p;
         			break;
         	  }

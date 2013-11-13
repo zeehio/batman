@@ -59,7 +59,7 @@ void ppm_ranges(int dppm, vector<double> * x, vector<double>* start, vector<doub
 
 
 int read_datf(vector<string> * name, matrix *c1, matrix *c2, matrix *c3, matrix *c4, 
-matrix *c5, matrix *c6, matrix *c7, matrixI *c8, char filename[]);
+matrix *c5, matrix *c7, matrixI *c8, char filename[]);
 
 int read_dat_chemshift(vector<string> * name, matrix *c1,matrix *c2, char filename[], int s);
 void read_txtf(matrix *data, char filename[]);
