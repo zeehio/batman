@@ -19,15 +19,15 @@ newDir<-function(runBATMANDir = getwd(), overwriteFile = FALSE)
   dirRastGln<-paste(extdir,"/PureSpectraTemplate/L-Glutamine.txt",sep="")
   cp<-file.copy(dirRastGln,dirPST,overwrite=overwriteFile)
   
-  dirTPure<-paste(dirIP,"/testBrukerPureSpecForRasterTemplate",sep="")
-  if(!file.exists(dirTPure)){
-		dir.create(dirTPure)
-	}
+  ## dirTPure<-paste(dirIP,"/testBrukerPureSpecForRasterTemplate",sep="")
+  ##  if(!file.exists(dirTPure)){
+	##  	dir.create(dirTPure)
+	## }
   
-  dirTPure1<-paste(dirTPure,"/testPure1",sep="")
-  if(!file.exists(dirTPure1)){
-    dir.create(dirTPure1)
-  }
+  ## dirTPure1<-paste(dirTPure,"/testPure1",sep="")
+  ## if(!file.exists(dirTPure1)){
+  ##   dir.create(dirTPure1)
+  ## }
 
   dirOP<-paste(dirRoot,"/BatmanOutput",sep="")
   if(!file.exists(dirOP)) {
@@ -35,14 +35,14 @@ newDir<-function(runBATMANDir = getwd(), overwriteFile = FALSE)
   }
 
 	
-	src.dir <- paste(extdir,"/testBrukerPureSpecForRasterTemplate/testPure1",sep="")
-	dest.dir <-dirTPure1
+	## src.dir <- paste(extdir,"/testBrukerPureSpecForRasterTemplate/testPure1",sep="")
+	## dest.dir <-dirTPure1
 	
-	file.names <- dir(src.dir)
-	sapply(file.names, function(x) {
-		   file.copy(from=paste(src.dir, x, sep="/"),
-					 to=paste(dest.dir, x, sep="/"),
-					 overwrite = FALSE) })
+	## file.names <- dir(src.dir)
+	## sapply(file.names, function(x) {
+	## 	   file.copy(from=paste(src.dir, x, sep="/"),
+	## 				 to=paste(dest.dir, x, sep="/"),
+	##				 overwrite = FALSE) })
 	
 	
   dirbo<-paste(extdir,"/batmanOptions.txt",sep="")
@@ -59,7 +59,6 @@ newDir<-function(runBATMANDir = getwd(), overwriteFile = FALSE)
   dirRU_adj<-paste(extdir,"/multi_data_user_adj.csv",sep="")
   cp<-file.copy(dirRU_adj,dirIP,overwrite=overwriteFile)
   
-  dirA<-c(dirRoot, dirIP, dirOP, dirPST, dirTPure)
-  ##, dirPST
+  dirA<-c(dirRoot, dirIP, dirOP, dirPST)
   return (dirA)
 }
