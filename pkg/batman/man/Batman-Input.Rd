@@ -259,7 +259,12 @@
   \code{Metabolite}: The name of metabolite the multiplets belongs to. 	
   
   
-  \code{pos_in_ppm}: The ppm position of the multiplets.
+  \code{pos_in_ppm}: The ppm position of the center of the multiplets. 
+  Refer to the next two parameters for more explanation. 
+  If the next parameter "couple_code" was set to "-1", 
+  this corresponds to the ppm position of the "0" Hz offset of the "J_constant". 
+  If the "couple_code" was set to "-2", 
+  this corresponds to the ppm position of the center of the raster multiplet.
   
   
   \code{couple_code}: Coupling code. 
@@ -280,8 +285,8 @@
 2,3 = triplet of quartets, 
 3,2 = quartet of triplets, 
 3,3 = quartet of quartets. 
-If "-1" is inputted here, a user specified multiplet can be created. 
-	An example can be found in file "multi_data_user.csv". If "-2" is inputted here, a multiplet with range
+If "-1" is inputted here, a user specified empirical multiplet can be created. 
+	An example can be found in file "multi_data_user.csv". If "-2" is inputted here, a raster multiplet with range
   specified in ppm in the field "J_constant" is used. Examples can be found in file "multi_data_user.csv".
  
   
