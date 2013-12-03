@@ -74,6 +74,7 @@ figRelCon = FALSE, figMetaFit = FALSE)
 	b<-read.delim(dir4)
 	bn<-nrow(b)
 	
+  out <- NULL
 ## running MCMC in rerun iterations,
 	rr <- 1
 	if (rr == 1) {       
