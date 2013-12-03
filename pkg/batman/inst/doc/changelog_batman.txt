@@ -63,8 +63,12 @@ batman 1.2.0 (released 6-8-2013)
 	6	Unify batman Option parameter names, and checkBatmanOptions to modify previous batman option file.
 
 batman 1.2.1 (released 15-10-2013)
-  1 	Move parameters for post-burn-in and source of templates in to batmanOptions.txt file.
-  2   Modified checkBatmanOptions.R to automatically add the above two parameters in file.
-	3   Modified readBrukerZipped function to read in .zip file.
-	4	  Rename "no_of_proton" to "relative_intensity".
+	1 	Move parameters for post-burn-in and source of templates in to batmanOptions.txt file.
+  	2   	Modified checkBatmanOptions.R to automatically add the above two parameters in file.
+	3   	Modified readBrukerZipped function to read in .zip file.
+	4	Rename "no_of_proton" to "relative_intensity".
+	5	Change input for scaleFac from integer to double.
+	6 	Modified batman.R to write to NMRdata.txt even input is in txt format.
+	7	Added saveBruker2Txt.R
+
 
