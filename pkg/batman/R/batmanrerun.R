@@ -74,7 +74,7 @@ figRelCon = FALSE, figMetaFit = FALSE)
 	b<-read.delim(dir4)
 	bn<-nrow(b)
 	
-  out <- NULL
+  out <- NULL 
 ## running MCMC in rerun iterations,
 	rr <- 1
 	if (rr == 1) {       
@@ -109,8 +109,8 @@ figRelCon = FALSE, figMetaFit = FALSE)
 		if (wr>1) {stopCluster(cl)}
 	}
 	
-	if (out[2] == 1)
-    return(cat("No metabolites with resonances in the region for analysis, exiting ...\n"))
+##	if (out[2] == 1)
+##    return(cat("No metabolites with resonances in the region for analysis, exiting ...\n"))
 	
 	cat("Reading in saved data in folder\n")
 ## read in results into R
