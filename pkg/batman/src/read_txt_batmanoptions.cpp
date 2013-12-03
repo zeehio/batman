@@ -218,7 +218,7 @@
 
         memset (ac,'\0',80);
         strcpy(ac,s[lind].c_str());
-        (*data).div = atoi(ac);
+        (*data).div = atof(ac);
         lind ++;
 
         memset (ac,'\0',80);
