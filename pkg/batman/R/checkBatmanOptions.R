@@ -39,10 +39,14 @@ checkBatmanOptions<-function(dir)
   cend <- which(cid > cidn[rid])
   
   if (length(cidn) == (length(cidnsys)-4))
-  {    
+  {  
+    ## add last line
     co<- rbind(co, 'csFlag - Specify chemical shift for each multiplet in each spectrum? (chemShiftperSpectra.csv file) (Yes - 1 / No - 0): 0')
     pBI_IP <- TRUE
-  } else if (length(cidn) == (length(cidnsys)-3))
+    iscommentco <- substr(co[,1],1,1)
+    cidn <- which(iscommentco != '%')
+  } 
+  if (length(cidn) == (length(cidnsys)-3))
   {
     co2 <- co
     for (i in 1:7)

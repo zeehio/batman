@@ -70,5 +70,6 @@ batman 1.2.1 (released 15-10-2013)
 	5	Change input for scaleFac from integer to double.
 	6 	Modified batman.R to write to NMRdata.txt even input is in txt format.
 	7	Added saveBruker2Txt.R
+	8	Modified checkBatmanOptions.R with much older versions of options file needs 2nd run.
 
 
