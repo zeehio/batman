@@ -56,7 +56,7 @@ References:
 
 <p> Astle, W., De Iorio, M., Richardson, S., Stephens, D. & Ebbels, T. A Bayesian model of NMR spectra for the deconvolution and quantification of metabolites in complex biological mixtures. J Am Stat Assoc 107, 1259-1271 (2012). </p>
 
-<p> Liebeke M, Hao J, Ebbels TM, Bundy JG, close, 2013, Combining Spectral Ordering with Peak Fitting for One-Dimensional NMR Quantitative Metabolomics., Anal Chem, 85 (9), 4605–4612 (2013). </p>
+<p> Liebeke M, Hao J, Ebbels TM, Bundy JG, Combining Spectral Ordering with Peak Fitting for One-Dimensional NMR Quantitative Metabolomics., Anal Chem, 85 (9), 4605–4612 (2013). </p>
 
 <!-- batman figure -->
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
