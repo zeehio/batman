@@ -52,9 +52,9 @@ References:
 </H4>
 </p>
 
-<p> Hao, J., Astle, W., De Iorio, M. & Ebbels, T. M. BATMAN--an R package for the automated quantification of metabolites from nuclear magnetic resonance spectra using a Bayesian model. Bioinformatics 28, 2088-2090 (2012).</p>
+<p> Hao, J., Astle, W., De Iorio, M. & Ebbels, T. M., BATMAN--an R package for the automated quantification of metabolites from nuclear magnetic resonance spectra using a Bayesian model. Bioinformatics 28, 2088-2090 (2012).</p>
 
-<p> Astle, W., De Iorio, M., Richardson, S., Stephens, D. & Ebbels, T. A Bayesian model of NMR spectra for the deconvolution and quantification of metabolites in complex biological mixtures. J Am Stat Assoc 107, 1259-1271 (2012). </p>
+<p> Astle, W., De Iorio, M., Richardson, S., Stephens, D. & Ebbels, T., A Bayesian model of NMR spectra for the deconvolution and quantification of metabolites in complex biological mixtures. J Am Stat Assoc 107, 1259-1271 (2012). </p>
 
 <p> Liebeke M., Hao J., Ebbels T. M., Bundy J. G., Combining Spectral Ordering with Peak Fitting for One-Dimensional NMR Quantitative Metabolomics., Anal Chem, 85 (9), 4605–4612 (2013). </p>
 
