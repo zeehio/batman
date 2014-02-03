@@ -248,6 +248,7 @@
  the template file and specify ppm positions, and normal distribution truncation of ppm
  shift parameters (a positive value applied as +/- on the distribution). 
  
+ 
   \tabular{ll}{\tab
 \if{html}{\figure{template.png}}
 \if{latex}{\figure{template.png}{options: width=6in}} \cr
@@ -261,10 +262,11 @@
   
   \code{pos_in_ppm}: The ppm position of the center of the multiplets. 
   Refer to the next two parameters for more explanation. 
-  If the next parameter "couple_code" was set to "-1", 
+  If the next parameter "couple_code" was set to "-1" (empirical multiplet), 
   this corresponds to the ppm position of the "0" Hz offset of the "J_constant". 
-  If the "couple_code" was set to "-2", 
-  this corresponds to the ppm position of the center of the raster multiplet.
+  If the "couple_code" was set to "-2" (raster multiplet), 
+  this corresponds to the ppm position of the center of the raster multiplet. More details of using
+  empirical multiplet and raster multiplet can be found in the following 3 fields. 
   
   
   \code{couple_code}: Coupling code. 
@@ -290,16 +292,19 @@ If "-1" is inputted here, a user specified empirical multiplet can be created.
   specified in ppm in the field "J_constant" is used. Examples can be found in file "multi_data_user.csv".
  
   
-  \code{J_constant}: J constant. If "-1" is inputted in the previous field "couple_code", J_constant/f are the offset
- 	of peaks from the mutiplet position (f is the magnet frequency). Note that the spectra are shown in reverse ppm axis, so 
-   a positive offset means peak at higher ppm value, and a negative offset is peak at lower ppm value. If "-2" is inputted 
-   in the previous field "couple_code", the field here requires a two values input seperated by comma, which specifies the ppm
-   range of the multiplet in the pure spectrum. Note in this case, the field "Metabolite" name will also be the .txt file name
+  \code{J_constant}: J constant. 
+  
+  If the empirical multiplet is used ("couple_code" is "-1"),
+  J_constant contains the offsets in Hz for peaks (each peak corresponds to a offset in Hz, offsets are separated by comma) 
+  of a mutiplet positioned at "pos_in_ppm", J_constant/f (f is the magnet frequency in Hz) is the offset of peak in ppm. Note that the spectra are shown in reverse ppm axis, so 
+   a positive offset means peak at higher ppm value, and a negative offset is peak at lower ppm value. 
+   
+   If the raster multiplet is used ("couple_code" is "-2"), the field here requires a two values input (in ppm) separated by comma, which specifies the
+   range of the raster multiplet in the pure spectrum. Note in this case, the field "Metabolite" will also be the .txt file name
    containing the pure spectrum (refer to \code{\link{createPureSpectraTemplate}}).
   
   
-  \code{relative_intensity}: (previously called no_of_protons) In the ideal case, at full relaxation, it should correspond to the number of protons in each multiplet. If "-1" is inputted for "couple_code", one or more 
-	(corresponding to J_constant) values can be given here (separated by comma) as peak intensities. In this case, the sum of "relative_intensity" is the number of protons in this multiplet. 
+  \code{relative_intensity}: (previously called no_of_protons) In the ideal case, at full relaxation, it should correspond to the number of protons in each multiplet. If the empirical multiplet ("couple_code" is "-1"), the same number of values (corresponding to each offset in "J_constant"") needed here as peak intensities. In this case, the sum of "relative_intensity" is the number of protons in this multiplet. If the raster multiplet is used ("couple_code" is "-2"), a single value is needed here corresponds to the number of protons in the included raster multiplet at full relaxation.
   
   
   \code{overwrite_pos}: The default is "n" for not overwrite position, and in that case
