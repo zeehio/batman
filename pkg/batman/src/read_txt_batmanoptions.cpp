@@ -66,18 +66,21 @@
         //read in ppm ranges
         int m = 0;
         char *pch1, *pch2, *pch3, *pch4;
+	//acppm asigned according to line size.
+	char ac[80], ac1[10], ac2[10], acppm[s[lind].size()];
         while (s[lind].size()>5)
         {
-            char ac[80] = {'\0'};
-            strcpy(ac, s[lind].c_str());
+            //char ac[80] = {'\0'};
+	    memset (acppm,'\0',s[lind].size());
+            strcpy(acppm, s[lind].c_str());
 
-            pch1 = strrchr(ac,'(');
-            pch2 = strrchr(ac,',');
-            pch3 = strrchr(ac,')');
+            pch1 = strrchr(acppm,'(');
+            pch2 = strrchr(acppm,',');
+            pch3 = strrchr(acppm,')');
 
-            int start2 = pch2-ac+1;
+            int start2 = pch2-acppm+1;
             int lend2 = pch3-pch2-1;
-            int start1 = pch1-ac+1;
+            int start1 = pch1-acppm+1;
             int lend1 = pch2-pch1-1;
             if (start1<0 || lend1<0 || start2<0 || lend2<0)
             {
@@ -86,11 +89,13 @@
                 exit(1);
             }
 
-            char ac1[10]={'\0'};
-            char ac2[10]={'\0'};
+            //char ac1[10]={'\0'};
+            //char ac2[10]={'\0'};
 
-            strncpy(ac1, ac+start1,lend1);
-            strncpy(ac2, ac+start2,lend2);
+	    memset(ac1, '\0', 10);
+	    memset(ac2, '\0', 10);
+            strncpy(ac1, acppm+start1,lend1);
+            strncpy(ac2, acppm+start2,lend2);
 
             double stt = atof(ac1);
             double endt = atof(ac2);
@@ -137,7 +142,8 @@
         }
         lind++;
 
-        char ac[80] = {'\0'};
+        //char ac[80] = {'\0'};
+	memset (ac,'\0',80);
         //read in spectra ranges
         char *psno;
         strcpy(ac, s[lind].c_str());
