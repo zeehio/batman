@@ -170,8 +170,10 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
     sa<-readBrukerZipped(BrukerDataZipDir)
     write.table(sa,file=dir2,row.names=FALSE,col.names=TRUE,quote=FALSE,sep = "\t")
   }  else if (!missing(txtFile)) {
-    sa<-read.table(txtFile, header=TRUE,sep="\t",comment.char = "")
-    write.table(sa,file=dir2,row.names=FALSE,col.names=TRUE,quote=FALSE,sep = "\t")
+    # modified as suggested by Dr Gonçalo Correia
+    file.copy(txtFile, to=dir2, overwrite=TRUE)
+    #sa<-read.table(txtFile, header=TRUE,sep="\t",comment.char = "")
+    #write.table(sa,file=dir2,row.names=FALSE,col.names=TRUE,quote=FALSE,sep = "\t")
   } else if (!missing(rData)) {
     sa<-rData
     write.table(sa,file=dir2,row.names=FALSE,col.names=TRUE,quote=FALSE,sep = "\t")
