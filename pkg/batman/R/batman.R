@@ -155,8 +155,7 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
     print(mL[checkmetaList[setdiff(1:25, matchmL)],1])
     stop("Possible error in file 'metabolitesList.csv'.\n")
   }
-  
-  
+    
   mL<-mL[,1,drop=FALSE]
   
   write.table(mL,file=dir3, sep = "\t", row.names=FALSE,col.names=FALSE,quote=FALSE)
