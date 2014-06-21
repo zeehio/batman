@@ -1,5 +1,5 @@
 Package: batman
-Version: 1.2.1
+Version: 1.2.1.01
 Author: 
  Jie Hao, 
  William Astle,   
@@ -13,4 +13,4 @@ Depends: R (>= 2.15.0), doSNOW, foreach, iterators, snow, utils,
         plotrix
 License: GPL-2
 LazyLoad: yes
-Packaged: 2013-10-15; jx
+Packaged: 2014-06-21; jx
