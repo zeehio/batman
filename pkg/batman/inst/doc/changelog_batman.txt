@@ -77,4 +77,6 @@ batman 1.2.1.01 (released 21-06-2014)
 	2	read_txt_batmanoptions.cpp fixed bug with ppm more than 80 char, and problem on Ubuntu server
 batman 1.2.1.02 (released 19-07-2014)
 	1	updated read.table usage with extra parameter (colClasses="numeric")
+batman 1.2.1.03 (released 24-10-2014)
+	1	fixed bug with reading in txtFile input.
 

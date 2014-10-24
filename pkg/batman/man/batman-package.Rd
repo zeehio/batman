@@ -25,8 +25,8 @@ https://r-forge.r-project.org/scm/viewvc.php/documentation%20and%20test/?root=ba
 \tabular{ll}{
 Package: \tab batman\cr
 Type: \tab Package\cr
-Version: \tab 1.2.1\cr
-Date: \tab 2013-10-15\cr
+Version: \tab 1.2.1.03\cr
+Date: \tab 2014-10-24\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }}

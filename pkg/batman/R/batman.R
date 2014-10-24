@@ -171,7 +171,7 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   }  else if (!missing(txtFile)) {
     # modified as suggested by Dr Gonçalo Correia
     file.copy(txtFile, to=dir2, overwrite=TRUE)
-    #sa<-read.table(txtFile, header=TRUE,sep="\t",comment.char = "")
+    sa<-read.table(txtFile, header=TRUE,sep="\t",comment.char = "")
     #write.table(sa,file=dir2,row.names=FALSE,col.names=TRUE,quote=FALSE,sep = "\t")
   } else if (!missing(rData)) {
     sa<-rData
