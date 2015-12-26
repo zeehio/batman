@@ -79,4 +79,6 @@ batman 1.2.1.02 (released 19-07-2014)
 	1	updated read.table usage with extra parameter (colClasses="numeric")
 batman 1.2.1.03 (released 24-10-2014)
 	1	fixed bug with reading in txtFile input.
+batman 1.2.1.04 (released 26-12-2015)
+	1	fixed bug with saving posterior samples in output.
 

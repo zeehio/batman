@@ -212,7 +212,7 @@
                     seconds7 = time (NULL);
                     Rprintf("\ntime used for burnin is %i seconds.\n", seconds7-seconds);
                 }
-                if (options.savefreq!=0 && ito<options.stop_burnin-1)
+                if (options.savefreq!=0 && ito>=options.stop_burnin-1)
                 {
                     if(chain.it%options.savefreq == 0 || chain.it== iteration)
 					{
