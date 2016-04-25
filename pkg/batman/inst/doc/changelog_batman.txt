@@ -81,4 +81,6 @@ batman 1.2.1.03 (released 24-10-2014)
 	1	fixed bug with reading in txtFile input.
 batman 1.2.1.04 (released 26-12-2015)
 	1	fixed bug with saving posterior samples in output.
+batman 1.2.1.05 (released 25-04-2016)
+	1	added 'showPlot' option for plot functions for when running on a cloud/cluster.
 

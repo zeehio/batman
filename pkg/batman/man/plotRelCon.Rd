@@ -11,7 +11,8 @@
 \usage{
  plotRelCon(BM, metaName, plotHist = FALSE, breaks, 
             saveFig = TRUE, saveFigDir = BM$outputDir, 
-            prefixFig, rerun = FALSE, overwriteFig = FALSE)}
+            prefixFig, rerun = FALSE, overwriteFig = FALSE,
+            showPlot = TRUE)}
 \arguments{
 \item{BM}{\code{batman} output data frame.}
 \item{metaName}{Only multiplets belonging to the named Metabolite will be shown. 
@@ -24,7 +25,9 @@
 \item{saveFigDir}{Save figure(s) in this directory. The default is output directory of BM.}
 \item{prefixFig}{Add prefix to each saved figure name. The default is no prefix.}
 \item{rerun}{Set to FALSE to plot \code{batman} result, and TRUE to plot \code{batmanrerun} result.}
-\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}}.
+\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}.}
+\item{showPlot}{If set \code{FALSE}, no plot will be shown on display, the pdf file(s) for 
+ the plot(s) will be created in output folder. The default is \code{TRUE}.}
 }
 \seealso{
 \code{\link{batman}, \link{batmanrerun}}

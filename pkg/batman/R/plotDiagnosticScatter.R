@@ -1,5 +1,5 @@
 plotDiagnosticScatter <- function(BM, binWidth = 0.018, cexID = 0.5, saveFig = TRUE, saveFigDir = BM$outputDir, 
-                                  prefixFig, rerun = FALSE, placeLegend = "topright", overwriteFig = FALSE)
+                                  prefixFig, rerun = FALSE, placeLegend = "topright", overwriteFig = FALSE, showPlot = TRUE)
 {
   ## written by Dr. Jie Hao, Imperial College London
   ## Diagnostic scatter plot of batman metabolites fit vs NMR spectra bins or minimum wavelet fit 
@@ -11,6 +11,7 @@ plotDiagnosticScatter <- function(BM, binWidth = 0.018, cexID = 0.5, saveFig = T
   
   bound <- binWidth/2
   ptype <- "pdf"
+  pdfdev = FALSE
   
   nmult <- dim(BM$delta)[1]
   nsp <- dim(BM$delta)[2]
@@ -107,11 +108,20 @@ plotDiagnosticScatter <- function(BM, binWidth = 0.018, cexID = 0.5, saveFig = T
   
   for (i2 in 1:nMeta)
   {
-    x11()
     if (!missing(prefixFig))
       outpdf1 <- paste(saveFigDir, "/", prefixFig,"_diagScatter_", metaName2[i2], rerunString,,".",ptype, sep="")
     else
       outpdf1 <- paste(saveFigDir,"/diagScatter_", metaName2[i2], rerunString,".",ptype, sep="")
+    
+    if ((!showPlot && overwriteFig) || (!showPlot && (!file.exists(outpdf1))))
+    {
+        pdf(outpdf1)  
+        pdfdev = TRUE
+    }          
+    else if (!showPlot && (file.exists(outpdf1) && !overwriteFig))
+      cat("Can't save figure, file", outpdf1, "already exists.\n")
+    else
+      x11()
     
     mid <- which(metaName2[i2] == multiName2) 
     if (length(mid) <5)
@@ -162,12 +172,22 @@ plotDiagnosticScatter <- function(BM, binWidth = 0.018, cexID = 0.5, saveFig = T
     }
     if (saveFig)
     {
-      if (file.exists(outpdf1) && !(overwriteFig))
-      { 
+      if (pdfdev)
+      {
+        pdfoff = dev.off()    
+        pdfdev = FALSE
+      }        
+      else if (showPlot && (file.exists(outpdf1) && !overwriteFig))
         cat("Can't save figure, file", outpdf1, "already exists.\n")
-      } else {
+      else
         df = dev.copy2pdf(device=x11, file = outpdf1)
-      }
+      
+      #if (file.exists(outpdf1) && !(overwriteFig))
+      #{ 
+      # cat("Can't save figure, file", outpdf1, "already exists.\n")
+      #} else {
+      #  df = dev.copy2pdf(device=x11, file = outpdf1)
+      #}
     }
   }
   warnRead<-options(warn = warnDef)

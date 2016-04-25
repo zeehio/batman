@@ -1,6 +1,6 @@
 batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TRUE, runBATMANDir = getwd(), 
                  overwriteDir = FALSE, figBatmanFit = TRUE, listMeta = FALSE, 
-                 figRelCon = FALSE, figMetaFit = FALSE)
+                 figRelCon = FALSE, figMetaFit = FALSE, showPlot = TRUE)
 {
   ## written by Dr. Jie Hao, Imperial College London
   warnDef<-options("warn")$warn
@@ -289,13 +289,14 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   ## read in batman result files
   BM<-readBatmanOutput(dirctime, dirA[2]) 
   cat(BM$outputDir)
+  
   ## plot results
   if (figBatmanFit)
-    plotBatmanFit(BM, saveFigDir = dirctime, listMeta = listMeta)
+    plotBatmanFit(BM, saveFigDir = dirctime, listMeta = listMeta, showPlot = showPlot)
   if (figRelCon) 
-    plotRelCon(BM, saveFigDir = dirctime)
+    plotRelCon(BM, saveFigDir = dirctime, showPlot = showPlot)
   if (figMetaFit)
-    plotMetaFit(BM, saveFigDir = dirctime)
+    plotMetaFit(BM, saveFigDir = dirctime, showPlot = showPlot)
   if (file.exists(dir3))
   {
     file.remove(dir3)
