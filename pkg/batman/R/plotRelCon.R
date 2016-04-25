@@ -1,5 +1,6 @@
 plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE, 
-                     saveFigDir = BM$outputDir, prefixFig, rerun = FALSE, overwriteFig = FALSE)
+                     saveFigDir = BM$outputDir, prefixFig, rerun = FALSE, 
+                     overwriteFig = FALSE, showPlot = TRUE)
 {
   ## written by Dr. Jie Hao, Imperial College London
   ## histogram or boxplot of relative concentration posteriors for listed metabolites with 95% credible interval
@@ -11,6 +12,7 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
   ptype = "pdf"
   n <- 4
   ns<-5
+  pdfdev = FALSE
   
   m<-row.names(BM$beta)
   if (!missing(metaName))
@@ -48,14 +50,32 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
                 outpdf1 <- paste(saveFigDir, "/", prefixFig,"_spec_",sno[i],"RelCon_", mind[j], "to",mind[min(j+n-1,length(mind))],".",ptype, sep="")
               else
                 outpdf1 <- paste(saveFigDir,"/spec_",sno[i],"RelCon_",mind[j], "to",mind[min(j+n-1,length(mind))],".",ptype, sep="")  
-              x11(15,7)
+              
+              if ((!showPlot && overwriteFig) || (!showPlot && (!file.exists(outpdf1))))
+              {
+                  pdf(outpdf1,15,7)  
+                  pdfdev = TRUE
+              }              
+              else if (!showPlot && (file.exists(outpdf1) && !overwriteFig))
+                cat("Can't save figure, file", outpdf1, "already exists.\n")
+              else
+                x11(15,7)
               par(mfrow=c(2, 2),oma = c(0, 0, 3, 0))	
             } else {
               if (!missing(prefixFig))
                 outpdf1 <- paste(saveFigDir, "/", prefixFig, "_spec_",sno[i],"RelCon_", mind[j], ".",ptype, sep="")
               else
                 outpdf1 <- paste(saveFigDir,"/spec_",sno[i],"RelCon_",mind[j],".",ptype, sep="")
-              x11(15,7)
+              
+              if ((!showPlot && overwriteFig) || (!showPlot && (!file.exists(outpdf1))))
+              {
+                pdf(outpdf1,15,7)  
+                pdfdev = TRUE
+              }        
+              else if (!showPlot && (file.exists(outpdf1) && !overwriteFig))
+                cat("Can't save figure, file", outpdf1, "already exists.\n")
+              else
+                x11(15,7)
               par(mfrow=c(1,1),oma = c(0, 0, 3, 0))
             }
           }
@@ -76,10 +96,20 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
           if (((f == j || !(j%%n))) && saveFig) 
           {
             title(main = list(paste("NMR Spectrum ",sno[i], ": ", BM$specTitle[2,i], sep=""),cex=1.5,font=3), outer=TRUE)                
-            if (file.exists(outpdf1) && !overwriteFig)
+            if (pdfdev)
+            {
+              pdfoff = dev.off()         
+              pdfdev = FALSE
+            }
+            else if (showPlot && (file.exists(outpdf1) && !overwriteFig))
               cat("Can't save figure, file", outpdf1, "already exists.\n")
             else
               df = dev.copy2pdf(device=x11, file = outpdf1)
+            
+            ## if (file.exists(outpdf1) && !overwriteFig)
+            ##   cat("Can't save figure, file", outpdf1, "already exists.\n")
+            ## else
+            ##   df = dev.copy2pdf(device=x11, file = outpdf1)
           }
         }
       } else {
@@ -92,14 +122,32 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
               outpdf1 <- paste(saveFigDir, "/", prefixFig,"_spec_",sno[i],"to", sno[min(i+n-1,length(sno))],"RelCon.",ptype, sep="")
             else
               outpdf1 <- paste(saveFigDir,"/spec_",sno[i],"to", sno[min(i+n-1,length(sno))],"RelCon.",ptype, sep="")	
-            x11(15,7)
+            
+            if ((!showPlot && overwriteFig) || (!showPlot && (!file.exists(outpdf1))))
+            {
+              pdf(outpdf1,15,7)  
+              pdfdev = TRUE
+            }          
+            else if (!showPlot && (file.exists(outpdf1) && !overwriteFig))
+              cat("Can't save figure, file", outpdf1, "already exists.\n")
+            else
+              x11(15,7)
             par(mfrow=c(2, 2),oma = c(0, 0, 0, 0))	
           } else {
             if (!missing(prefixFig))
               outpdf1 <- paste(saveFigDir, "/", prefixFig, "_spec_",sno[i],"RelCon.",ptype, sep="")
             else
               outpdf1 <- paste(saveFigDir,"/spec_",sno[i],"RelCon.",ptype, sep="")
-            x11(15,7)
+            
+            if ((!showPlot && overwriteFig) || (!showPlot && (!file.exists(outpdf1))))
+            {
+              pdf(outpdf1,15,7)  
+              pdfdev = TRUE
+            }       
+            else if (!showPlot && (file.exists(outpdf1) && !overwriteFig))
+              cat("Can't save figure, file", outpdf1, "already exists.\n")
+            else
+              x11(15,7)
             par(mfrow=c(1,1),oma = c(3, 0, 0, 0))
           }
         }
@@ -113,10 +161,21 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
         if (((length(sno) == i || !(i%%n))) && saveFig) 
         {
           #title(main = list("NMR Spectrum Relative Concentration",cex=1.5,font=3), outer=TRUE)                
-          if (file.exists(outpdf1) && !overwriteFig)
+          
+          if (pdfdev)
+          {
+            pdfoff = dev.off()
+            pdfdev = FALSE
+          }
+          else if (showPlot && (file.exists(outpdf1) && !overwriteFig))
             cat("Can't save figure, file", outpdf1, "already exists.\n")
           else
             df = dev.copy2pdf(device=x11, file = outpdf1)
+          
+          # if (file.exists(outpdf1) && !overwriteFig)
+          # cat("Can't save figure, file", outpdf1, "already exists.\n")
+          #else
+          #  df = dev.copy2pdf(device=x11, file = outpdf1)
         }
       }
     }
@@ -146,14 +205,32 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
                 outpdf2 <- paste(saveFigDir, "/", prefixFig,"_RelConRerun_", mind[j], "to",mind[min(j+n-1,length(mind))],"_Rerun",".",ptype,sep="")
               else
                 outpdf2 <- paste(saveFigDir,"/RelConRerun_",mind[j], "to",mind[min(j+n-1,length(mind))],"_Rerun",".",ptype, sep="")	
-              x11(15,7)
+              
+              if ((!showPlot && overwriteFig) || (!showPlot && (!file.exists(outpdf2))))
+              {
+                pdf(outpdf2,15, 7)  
+                pdfdev = TRUE
+              }         
+              else if (!showPlot && (file.exists(outpdf2) && !overwriteFig))
+                cat("Can't save figure, file", outpdf2, "already exists.\n")
+              else
+                x11(15,7)
               par(mfrow=c(2, 2),oma = c(0, 0, 3, 0))				
             } else {
               if (!missing(prefixFig))
                 outpdf2 <- paste(saveFigDir, "/", prefixFig, "_RelConRerun_", mind[j], "_Rerun",".",ptype,sep="")
               else
                 outpdf2 <- paste(saveFigDir,"/RelConRerun_",mind[j],"_Rerun",".",ptype, sep="")
-              x11(15,7)
+              
+              if ((!showPlot && overwriteFig) || (!showPlot && (!file.exists(outpdf2))))
+              {
+                pdf(outpdf2,15,7)  
+                pdfdev = TRUE
+              }           
+              else if (!showPlot && (file.exists(outpdf2) && !overwriteFig))
+                cat("Can't save figure, file", outpdf2, "already exists.\n")
+              else
+                x11(15,7)
               par(mfrow=c(1,1),oma = c(0, 0, 3, 0))	
             }
           }
@@ -173,10 +250,20 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
           if (((f == j || !(j%%n))) && saveFig) 
           {
             title(main = list(paste("NMR Spectrum ",sno[i], ": ", BM$specTitle[2,i], sep=""),cex=1.5,font=3), outer=TRUE)                
-            if (file.exists(outpdf2) && !overwriteFig)
+            if (pdfdev)
+            {
+              pdfoff = dev.off()      
+              pdfdev = FALSE
+            }
+            else if (showPlot && (file.exists(outpdf2) && !overwriteFig))
               cat("Can't save figure, file", outpdf2, "already exists.\n")
             else
               df = dev.copy2pdf(device=x11, file = outpdf2)
+            
+            ## if (file.exists(outpdf2) && !overwriteFig)
+            ##  cat("Can't save figure, file", outpdf2, "already exists.\n")
+            ##else
+            ##  df = dev.copy2pdf(device=x11, file = outpdf2)
           }
         }
       } else {
@@ -189,14 +276,31 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
               outpdf2 <- paste(saveFigDir, "/", prefixFig,"_spec_",sno[i],"to", sno[min(i+n-1,length(sno))],"RelCon_Rerun.",ptype, sep="")
             else
               outpdf2 <- paste(saveFigDir,"/spec_",sno[i],"to", sno[min(i+n-1,length(sno))],"RelCon_Rerun.",ptype,sep="")	
-            x11(15,7)
+            
+            if ((!showPlot && overwriteFig) || (!showPlot && (!file.exists(outpdf2))))
+            {
+              pdf(outpdf2,15,7)  
+              pdfdev = TRUE
+            }       
+            else if (!showPlot && (file.exists(outpdf2) && !overwriteFig))
+              cat("Can't save figure, file", outpdf2, "already exists.\n")
+            else
+              x11(15,7)
             par(mfrow=c(2, 2),oma = c(0, 0, 3, 0))	
           } else {
             if (!missing(prefixFig))
               outpdf2 <- paste(saveFigDir, "/", prefixFig, "_spec_",sno[i],"RelCon_Rerun.",ptype, sep="")
             else
               outpdf2 <- paste(saveFigDir,"/spec_",sno[i],"RelCon_Rerun.",ptype,sep="")
-            x11(15,7)
+            if ((!showPlot && overwriteFig) || (!showPlot && (!file.exists(outpdf2))))
+            {
+              pdf(outpdf2,15,7)  
+              pdfdev = TRUE
+            }         
+            else if (!showPlot && (file.exists(outpdf2) && !overwriteFig))
+              cat("Can't save figure, file", outpdf2, "already exists.\n")
+            else
+              x11(15,7)
             par(mfrow=c(1,1),oma = c(0, 0, 3, 0))
           }
         }
@@ -209,11 +313,21 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
         ## save plot
         if (((length(sno) == i || !(i%%n))) && saveFig) 
         {
-          #title(main = list(paste("NMR Spectrum ",i, ": ", BM$specTitle[2,i], "(Rerun)",sep=""),cex=1.5,font=3), outer=TRUE)                
-          if (file.exists(outpdf2) && !overwriteFig)
+          #title(main = list(paste("NMR Spectrum ",i, ": ", BM$specTitle[2,i], "(Rerun)",sep=""),cex=1.5,font=3), outer=TRUE)     
+          if (pdfdev)
+          {
+            pdfoff = dev.off()   
+            pdfdev = FALSE
+          }
+          else if (showPlot && (file.exists(outpdf2) && !overwriteFig))
             cat("Can't save figure, file", outpdf2, "already exists.\n")
           else
             df = dev.copy2pdf(device=x11, file = outpdf2)
+          
+          #if (file.exists(outpdf2) && !overwriteFig)
+          #   cat("Can't save figure, file", outpdf2, "already exists.\n")
+          #else
+          #  df = dev.copy2pdf(device=x11, file = outpdf2)
         }
       }
     }

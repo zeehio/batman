@@ -1,7 +1,7 @@
 plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom, xto, yfrom, yto, listMeta = FALSE, metaName, 
                              saveFig = TRUE, saveFigDir = BM$outputDir, prefixFig, rerun = FALSE, 
                              placeLegend = "topright", plotColour, overwriteFig = FALSE, 
-                             metaLwd = 2, metaLty = 5, orientation = "L")
+                             metaLwd = 2, metaLty = 5, orientation = "L", showPlot = TRUE)
 {
   ## written by Dr. Jie Hao, Imperial College London
   ## Stack plot of batman metabolites fittings of NMR spectra (with down sampling) with offset
@@ -17,6 +17,7 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
                Set readMetaTemp = T when use readBatmanOutput().\n"))
   }
     
+  pdfdev = FALSE
   ptype <- "pdf"
   cex <- 1
   cex1 <- 0.8
@@ -207,12 +208,42 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
     else
       outpdf1 <- paste(saveFigDir,"/specFit_stack_",metaName,".",ptype, sep="")   
     if (tolower(orientation) == "l")
-      x11(20,15)      
+    {
+      if ((!showPlot && overwriteFig) || (!showPlot && (!file.exists(outpdf1))))
+      {
+         pdf(outpdf1,20,15)  
+         pdfdev = TRUE
+      }          
+      else if (!showPlot && (file.exists(outpdf1) && !overwriteFig))
+        cat("Can't save figure, file", outpdf1, "already exists.\n")
+      else
+        x11(20,15)
+    }
     else if (tolower(orientation) == "p")
-      x11(5,5)
+    {
+      if ((!showPlot && overwriteFig) || (!showPlot && (!file.exists(outpdf1))))
+      {
+         pdf(outpdf1,5,5)  
+         pdfdev = TRUE
+      }         
+      else if (!showPlot && (file.exists(outpdf1) && !overwriteFig))
+        cat("Can't save figure, file", outpdf1, "already exists.\n")
+      else
+        x11(5,5)
+    }
     else
-      x11()
-    
+    {
+      if ((!showPlot && overwriteFig) || (!showPlot && (!file.exists(outpdf1))))
+      {
+         pdf(outpdf1)  
+         pdfdev = TRUE
+      }          
+      else if (!showPlot && (file.exists(outpdf1) && !overwriteFig))
+        cat("Can't save figure, file", outpdf1, "already exists.\n")
+      else
+        x11()
+    }
+
     for (j in 1:length(sno))
     {
       i <- (ns*(j-1)+1) 
@@ -368,12 +399,22 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
     }   
     if (saveFig)
     {
-      if (file.exists(outpdf1) && !overwriteFig)
+      if (pdfdev)
       {
+        pdfoff = dev.off()    
+        pdfdev = FALSE
+      }      
+      else if (showPlot && (file.exists(outpdf1) && !overwriteFig))
         cat("Can't save figure, file", outpdf1, "already exists.\n")
-      } else {
+      else
         df = dev.copy2pdf(device=x11, file = outpdf1)
-      }
+      
+      ##if (file.exists(outpdf1) && !overwriteFig)
+      ##{
+      ## cat("Can't save figure, file", outpdf1, "already exists.\n")
+      ##} else {
+      ##  df = dev.copy2pdf(device=x11, file = outpdf1)
+      ##}
     }
   }
   ## plot batman rerun results
@@ -405,7 +446,16 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
       outpdf2 <- paste(saveFigDir, "/", prefixFig,"_specfitRerun_stack_", metaName,".",ptype, sep="")
     else
       outpdf2 <- paste(saveFigDir,"/specfitRerun_stack_", metaName,".",ptype, sep="")
-    x11()
+    
+    if ((!showPlot && overwriteFig) || (!showPlot && (!file.exists(outpdf2))))
+    {
+       pdf(outpdf2)  
+       pdfdev = TRUE
+    }          
+    else if (!showPlot && (file.exists(outpdf2) && !overwriteFig))
+      cat("Can't save figure, file", outpdf2, "already exists.\n")
+    else
+      x11()
     
     for (j in 1:length(sno))
     {
@@ -566,12 +616,22 @@ plotBatmanFitStack<-function(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
     ## save plot
     if (saveFig)
     {
-      if (file.exists(outpdf2) && !(overwriteFig))
-      {    
+      if (pdfdev)
+      {
+        pdfoff = dev.off()    
+        pdfdev = FALSE
+      }      
+      else if (showPlot && (file.exists(outpdf2) && !overwriteFig))
         cat("Can't save figure, file", outpdf2, "already exists.\n")
-      } else {
+      else
         df = dev.copy2pdf(device=x11, file = outpdf2)
-      }
+      
+      ##if (file.exists(outpdf2) && !(overwriteFig))
+      ##{    
+      ##   cat("Can't save figure, file", outpdf2, "already exists.\n")
+      ##} else {
+      ## df = dev.copy2pdf(device=x11, file = outpdf2)
+      ## }
     }
   } else {
     cat("No results found.\n")

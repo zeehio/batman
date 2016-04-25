@@ -7,7 +7,7 @@
 plotDiagnosticScatter(BM, binWidth = 0.018, cexID = 0.5, saveFig = TRUE, 
                       saveFigDir = BM$outputDir, prefixFig, 
                       rerun = FALSE, placeLegend = "topright", 
-                      overwriteFig = FALSE)
+                      overwriteFig = FALSE, showPlot = TRUE)
 }
 \arguments{
 \item{BM}{\code{batman} output data frame.}
@@ -19,7 +19,9 @@ plotDiagnosticScatter(BM, binWidth = 0.018, cexID = 0.5, saveFig = TRUE,
 \item{prefixFig}{Add prefix to each saved figure name. The default is no prefix.}
 \item{rerun}{Set to FALSE to plot \code{batman} result, and TRUE to plot \code{batmanrerun} result.}
 \item{placeLegend}{Where to place the legend in figure. The default is "topright".}
-\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}}
+\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}.}
+\item{showPlot}{If set \code{FALSE}, no plot will be shown on display, the pdf file(s) for 
+ the plot(s) will be created in output folder. The default is \code{TRUE}.}
 }
 \examples{
 library(batman)

@@ -13,7 +13,8 @@
  batman(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TRUE, 
         runBATMANDir = getwd(), overwriteDir = FALSE, 
         figBatmanFit = TRUE, listMeta = FALSE, 
-        figRelCon = FALSE, figMetaFit = FALSE)}
+        figRelCon = FALSE, figMetaFit = FALSE, 
+        showPlot = TRUE)}
 \arguments{
 \item{BrukerDataDir}{The directory of the folder containing 1D Bruker spectral data files. 
  If not specified, spectral data will be read in from one of the following inputs prioritized 
@@ -30,18 +31,20 @@
  and the second column the real part of spectrum. If not specified, spectral data will be read in 
  from one of the following inputs prioritized in the order: \code{BrukerDataDir}, \code{BrukerDataZipDir},
  \code{txtFile} and NMRdata.txt in "BatmanInput" folder.}
-\item{createDir}{If set TRUE, a new BATMAN work directory will be created specified by \code{runBATMANDir}. 
- If set FALSE, batman input will be obtained from the "extdata" folder in batman package installation directory, 
- and the batman output files will also be put within this folder.  The default is TRUE.}
+\item{createDir}{If set \code{TRUE}, a new BATMAN work directory will be created specified by \code{runBATMANDir}. 
+ If set \code{FALSE}, batman input will be obtained from the "extdata" folder in batman package installation directory, 
+ and the batman output files will also be put within this folder. The default is \code{TRUE}.}
 \item{runBATMANDir}{User specified BATMAN work directory, the default is current work directory. 
- It will only work when \code{createDir} is set TRUE.}
-\item{overwriteDir}{If folder "runBATMAN" exists, set TRUE to overwrite folder. The default is FALSE.}
-\item{figBatmanFit}{Plot metabolites and wavelets fit if set TRUE. The default is TRUE.}
-\item{listMeta}{Individual metabolite fit will also be shown in the plot if set TRUE. The default is FALSE.}
+ It will only work when \code{createDir} is set \code{TRUE}.}
+\item{overwriteDir}{If folder "runBATMAN" exists, set TRUE to overwrite folder. The default is \code{FALSE}.}
+\item{figBatmanFit}{Plot metabolites and wavelets fit if set \code{TRUE}. The default is \code{TRUE}.}
+\item{listMeta}{Individual metabolite fit will also be shown in the plot if set \code{TRUE}. The default is \code{FALSE}.}
 \item{figRelCon}{Plot posterior samples of the relative concentration for fitted 
- metabolites with 95\% credible interval if set TRUE. The default is FALSE.}
-\item{figMetaFit}{If set TRUE, plot the posterior mean of the metabolites fit with 95\% 
- credible interval. The default is FALSE.}
+ metabolites with 95\% credible interval if set TRUE. The default is \code{FALSE}.}
+\item{figMetaFit}{If set \code{TRUE}, plot the posterior mean of the metabolites fit with 95\% 
+ credible interval. The default is \code{FALSE}.}
+\item{showPlot}{If set \code{FALSE}, no plot will be shown on display, the pdf file(s) for 
+ the plot(s) will be created in output folder. The default is \code{TRUE}.}
 }
 \value{	
  It returns a data list with the following objects:  

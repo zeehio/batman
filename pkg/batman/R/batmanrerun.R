@@ -1,5 +1,5 @@
 batmanrerun<- function(BM, figBatmanFit = TRUE, listMeta = FALSE, 
-figRelCon = FALSE, figMetaFit = FALSE)
+figRelCon = FALSE, figMetaFit = FALSE, showPlot = TRUE)
 {   
 ## written by Dr. Jie Hao, Imperial College London
 ## rerun batman() with fixed ppm position for all multiplets
@@ -118,11 +118,11 @@ figRelCon = FALSE, figMetaFit = FALSE)
 	cat(BMR$outputDir)
 ## plotting results
 	if (figBatmanFit)
-    plotBatmanFit(BMR, saveFigDir = BM$outputDir, listMeta = listMeta, rerun = TRUE)
+    plotBatmanFit(BMR, saveFigDir = BM$outputDir, listMeta = listMeta, rerun = TRUE, showPlot = showPlot)
 	if (figRelCon) 
-    plotRelCon(BMR, saveFigDir = BM$outputDir, rerun = TRUE)
+    plotRelCon(BMR, saveFigDir = BM$outputDir, rerun = TRUE, showPlot = showPlot)
 	if (figMetaFit)
-    plotMetaFit(BMR, saveFigDir = BM$outputDir, rerun = TRUE)
+    plotMetaFit(BMR, saveFigDir = BM$outputDir, rerun = TRUE, showPlot = showPlot)
 	
 	file.remove(dir3)
 	cat("\nCompleted.\n")

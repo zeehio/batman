@@ -7,16 +7,18 @@
  in \code{batman} output folder to change the rerun settings. }
 \usage{
  batmanrerun(BM, figBatmanFit = TRUE, listMeta = FALSE, 
-             figRelCon = FALSE, figMetaFit = FALSE)
+             figRelCon = FALSE, figMetaFit = FALSE, showPlot = TRUE)
  }
 \arguments{
 \item{BM}{\code{batman} output data frame.}
-\item{figBatmanFit}{Plot metabolites and wavelets fit if set TRUE. The default is TRUE.}
-\item{listMeta}{Individual metabolite fit will also be shown in the plot if set TRUE. The default is FALSE.}
+\item{figBatmanFit}{Plot metabolites and wavelets fit if set \code{TRUE}. The default is \code{TRUE}.}
+\item{listMeta}{Individual metabolite fit will also be shown in the plot if set \code{TRUE}. The default is \code{FALSE}.}
 \item{figRelCon}{Plot posterior samples of the relative concentration for listed 
- metabolites with 95\% credible interval if set TRUE. The default is FALSE.}
-\item{figMetaFit}{If set TRUE, plot the posterior mean of the metabolites fit with 95\% 
- credible interval. The default is FALSE.}
+ metabolites with 95\% credible interval if set \code{TRUE}. The default is \code{FALSE}.}
+\item{figMetaFit}{If set \code{TRUE}, plot the posterior mean of the metabolites fit with 95\% 
+ credible interval. The default is \code{FALSE}.}
+\item{showPlot}{If set \code{FALSE}, no plot will be shown on display, the pdf file(s) for 
+ the plot(s) will be created in output folder. The default is \code{TRUE}.}
 }
 \value{
  When \code{batmanrerun} is called with multiplet ppm shifts fixed from the 

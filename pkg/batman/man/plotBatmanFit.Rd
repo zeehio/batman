@@ -12,7 +12,8 @@
  plotBatmanFit(BM, xfrom, xto, yfrom, yto, listMeta = FALSE,
                metaName, saveFig = TRUE, saveFigDir = BM$outputDir, 
                prefixFig, rerun = FALSE, placeLegend,
-               plotColour, overwriteFig = FALSE)}
+               plotColour, overwriteFig = FALSE,
+               showPlot = TRUE)}
 \arguments{
 \item{BM}{\code{batman} output data frame.}
 \item{xfrom}{The start ppm value to plot. Default is set to the start ppm value of the whole processed range.}
@@ -25,10 +26,12 @@
 \item{saveFig}{Save figure(s) to pdf file(s) if set TRUE. The default is TRUE.}
 \item{saveFigDir}{Save figure(s) in this directory. The default is output directory of BM.}
 \item{prefixFig}{Add prefix to each saved figure name. The default is no prefix.}
-\item{rerun}{Set to FALSE to plot \code{batman} result, and TRUE to plot \code{batmanrerun} result.}
+\item{rerun}{Set to \code{FALSE} to plot \code{batman} result, and TRUE to plot \code{batmanrerun} result.}
 \item{placeLegend}{Where to place the legend in figure. The default is "topright".}
 \item{plotColour}{User can specify colours for each metabolite if \code{listMeta = TRUE}. If not, a set of randomly generated colours will be used.}
-\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}}.
+\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}.}
+\item{showPlot}{If set \code{FALSE}, no plot will be shown on display, the pdf file(s) for 
+ the plot(s) will be created in output folder. The default is \code{TRUE}.}
 }
 \seealso{
 \code{\link{batman}, \link{batmanrerun}}

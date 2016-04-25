@@ -9,7 +9,7 @@
 \usage{
  plotShift(BM, metaName, plotHist = FALSE, breaks, perMult = FALSE,
            saveFig = TRUE, saveFigDir = BM$outputDir, prefixFig, 
-           overwriteFig = FALSE)}
+           overwriteFig = FALSE, showPlot = TRUE)}
 \arguments{
 \item{BM}{\code{batman} output data frame.}
 \item{metaName}{Only multiplets belonging to the named Metabolite will be shown. 
@@ -22,7 +22,9 @@
 \item{saveFig}{Save figure to pdf file if set TRUE. The default is TRUE.}
 \item{saveFigDir}{Save pdf file in this directory. The default is the output directory of BM.}
 \item{prefixFig}{Add prefix to each saved figure name. The default is no prefix.}
-\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}}.
+\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}.}
+\item{showPlot}{If set \code{FALSE}, no plot will be shown on display, the pdf file(s) for 
+ the plot(s) will be created in output folder. The default is \code{TRUE}.}
 }
 \seealso{
 \code{\link{batman}, \link{batmanrerun}}
