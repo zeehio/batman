@@ -103,7 +103,7 @@ plotMetaFit<-function(BM, from, to, metaName, saveFig = TRUE,saveFigDir = BM$out
       }
       if (length(((i-1)*ind+1):(i*ind))>1)
       {
-        v<-apply(metaFittemp, 1, quantile, probs = c(2.5,97.5)/100,  na.rm = TRUE) 
+        v<-apply(metaFittemp, 1, quantile, probs = c(2.5,97.5)/100,  na.rm = TRUE, type = 3) 
         v<-t(v)
       } else {
         v<-cbind(metaFittemp,metaFittemp)
@@ -202,7 +202,7 @@ plotMetaFit<-function(BM, from, to, metaName, saveFig = TRUE,saveFigDir = BM$out
       }
       if (length(((i-1)*ind+1):(i*ind))>1)
       {
-        v<-apply(metaFittemp, 1, quantile, probs = c(2.5,97.5)/100,  na.rm = TRUE) 
+        v<-apply(metaFittemp, 1, quantile, probs = c(2.5,97.5)/100,  na.rm = TRUE, type = 3) 
         v<-t(v)
       } else {
         v<-cbind(metaFittemp,metaFittemp)

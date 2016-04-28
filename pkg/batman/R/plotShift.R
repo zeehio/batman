@@ -95,7 +95,7 @@ plotShift<-function(BM, metaName, plotHist = FALSE, breaks, perMult = FALSE, sav
                    main = paste(metaName, " at ", mValue[mind[((i-1)*ind2+1)+j-1]], " ppm",sep=""),
                    xlab = "ppm shift", breaks = breaks, prob=TRUE)
               lines(density(BM$deltaSam[,mind[((i-1)*ind2+1)+j-1]])) 
-              v<-quantile(BM$deltaSam[,mind[((i-1)*ind2+1)+j-1]],p = c(2.5,97.5)/100)
+              v<-quantile(BM$deltaSam[,mind[((i-1)*ind2+1)+j-1]],p = c(2.5,97.5)/100, type = 3)
               abline(v = v, col = "red", lty=2, lwd = 2)
               legend("topright", legend = "2.5% & 97.5% quantiles", col = "red", pt.cex=2, lty =  2, cex = 0.8)
               box()
@@ -125,7 +125,7 @@ plotShift<-function(BM, metaName, plotHist = FALSE, breaks, perMult = FALSE, sav
                    main = paste(mName[((i-1)*ind+1)+j-1], " at ", mValue[((i-1)*ind+1)+j-1], " ppm",sep=""),
                    xlab = "ppm shift", breaks = breaks, prob=TRUE)
               lines(density(BM$deltaSam[,((i-1)*ind+1)+j-1]))
-              v<-quantile(BM$deltaSam[,((i-1)*ind+1)+j-1],p = c(2.5,97.5)/100)
+              v<-quantile(BM$deltaSam[,((i-1)*ind+1)+j-1],p = c(2.5,97.5)/100, type = 3)
               abline(v = v, col = "red", lty=2, lwd = 2)
               legend("topright", legend = "2.5% & 97.5% quantiles", col = "red", pt.cex=2, lty =  2, cex = 0.8)
               box()
@@ -211,7 +211,7 @@ plotShift<-function(BM, metaName, plotHist = FALSE, breaks, perMult = FALSE, sav
                    main = paste("NMR Spectrum ",isno,": ", BM$specTitle[2,i], sep=""),
                    xlab = "ppm shift", breaks = breaks,prob=TRUE)
               lines(density(BM$deltaSam[,mind[((i-1)*ind2+1)+j-1]]))             
-              v<-quantile(BM$deltaSam[,mind[((i-1)*ind2+1)+j-1]],p = c(2.5,97.5)/100)
+              v<-quantile(BM$deltaSam[,mind[((i-1)*ind2+1)+j-1]],p = c(2.5,97.5)/100, type = 3)
               abline(v = v, col = "red", lty=2, lwd = 2)      
               legend("topright", legend = "2.5% & 97.5% quantiles",
                      col = "red", pt.cex=2, lty =  2, cex = 0.8)
@@ -243,7 +243,7 @@ plotShift<-function(BM, metaName, plotHist = FALSE, breaks, perMult = FALSE, sav
                    main = paste("NMR Spectrum ",isno,": ", BM$specTitle[2,i], sep=""),
                    xlab = "ppm shift", breaks = breaks,prob=TRUE)
               lines(density(BM$deltaSam[,((i-1)*ind+1)+j-1]))                            
-              v<-quantile(BM$deltaSam[,((i-1)*ind+1)+j-1],p = c(2.5,97.5)/100)
+              v<-quantile(BM$deltaSam[,((i-1)*ind+1)+j-1],p = c(2.5,97.5)/100, type = 3)
               abline(v = v, col = "red", lty=2, lwd = 2)
               legend("topright", legend = "2.5% & 97.5% quantiles",
                      col = "red", pt.cex=2, lty =  2, cex = 0.8)
