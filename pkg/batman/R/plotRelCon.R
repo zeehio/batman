@@ -13,7 +13,7 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
   n <- 4
   ns<-5
   pdfdev = FALSE
-  
+
   m<-row.names(BM$beta)
   if (!missing(metaName))
   {
@@ -89,7 +89,7 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
           hist(t(BM$betaSam[mind[j],((i-1)*ind+1):(i*ind)]),col="gray",
                main = paste("Relative concentration\nfor ",r[mind[j]],sep=""),
                xlab = "Relative Concentration", breaks = breaks)
-          v<-quantile(BM$betaSam[mind[j],((i-1)*ind+1):(i*ind)],p = c(2.5,97.5)/100)
+          v<-quantile(BM$betaSam[mind[j],((i-1)*ind+1):(i*ind)],p = c(2.5,97.5)/100, type = 3)
           abline(v = v, col = "red", lty=2, lwd = 2)
           legend("topright", legend = "2.5% & 97.5% quantiles",
                  col = "red", pt.cex=2, lty =  2, cex = 0.8)
@@ -244,7 +244,7 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
           hist(t(BM$betaSamRerun[mind[j],((i-1)*ind+1):(i*ind)]),col="gray",
                main = paste("Relative concentration\nfor ",r[mind[j]],sep=""),
                xlab = "Relative Concentration", breaks = breaks)
-          v<-quantile(BM$betaSamRerun[mind[j],((i-1)*ind+1):(i*ind)],p = c(2.5,97.5)/100)
+          v<-quantile(BM$betaSamRerun[mind[j],((i-1)*ind+1):(i*ind)],p = c(2.5,97.5)/100, type = 3)
           abline(v = v, col = "red", lty=2, lwd = 2)
           legend("topright", legend = "2.5% & 97.5% quantiles",  col = "red",  pt.cex=2, lty =  2, cex = 0.8)
           if (((f == j || !(j%%n))) && saveFig) 
