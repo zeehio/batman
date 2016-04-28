@@ -83,4 +83,6 @@ batman 1.2.1.04 (released 26-12-2015)
 	1	fixed bug with saving posterior samples in output.
 batman 1.2.1.05 (released 25-04-2016)
 	1	added 'showPlot' option for plot functions for when running on a cloud/cluster.
+batman 1.2.1.06 (released 28-04-2016)
+	1	fixed bug when nItPostBurnin = 2000*n, problem with quantile default setting in R.
 
