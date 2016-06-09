@@ -6,6 +6,26 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   warnDef<-options("warn")$warn
   warnRead<-options(warn = -1)
   ## main function
+  ## os information
+  sysinf <- Sys.info()
+  os <- "notlisted"
+  if (!is.null(sysinf)){
+    os1 <- sysinf['sysname']
+    if (os1 == 'Darwin')
+    {os <- "osx"}
+    else if (grepl("windows", tolower(os1)))
+    {os<- "win"}       
+    else if (grepl("linux", tolower(os1)))
+    {os<- "linux" }
+  } else { ## mystery machine
+    #os <- .Platform$OS.type
+    if (grepl("^darwin", R.version$os))
+      os <- "osx"
+    if (grepl("linux-gnu", R.version$os))
+      os <- "linux"
+  }
+  
+  
   ## input data files directory 
   if (createDir) {
     dirA<-newDir(runBATMANDir = runBATMANDir, overwriteFile = overwriteDir)
@@ -30,14 +50,14 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   
   if (BOchange$pBI_IP)
   {
-      stop("\n
+    stop("\n
       Seems you updated from an old version of batman, 
       the parameters for post-burn-in, multiplet template 
       option and parallel processes (for multiple spectra)
       have been added to the batmanOptions.txt file,
       please modify their values at:
       ", dir1,
-      "\n
+         "\n
       the old batmanOptions.txt file has been renamed as:
       ", BOchange$dirTime)
   }
@@ -91,7 +111,7 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   cat("\nRunning batman...\n")
   #cat("Enter number of post-burn-in iterations (burn-in currently set to ",itoBI, " iterations):\n" )
   #itoPBI<- getinput(lowlim=1,highlim=-1)  
-
+  
   
   cat("Number of burn-in iterations: ", itoBI, "\nNumber of post-burn-in iterations: ",itoPBI, "\n" )
   
@@ -131,13 +151,13 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
     check<-b[,i]=='n'
     b[check,i]=-50
   }  
-	
+  
   for (i in 1:dim(b)[1])
   {
-	if (length(grep(" ", substring(b[i,1],1,1))) != 0 )
-	b[i,1] <- substring(b[i,1],2)
+    if (length(grep(" ", substring(b[i,1],1,1))) != 0 )
+      b[i,1] <- substring(b[i,1],2)
   }
-	
+  
   D<-order(b[,1])
   bor<-b[D,]
   write.table(bor,file=dir4,sep = "\t",row.names = FALSE,col.names = FALSE,quote=FALSE)
@@ -155,7 +175,7 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
     print(mL[checkmetaList[setdiff(1:25, matchmL)],1])
     stop("Possible error in file 'metabolitesList.csv'.\n")
   }
-    
+  
   mL<-mL[,1,drop=FALSE]
   
   write.table(mL,file=dir3, sep = "\t", row.names=FALSE,col.names=FALSE,quote=FALSE)
@@ -191,35 +211,35 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
       createChemShiftPerSpec(templateOption = opt, dirA[2])
       stop("No chemShiftPerSpec.csv file found in BatmanInput folder.
 				 Creating one now, please modify the values.\n")
-		} else {
-		  # prepare chemshift for c++
-		  chemlist<-read.csv(dirCS,header=T,stringsAsFactors=FALSE,colClasses="character")
-		  if (dim(chemlist)[1] != dim(bor)[1])
-		  {
-		    stop(paste("Different number of multiplets in multiplet template file(s) and ", dirCS,
-		               "\nPlease modify chemShiftPerSpec.csv or call createChemShiftPerSpec() to create a new one.",sep = ""))
-		  }
-		    
-		  if ((dim(chemlist)[2]-2) != (dim(sa)[2]-1))
-		  {
-		    stop(paste("Different number of spectra in dataset and ", dirCS,
-		               "\nPlease modify chemShiftPerSpec.csv or call createChemShiftPerSpec() to create a new one.",sep = ""))
-		  }
+    } else {
+      # prepare chemshift for c++
+      chemlist<-read.csv(dirCS,header=T,stringsAsFactors=FALSE,colClasses="character")
+      if (dim(chemlist)[1] != dim(bor)[1])
+      {
+        stop(paste("Different number of multiplets in multiplet template file(s) and ", dirCS,
+                   "\nPlease modify chemShiftPerSpec.csv or call createChemShiftPerSpec() to create a new one.",sep = ""))
+      }
       
-		  for (i in 3:dim(chemlist)[2])
-		  {
-		    check<-chemlist[,i]=='n'
-		    chemlist[check,i]=-50
-		  }
-		  Dc<-order(chemlist[,1])
-		  chemlistor<-chemlist[Dc,]
-		  write.table(chemlistor,file=dir6,sep = "\t",row.names = FALSE,col.names = FALSE,quote=FALSE)
-		  cp<-file.copy(dir6,dir5)
-		}
+      if ((dim(chemlist)[2]-2) != (dim(sa)[2]-1))
+      {
+        stop(paste("Different number of spectra in dataset and ", dirCS,
+                   "\nPlease modify chemShiftPerSpec.csv or call createChemShiftPerSpec() to create a new one.",sep = ""))
+      }
+      
+      for (i in 3:dim(chemlist)[2])
+      {
+        check<-chemlist[,i]=='n'
+        chemlist[check,i]=-50
+      }
+      Dc<-order(chemlist[,1])
+      chemlistor<-chemlist[Dc,]
+      write.table(chemlistor,file=dir6,sep = "\t",row.names = FALSE,col.names = FALSE,quote=FALSE)
+      cp<-file.copy(dir6,dir5)
+    }
   }
   
   
-    
+  
   ## choose whether to parallelize spectra
   if (length(sno)>1 && fixeff == 0)    
   {
@@ -231,7 +251,7 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
     wr<-1
   }
   
-
+  
   
   if ((ncol(sa)-1)<length(sno))
     return(cat("No. of spectra included smaller than input spectra.\n"))
@@ -250,12 +270,12 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   
   rr<-0
   if (wr>1) {
-    cl<-makeCluster(wr, type = "SOCK")
+    cl<-makeCluster(wr, type = getClusterOption("type"))
     registerDoSNOW(cl)  
   } else {
     cat ("Percentage completed...\n")
   }
-
+  
   ## calling c++ for MCMC
   if (wr>1) {              
     stime <- system.time ({
@@ -279,7 +299,7 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
         close( pBar )
       }})[3]
   }
-
+  
   cat ("time ")
   print(stime)
   cat (" second.\n")
@@ -289,6 +309,12 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   ## read in batman result files
   BM<-readBatmanOutput(dirctime, dirA[2]) 
   cat(BM$outputDir)
+  
+  if (os == "notlisted")
+  {
+    showPlot <- FALSE
+    cat("\nThis operating system may not support X11, no plot will be displayed, figures in .pdf format will be saved in output folder.\n")
+  }
   
   ## plot results
   if (figBatmanFit)

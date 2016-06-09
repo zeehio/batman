@@ -44,7 +44,7 @@
 \item{figMetaFit}{If set \code{TRUE}, plot the posterior mean of the metabolites fit with 95\% 
  credible interval. The default is \code{FALSE}.}
 \item{showPlot}{If set \code{FALSE}, no plot will be shown on display, the pdf file(s) for 
- the plot(s) will be created in output folder. The default is \code{TRUE}.}
+ the plot(s) will be created in output folder. The default is \code{TRUE}. If running on HPC etc., it will be set to \code{FALSE} automatically.}
 }
 \value{	
  It returns a data list with the following objects:  
