@@ -147,7 +147,7 @@ figRelCon = FALSE, figMetaFit = FALSE, showPlot)
 	  else 
 	  { #if (os == 'linux')
 	    showPlot <- FALSE
-	    cat("\nThis operating system may not support X11, no plot will be displayed, figures in .pdf format will be saved in output folder.\n")
+	    cat("\nThis operating system may not support X11, no plot will be displayed, figures in .pdf format will be saved in output folder.")
 	    cat("\nCheck input argument 'showPlot' for more detail.")
 	  }
 	}

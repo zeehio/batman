@@ -44,7 +44,7 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
     else 
     { #if (os == 'linux')
       showPlot <- FALSE
-      cat("\nThis operating system may not support X11, no plot will be displayed, figures in .pdf format will be saved in output folder.\n")
+      cat("\nThis operating system may not support X11, no plot will be displayed, figures in .pdf format will be saved in output folder.")
       cat("\nCheck input argument 'showPlot' for more detail.")
     }
   }
@@ -93,10 +93,10 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
               }              
               else if (!showPlot && (file.exists(outpdf1) && !overwriteFig))
               {  
-                cat("Can't save figure, file", outpdf1, "already exists.\n")
+                cat("\nCan't save figure, file", outpdf1, "already exists.\n")
                 tmpOP <- strsplit(outpdf1, "[.]")
                 outpdf1 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
-                cat("Figure saved in new file \"", outpdf1, "\".")
+                cat("Figure saved in new file \"", outpdf1, "\".\n")
                 pdf(outpdf1,15,7)  
                 pdfdev = TRUE
               } 
@@ -116,10 +116,10 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
               }        
               else if (!showPlot && (file.exists(outpdf1) && !overwriteFig))
               {  
-                cat("Can't save figure, file", outpdf1, "already exists.\n")
+                cat("\nCan't save figure, file", outpdf1, "already exists.\n")
                 tmpOP <- strsplit(outpdf1, "[.]")
                 outpdf1 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
-                cat("Figure saved in new file \"", outpdf1, "\".")
+                cat("Figure saved in new file \"", outpdf1, "\".\n")
                 pdf(outpdf1,15,7)  
                 pdfdev = TRUE
               } 
@@ -152,10 +152,10 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
             }
             else if (showPlot && (file.exists(outpdf1) && !overwriteFig))
             {  
-              cat("Can't save figure, file", outpdf1, "already exists.\n")
+              cat("\nCan't save figure, file", outpdf1, "already exists.\n")
               tmpOP <- strsplit(outpdf1, "[.]")
               outpdf1 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
-              cat("Figure saved in new file \"", outpdf1, "\".")
+              cat("Figure saved in new file \"", outpdf1, "\".\n")
               df = dev.copy2pdf(device=x11, file = outpdf1)
             }
             else
@@ -184,10 +184,10 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
               pdfdev = TRUE
             }          
             else if (!showPlot && (file.exists(outpdf1) && !overwriteFig))
-            {  cat("Can't save figure, file", outpdf1, "already exists.\n")
+            {  cat("\nCan't save figure, file", outpdf1, "already exists.\n")
               tmpOP <- strsplit(outpdf1, "[.]")
               outpdf1 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
-              cat("Figure saved in new file \"", outpdf1, "\".")
+              cat("Figure saved in new file \"", outpdf1, "\".\n")
               pdf(outpdf1,15,7)  
               pdfdev = TRUE
             }
@@ -207,10 +207,10 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
             }       
             else if (!showPlot && (file.exists(outpdf1) && !overwriteFig))
             {  
-              cat("Can't save figure, file", outpdf1, "already exists.\n")
+              cat("\nCan't save figure, file", outpdf1, "already exists.\n")
               tmpOP <- strsplit(outpdf1, "[.]")
               outpdf1 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
-              cat("Figure saved in new file \"", outpdf1, "\".")
+              cat("Figure saved in new file \"", outpdf1, "\".\n")
               pdf(outpdf1,15,7)  
               pdfdev = TRUE
             }
@@ -237,10 +237,10 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
           }
           else if (showPlot && (file.exists(outpdf1) && !overwriteFig))
           {  
-            cat("Can't save figure, file", outpdf1, "already exists.\n")
+            cat("\nCan't save figure, file", outpdf1, "already exists.\n")
             tmpOP <- strsplit(outpdf1, "[.]")
             outpdf1 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
-            cat("Figure saved in new file \"", outpdf1, "\".")
+            cat("Figure saved in new file \"", outpdf1, "\".\n")
             df = dev.copy2pdf(device=x11, file = outpdf1)
           }
           else
@@ -287,10 +287,10 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
               }         
               else if (!showPlot && (file.exists(outpdf2) && !overwriteFig))
               {  
-                cat("Can't save figure, file", outpdf2, "already exists.\n")
+                cat("\nCan't save figure, file", outpdf2, "already exists.\n")
                 tmpOP <- strsplit(outpdf2, "[.]")
                 outpdf2 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
-                cat("Figure saved in new file \"", outpdf2, "\".")
+                cat("Figure saved in new file \"", outpdf2, "\".\n")
                 pdf(outpdf2,15,7)  
                 pdfdev = TRUE
               } 
@@ -310,10 +310,10 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
               }           
               else if (!showPlot && (file.exists(outpdf2) && !overwriteFig))
               {  
-                cat("Can't save figure, file", outpdf2, "already exists.\n")
+                cat("\nCan't save figure, file", outpdf2, "already exists.\n")
                 tmpOP <- strsplit(outpdf2, "[.]")
                 outpdf2 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
-                cat("Figure saved in new file \"", outpdf2, "\".")
+                cat("Figure saved in new file \"", outpdf2, "\".\n")
                 pdf(outpdf2,15,7)  
                 pdfdev = TRUE
               } 
@@ -345,10 +345,10 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
             }
             else if (showPlot && (file.exists(outpdf2) && !overwriteFig))
             {  
-              cat("Can't save figure, file", outpdf2, "already exists.\n")
+              cat("\nCan't save figure, file", outpdf2, "already exists.\n")
               tmpOP <- strsplit(outpdf2, "[.]")
               outpdf2 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
-              cat("Figure saved in new file \"", outpdf2, "\".")
+              cat("Figure saved in new file \"", outpdf2, "\".\n")
               df = dev.copy2pdf(device=x11, file = outpdf2)
             }
             else
@@ -378,10 +378,10 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
             }       
             else if (!showPlot && (file.exists(outpdf2) && !overwriteFig))
             {  
-              cat("Can't save figure, file", outpdf2, "already exists.\n")
+              cat("\nCan't save figure, file", outpdf2, "already exists.\n")
               tmpOP <- strsplit(outpdf2, "[.]")
               outpdf2 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
-              cat("Figure saved in new file \"", outpdf2, "\".")
+              cat("Figure saved in new file \"", outpdf2, "\".\n")
               pdf(outpdf2,15,7)  
               pdfdev = TRUE
             } 
@@ -400,10 +400,10 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
             }         
             else if (!showPlot && (file.exists(outpdf2) && !overwriteFig))
             {  
-              cat("Can't save figure, file", outpdf2, "already exists.\n")
+              cat("\nCan't save figure, file", outpdf2, "already exists.\n")
               tmpOP <- strsplit(outpdf2, "[.]")
               outpdf2 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
-              cat("Figure saved in new file \"", outpdf2, "\".")
+              cat("Figure saved in new file \"", outpdf2, "\".\n")
               pdf(outpdf2,15,7)  
               pdfdev = TRUE
             } 
@@ -429,10 +429,10 @@ plotRelCon<-function(BM, metaName, plotHist = FALSE, breaks, saveFig = TRUE,
           }
           else if (showPlot && (file.exists(outpdf2) && !overwriteFig))
           {  
-            cat("Can't save figure, file", outpdf2, "already exists.\n")
+            cat("\nCan't save figure, file", outpdf2, "already exists.\n")
             tmpOP <- strsplit(outpdf2, "[.]")
             outpdf2 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
-            cat("Figure saved in new file \"", outpdf2, "\".")
+            cat("Figure saved in new file \"", outpdf2, "\".\n")
             df = dev.copy2pdf(device=x11, file = outpdf2)
           }
           else
