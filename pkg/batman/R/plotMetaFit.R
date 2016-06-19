@@ -1,5 +1,5 @@
 plotMetaFit<-function(BM, from, to, metaName, saveFig = TRUE,saveFigDir = BM$outputDir, 
-                      prefixFig, rerun = FALSE, overwriteFig = FALSE, showPlot = TRUE)
+                      prefixFig, rerun = FALSE, overwriteFig = FALSE, showPlot)
 {
   ## written by Dr. Jie Hao, Imperial College London
   ## plot metabolites fit posteriors with 95% credible Interval
@@ -12,6 +12,42 @@ plotMetaFit<-function(BM, from, to, metaName, saveFig = TRUE,saveFigDir = BM$out
   n <- 2
   ns<-5
   pdfdev = FALSE
+  
+  ## os information
+  os <- NULL
+  if (missing(showPlot))
+  {
+    sysinf <- Sys.info()
+    os <- "notlisted"
+    if (!is.null(sysinf)){
+      os1 <- sysinf['sysname']
+      if (os1 == 'Darwin')
+      {os <- "osx"}
+      else if (grepl("windows", tolower(os1)))
+      {os<- "win"}       
+      else if (grepl("linux", tolower(os1)))
+      {os<- "linux" }
+    } else { ## mystery machine
+      #os <- .Platform$OS.type
+      if (grepl("^darwin", R.version$os))
+        os <- "osx"
+      if (grepl("linux-gnu", R.version$os))
+        os <- "linux"
+    }
+  }
+  
+  if (!is.null(os))
+  {
+    if (os == 'win' || os == 'osx')
+    { showPlot <- TRUE }
+    else 
+    { #if (os == 'linux')
+      showPlot <- FALSE
+      cat("\nThis operating system may not support X11, no plot will be displayed, figures in .pdf format will be saved in output folder.\n")
+      cat("\nCheck input argument 'showPlot' for more detail.")
+    }
+  }
+  
   
   if (missing(from))
     from = min(BM$sFit[1,1],BM$sFit[nrow(BM$sFit),1])
@@ -64,7 +100,14 @@ plotMetaFit<-function(BM, from, to, metaName, saveFig = TRUE,saveFigDir = BM$out
               pdfdev = TRUE
           }         
           else if (!showPlot && (file.exists(outpdf1) && !overwriteFig))
+          {  
             cat("Can't save figure, file", outpdf1, "already exists.\n")
+            tmpOP <- strsplit(outpdf1, "[.]")
+            outpdf1 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
+            cat("Figure saved in new file \"", outpdf1, "\".")
+            pdf(outpdf1,15,7)  
+            pdfdev = TRUE
+          }
           else
             x11(15,7)
           par(mfrow=c(n,1))  
@@ -80,7 +123,14 @@ plotMetaFit<-function(BM, from, to, metaName, saveFig = TRUE,saveFigDir = BM$out
               pdfdev = TRUE
           }           
           else if (!showPlot && (file.exists(outpdf1) && !overwriteFig))
+          {  
             cat("Can't save figure, file", outpdf1, "already exists.\n")
+            tmpOP <- strsplit(outpdf1, "[.]")
+            outpdf1 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
+            cat("Figure saved in new file \"", outpdf1, "\".")
+            pdf(outpdf1,15,7)  
+            pdfdev = TRUE
+          }
           else
             x11(15,7)
         }
@@ -128,7 +178,13 @@ plotMetaFit<-function(BM, from, to, metaName, saveFig = TRUE,saveFigDir = BM$out
           pdfdev = FALSE
         }
         else if (showPlot && (file.exists(outpdf1) && !overwriteFig))
+        {  
           cat("Can't save figure, file", outpdf1, "already exists.\n")
+          tmpOP <- strsplit(outpdf1, "[.]")
+          outpdf1 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
+          cat("Figure saved in new file \"", outpdf1, "\".")
+          df = dev.copy2pdf(device=x11, file = outpdf1)
+        }
         else
           df = dev.copy2pdf(device=x11, file = outpdf1)
         
@@ -163,7 +219,14 @@ plotMetaFit<-function(BM, from, to, metaName, saveFig = TRUE,saveFigDir = BM$out
               pdfdev = TRUE
           }            
           else if (!showPlot && (file.exists(outpdf2) && !overwriteFig))
+          {  
             cat("Can't save figure, file", outpdf2, "already exists.\n")
+            tmpOP <- strsplit(outpdf2, "[.]")
+            outpdf2 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
+            cat("Figure saved in new file \"", outpdf2, "\".")
+            pdf(outpdf2,15,7)  
+            pdfdev = TRUE
+          } 
           else
             x11(15,7)
           par(mfrow=c(n,1))	
@@ -179,7 +242,14 @@ plotMetaFit<-function(BM, from, to, metaName, saveFig = TRUE,saveFigDir = BM$out
               pdfdev = TRUE
           }          
           else if (!showPlot && (file.exists(outpdf2) && !overwriteFig))
+          {  
             cat("Can't save figure, file", outpdf2, "already exists.\n")
+            tmpOP <- strsplit(outpdf2, "[.]")
+            outpdf2 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
+            cat("Figure saved in new file \"", outpdf2, "\".")
+            pdf(outpdf2,15,7)  
+            pdfdev = TRUE
+          } 
           else
             x11(15,7)
         }
@@ -224,7 +294,13 @@ plotMetaFit<-function(BM, from, to, metaName, saveFig = TRUE,saveFigDir = BM$out
           pdfdev = FALSE
         }       
         else if (showPlot && (file.exists(outpdf2) && !overwriteFig))
+        {  
           cat("Can't save figure, file", outpdf2, "already exists.\n")
+          tmpOP <- strsplit(outpdf2, "[.]")
+          outpdf2 <- paste(tmpOP[[1]][1], "_", format(Sys.time(), "%d_%b_%H_%M_%S"), ".", tmpOP[[1]][2], sep = "")
+          cat("Figure saved in new file \"", outpdf2, "\".")
+          df = dev.copy2pdf(device=x11, file = outpdf2)
+        }
         else
           df = dev.copy2pdf(device=x11, file = outpdf2)
         

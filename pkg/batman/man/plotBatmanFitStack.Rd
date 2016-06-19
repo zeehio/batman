@@ -13,7 +13,7 @@ plotBatmanFitStack(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
                    prefixFig, rerun = FALSE, placeLegend = "topright", 
                    plotColour, overwriteFig = FALSE, 
                    metaLwd = 2, metaLty = 5, orientation = "L",
-                   showPlot = TRUE)
+                   showPlot)
 }
 \arguments{
 \item{BM}{\code{batman} output data frame.}
@@ -33,12 +33,12 @@ plotBatmanFitStack(BM, offset = 1, mirroredWav = TRUE, specNo,  xfrom,
 \item{rerun}{Set to FALSE to plot \code{batman} result, and TRUE to plot \code{batmanrerun} result.}
 \item{placeLegend}{Where to place the legend in figure. The default is "topright".}
 \item{plotColour}{User can specify colours for each metabolite if \code{listMeta = TRUE}. If not, a set of randomly generated colours will be used.}
-\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}.}
+\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. If set to \code{FALSE}, a new figure file with system time as postfix will be created. The default is \code{FALSE}.}
 \item{metaLwd}{The line widths for metabolite fit.}
 \item{metaLty}{The line types for metabolite fit.}
 \item{orientation}{The orientation of plot, either portrait or landscape, the defult is "L".}
 \item{showPlot}{If set \code{FALSE}, no plot will be shown on display, the pdf file(s) for 
- the plot(s) will be created in output folder. The default is \code{TRUE}.}
+ the figure plot(s) will be created in output folder. If missing from input, for windows and osx operating systems, it will be set to \code{TRUE}, for the rest operating systems, it will be set to \code{FALSE} automatically.}
 }
 \examples{
 library(batman)

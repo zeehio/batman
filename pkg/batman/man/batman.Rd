@@ -13,8 +13,7 @@
  batman(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TRUE, 
         runBATMANDir = getwd(), overwriteDir = FALSE, 
         figBatmanFit = TRUE, listMeta = FALSE, 
-        figRelCon = FALSE, figMetaFit = FALSE, 
-        showPlot = TRUE)}
+        figRelCon = FALSE, figMetaFit = FALSE, showPlot)}
 \arguments{
 \item{BrukerDataDir}{The directory of the folder containing 1D Bruker spectral data files. 
  If not specified, spectral data will be read in from one of the following inputs prioritized 
@@ -44,7 +43,7 @@
 \item{figMetaFit}{If set \code{TRUE}, plot the posterior mean of the metabolites fit with 95\% 
  credible interval. The default is \code{FALSE}.}
 \item{showPlot}{If set \code{FALSE}, no plot will be shown on display, the pdf file(s) for 
- the plot(s) will be created in output folder. The default is \code{TRUE}. If running on HPC etc., it will be set to \code{FALSE} automatically.}
+ the figure plot(s) will be created in output folder. If missing from input, for windows and osx operating systems, it will be set to \code{TRUE}, for the rest operating systems, it will be set to \code{FALSE} automatically.}
 }
 \value{	
  It returns a data list with the following objects:  

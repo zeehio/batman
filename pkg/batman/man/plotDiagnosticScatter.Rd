@@ -7,7 +7,7 @@
 plotDiagnosticScatter(BM, binWidth = 0.018, cexID = 0.5, saveFig = TRUE, 
                       saveFigDir = BM$outputDir, prefixFig, 
                       rerun = FALSE, placeLegend = "topright", 
-                      overwriteFig = FALSE, showPlot = TRUE)
+                      overwriteFig = FALSE, showPlot)
 }
 \arguments{
 \item{BM}{\code{batman} output data frame.}
@@ -19,9 +19,9 @@ plotDiagnosticScatter(BM, binWidth = 0.018, cexID = 0.5, saveFig = TRUE,
 \item{prefixFig}{Add prefix to each saved figure name. The default is no prefix.}
 \item{rerun}{Set to FALSE to plot \code{batman} result, and TRUE to plot \code{batmanrerun} result.}
 \item{placeLegend}{Where to place the legend in figure. The default is "topright".}
-\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}.}
+\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. If set to \code{FALSE}, a new figure file with system time as postfix will be created. The default is \code{FALSE}.}
 \item{showPlot}{If set \code{FALSE}, no plot will be shown on display, the pdf file(s) for 
- the plot(s) will be created in output folder. The default is \code{TRUE}.}
+ the figure plot(s) will be created in output folder. If missing from input, for windows and osx operating systems, it will be set to \code{TRUE}, for the rest operating systems, it will be set to \code{FALSE} automatically.}
 }
 \examples{
 library(batman)
