@@ -85,8 +85,9 @@ batman 1.2.1.05 (released 25-04-2016)
 	1	added 'showPlot' option for plot functions for when running on a cloud/cluster.
 batman 1.2.1.06 (released 28-04-2016)
 	1	fixed bug when nItPostBurnin = 2000*n, problem with quantile default setting in R.
-batman 1.2.1.07 (released 28-04-2016)
-	1	No plot will be shown if running non win, linux or osx systems.
+batman 1.2.1.07 (released 09-06-2016)
+	1	No plot will be shown if running not win, linux or osx systems.
 	2	makeCluster getClusterOption("type")
-
+batman 1.2.1.08 (released 19-06-2016)
+	1	No plot will be shown if not running win or osx systems.
 

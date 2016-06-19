@@ -1,29 +1,11 @@
 batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TRUE, runBATMANDir = getwd(), 
                  overwriteDir = FALSE, figBatmanFit = TRUE, listMeta = FALSE, 
-                 figRelCon = FALSE, figMetaFit = FALSE, showPlot = TRUE)
+                 figRelCon = FALSE, figMetaFit = FALSE, showPlot)
 {
   ## written by Dr. Jie Hao, Imperial College London
   warnDef<-options("warn")$warn
   warnRead<-options(warn = -1)
   ## main function
-  ## os information
-  sysinf <- Sys.info()
-  os <- "notlisted"
-  if (!is.null(sysinf)){
-    os1 <- sysinf['sysname']
-    if (os1 == 'Darwin')
-    {os <- "osx"}
-    else if (grepl("windows", tolower(os1)))
-    {os<- "win"}       
-    else if (grepl("linux", tolower(os1)))
-    {os<- "linux" }
-  } else { ## mystery machine
-    #os <- .Platform$OS.type
-    if (grepl("^darwin", R.version$os))
-      os <- "osx"
-    if (grepl("linux-gnu", R.version$os))
-      os <- "linux"
-  }
   
   
   ## input data files directory 
@@ -310,10 +292,40 @@ batman<-function(BrukerDataDir, BrukerDataZipDir, txtFile, rData, createDir = TR
   BM<-readBatmanOutput(dirctime, dirA[2]) 
   cat(BM$outputDir)
   
-  if (os == "notlisted")
+  
+  ## os information
+  os <- NULL
+  if (missing(showPlot))
   {
+    sysinf <- Sys.info()
+    os <- "notlisted"
+    if (!is.null(sysinf)){
+      os1 <- sysinf['sysname']
+      if (os1 == 'Darwin')
+      {os <- "osx"}
+      else if (grepl("windows", tolower(os1)))
+      {os<- "win"}       
+      else if (grepl("linux", tolower(os1)))
+      {os<- "linux" }
+    } else { ## mystery machine
+      #os <- .Platform$OS.type
+      if (grepl("^darwin", R.version$os))
+        os <- "osx"
+      if (grepl("linux-gnu", R.version$os))
+        os <- "linux"
+    }
+  }
+  
+  if (!is.null(os))
+  {
+    if (os == 'win' || os == 'osx')
+    { showPlot <- TRUE }
+    else 
+    { #if (os == 'linux')
     showPlot <- FALSE
     cat("\nThis operating system may not support X11, no plot will be displayed, figures in .pdf format will be saved in output folder.\n")
+    cat("\nCheck input argument 'showPlot' for more detail.")
+    }
   }
   
   ## plot results

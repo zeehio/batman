@@ -13,7 +13,7 @@
 \usage{
  plotBatmanFitHR(BM, xfrom, xto, yfrom, yto, metaName, saveFig = TRUE, 
                  saveFigDir = BM$outputDir, prefixFig, rerun = FALSE, 
-                 overwriteFig = FALSE, showPlot = TRUE)}
+                 overwriteFig = FALSE, showPlot)}
 \arguments{
 \item{BM}{\code{batman} output data frame.}
 \item{xfrom}{The start ppm value to plot. Default is set to the start ppm value of the whole processed range.}
@@ -26,9 +26,9 @@
 \item{saveFigDir}{Save figure(s) in this directory. The default is the output directory of BM.}
 \item{prefixFig}{Add prefix to each saved figure name. The default is no prefix.}
 \item{rerun}{Set to FALSE to plot \code{batman} result, and TRUE to plot \code{batmanrerun} result.}
-\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. The default is \code{FALSE}.}
+\item{overwriteFig}{Overwrite saved figure file in pdf format if \code{overwriteFig = TRUE}. If set to \code{FALSE}, a new figure file with system time as postfix will be created. The default is \code{FALSE}.}
 \item{showPlot}{If set \code{FALSE}, no plot will be shown on display, the pdf file(s) for 
- the plot(s) will be created in output folder. The default is \code{TRUE}.}
+ the figure plot(s) will be created in output folder. If missing from input, for windows and osx operating systems, it will be set to \code{TRUE}, for the rest operating systems, it will be set to \code{FALSE} automatically.}
 }
 \seealso{ 
 \code{\link{batman}, \link{batmanrerun}}
