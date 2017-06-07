@@ -102,7 +102,7 @@ char opfile[], int ito, int burnin, vector<double> *x, int saveHR, matrix * data
     strcat(fdirthe,".txt");
     matrix reconT((*chain).spectra[sit].theta_sam.size());
     for (unsigned int n = 0; n<(*chain).spectra[sit].theta_sam.size(); n++)
-    idwt((*chain).spectra[sit].theta_draw, (*chain).spectra[sit].pars.levsize, (*chain).spectra[sit].pars.h_vec, reconT[n]); 
+    idwt((*chain).spectra[sit].theta_sam[n], (*chain).spectra[sit].pars.levsize, (*chain).spectra[sit].pars.h_vec, reconT[n]);
     write_txtf_M(&reconT, fdirthe);  
     
     char fdirsfit[3000]={'\0'};
