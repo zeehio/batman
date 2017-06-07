@@ -34,14 +34,14 @@ void read_txtf(matrix *data, char filename[])
     (*data).resize(col+1);
     //resize the buffer size;
     BUFF_SIZE = col*20;
-    //printf("Buffer size is adjusted to %i \n", BUFF_SIZE);
+    printf("Buffer size is adjusted to %i \n", BUFF_SIZE);
     
     
     while( 1 )
     {
-    char buffer[BUFF_SIZE] = {'\0'};
+    char buffer[BUFF_SIZE];
       //printf("buffer created successfully. \n");
-         char buffer1[BUFF_SIZE] = {'\0'};
+         char buffer1[BUFF_SIZE];
          //printf("buffer1 created successfully. \n");
          char * tp0 = fgets(buffer, BUFF_SIZE, fp);
       p = buffer; // the pointer 'p' point to the address of the first character of buffer

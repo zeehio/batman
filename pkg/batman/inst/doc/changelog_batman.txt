@@ -92,4 +92,6 @@ batman 1.2.1.08 (released 19-06-2016)
 	1	No plot will be shown if not running win or osx systems.
 batman 1.2.1.09 (released 12-05-2017)
 	1	flexbile buffer in read_txtf.cpp.
+batman 1.2.1.10 (released 07-06-2017)
+	1	fix bug when saving theta_sam.
 
