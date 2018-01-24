@@ -94,4 +94,5 @@ batman 1.2.1.09 (released 12-05-2017)
 	1	flexbile buffer in read_txtf.cpp.
 batman 1.2.1.10 (released 07-06-2017)
 	1	fix bug when saving theta_sam.
-
+batman 1.2.1.11 (released 24-01-2018)
+	1	Compatible with R version 3.4.3
