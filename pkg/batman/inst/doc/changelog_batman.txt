@@ -1,0 +1,99 @@
+Changelog for batman
+This page lists all changes of the batman releases.
+
+batman 1.0.1
+  modify multi_data.csv to change prior for each multiplets
+  modify multi_data_user.csv to add multiplets
+	modify batmanOption.txt to change all the other information
+	modify MetabolitesList.csv to add or remove (with % in front) metabolite
+
+
+batman 1.0.3 (released 23-04-2012)
+This is a maintenance release. The following items were fixed and/or added: 
+	Fixed bug for installation of Mac binary with R 2.15.0. 
+	sThe minimum requirement of R is 2.15.0 for batman 1.0.3. To use batman in earlier versions of R, please use batman 1.0.2.
+
+
+batman 1.0.4 (released 17-07-2012)
+The following items were fixed and/or added: 
+	Fixed error in normlogpdf. 
+	Fixed bug with windows version in opt.
+	Added "-1" function in multi_data(_user.csv), where user can specify none typical shapes of multiplets in data file. 
+
+
+batman 1.0.9.06 (released ??-2012)
+The following items were fixed and/or added: 
+	1	Fixed bug in plotRelCon. 
+	2 	Fixed bug in plotBatmanFit, plotBatmanFitHR.
+	3	Removed parallel processing limit in batman, batmanrerun.
+	4	Added line at the end of batmanOptions file. For user specified chemical shift for spectra (chemShiftperSpectra.csv).
+	5	Added "-2" function in multi_data(_user.csv), where user can specify none typical shapes of multiplets in data file. 
+	6	Added options to overwrite existing figure pdf files.
+	7	Added plotColour input option for different metabolite fits in plotBatmanFit.
+	8	Added check if metabolite name not in multi_data(_user.csv) file, stop batman.
+	9	Fixed problem with reading more lines in batmanOptions.txt file.
+	10	Fixed problem exiting from C++ by main cpp file for user using not terminal to run R.(There may be others exit from c++ still needs to be fixed)
+  	11  	Added interpolation check for readBruker() when read in multiple spectra.
+
+batman 1.0.9.07 (released 11-2012)
+	1	Added checkBatmanOptions.R to automatically add one line (for chemShiftperSpectra) at the end of batmanOptions.txt file if missing.
+
+batman 1.0.9.08 (released 12-2012)
+	1	Modify second input line in batmanOptions.txt from number of spectra to spectra range.
+	2	Fixed bug with check "No metabolites with resonances in the region for analysis, exiting..."
+batman 1.0.9.09 (released 12-2012)
+	1	Fixed bug with processing more than 50 spectra, tested with 206 and working, there may still be a limit of max number of spectra can be processed at once.
+batman 1.1.0 (released 2-2013)
+	1	Added check with matching number of input for multi_data*.csv template "-1" option, output error messages in terminal, may not visible in R gui. 
+	2	Sorted multi_data.csv file according to multiplet name.
+	3 	Added MATLAB tool "SplineFitBATMAN" to assist when fitting multiplets with chemical shift per spectrum.  
+batman 1.1.0.01 (released 25-2-2013)
+	1	Added function readBrukerZipped. 
+batman 1.1.0.02 (released 30-5-2013)
+	1	Fixed bug with reading results when "Same concentration for all spectra (fixed effect)" set to 1 in batmanOptions.txt
+batman 1.1.0.03 (released 10-6-2013)
+	1	Fixed bug with reading in spectra titles with "#" 
+
+batman 1.2.0 (released 6-8-2013)
+	1 	Added plotBatmanFitStack function.
+	2	Added plotDiagnosticScatter function.
+	3	Added plotChemShiftDist function.
+	4 	Modified readBatmanOutput function to have the option to read in part results for large dataset.
+	5	Fixed bug with reading in Bruker spectra of size 128K
+	6	Unify batman Option parameter names, and checkBatmanOptions to modify previous batman option file.
+
+batman 1.2.1 (released 15-10-2013)
+	1 	Move parameters for post-burn-in and source of templates in to batmanOptions.txt file.
+  	2   	Modified checkBatmanOptions.R to automatically add the above two parameters in file.
+	3   	Modified readBrukerZipped function to read in .zip file.
+	4	Rename "no_of_proton" to "relative_intensity".
+	5	Change input for scaleFac from integer to double.
+	6 	Modified batman.R to write to NMRdata.txt even input is in txt format.
+	7	Added saveBruker2Txt.R
+	8	Modified checkBatmanOptions.R with much older versions of options file needs 2nd run.
+	9	batman documentation added details of empirical and raster template.
+batman 1.2.1.01 (released 21-06-2014)
+	1	batman.R rename txt file instead of read and write
+	2	read_txt_batmanoptions.cpp fixed bug with ppm more than 80 char, and problem on Ubuntu server
+batman 1.2.1.02 (released 19-07-2014)
+	1	updated read.table usage with extra parameter (colClasses="numeric")
+batman 1.2.1.03 (released 24-10-2014)
+	1	fixed bug with reading in txtFile input.
+batman 1.2.1.04 (released 26-12-2015)
+	1	fixed bug with saving posterior samples in output.
+batman 1.2.1.05 (released 25-04-2016)
+	1	added 'showPlot' option for plot functions for when running on a cloud/cluster.
+batman 1.2.1.06 (released 28-04-2016)
+	1	fixed bug when nItPostBurnin = 2000*n, problem with quantile default setting in R.
+batman 1.2.1.07 (released 09-06-2016)
+	1	No plot will be shown if running not win, linux or osx systems.
+	2	makeCluster getClusterOption("type")
+batman 1.2.1.08 (released 19-06-2016)
+	1	No plot will be shown if not running win or osx systems.
+batman 1.2.1.09 (released 12-05-2017)
+	1	flexbile buffer in read_txtf.cpp.
+batman 1.2.1.10 (released 07-06-2017)
+	1	fix bug when saving theta_sam.
+batman 1.2.1.11 (released 24-01-2018)
+	1	Compatible with R version 3.4.3
+	2	quantile as numeric
